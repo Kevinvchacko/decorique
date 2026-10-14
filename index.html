@@ -1130,7 +1130,7 @@ function estimate(){
   var base = PACKAGE_PRICE[el.pkg.value] || 0, ex = extras(), add = ex.reduce(function(t,k){ return t + (EXTRA_PRICE[k]||0); }, 0);
   return {base:base, add:add, total:base + add, quote:/custom quote/.test(el.pkg.value)};
 }
-function isGift(){ return /^(Polaroid set|Chart board)/.test(el.pkg.value); }
+function isGift(){ return /^(Polaroid set|Chart board|Photo Ferris wheel|Polaroid tree)/.test(el.pkg.value); }
 function clashing(){
   if(!el.date.value || isGift()) return false;
   return BOOKED_SLOTS.indexOf(el.date.value + '|*') > -1 || BOOKED_SLOTS.indexOf(el.date.value + '|' + el.slot.value) > -1;
@@ -1227,5 +1227,44 @@ f.addEventListener('submit', function(e){
 var today = new Date(); today.setDate(today.getDate() + 3);
 try { el.date.min = today.toISOString().slice(0,10); } catch(e){}
 refresh();
+</script>
+
+<script>
+/* ===== Order log connection (Supabase). The key below is the public anon key; it can only INSERT bookings. ===== */
+(function(){
+  var SB_URL = 'https://cbkzelyrgxfazcqwunqu.supabase.co';
+  var SB_KEY = '__SUPABASE_ANON_KEY__';
+  if(SB_KEY.indexOf('__') === 0) return;
+  var H = {'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json'};
+  /* 1. Pull confirmed decor slots so the form blocks them automatically. */
+  fetch(SB_URL + '/rest/v1/rpc/booked_slots', {method:'POST', headers:H, body:'{}'})
+    .then(function(r){ return r.ok ? r.json() : []; })
+    .then(function(rows){ rows.forEach(function(x){ if(BOOKED_SLOTS.indexOf(x.slot_key) < 0) BOOKED_SLOTS.push(x.slot_key); }); refresh(); })
+    .catch(function(){});
+  /* 2. Save each booking to the order log when the visitor taps "Send on WhatsApp". */
+  var sent = '';
+  wa.addEventListener('click', function(){
+    if(!ready()) return;
+    var base = PACKAGE_PRICE[el.pkg.value] || 0, ex = extras();
+    var add = ex.reduce(function(t,k){ return t + (EXTRA_PRICE[k]||0); }, 0);
+    var row = {
+      customer_name: el.name.value.trim().slice(0,80),
+      birthday_person: el.who.value.trim().slice(0,80) || null,
+      event_date: el.date.value,
+      slot: el.slot.value,
+      area: el.area.value.trim().slice(0,80) || null,
+      package: el.pkg.value.slice(0,80),
+      extras: ex.join(', ').slice(0,200) || null,
+      notes: (el.obs.value || '').trim().slice(0,1000) || null,
+      est_total: Math.min(100000, base + add),
+      is_decor: /^(Decor|Full event)/.test(el.pkg.value),
+      status: 'new'
+    };
+    var sig = JSON.stringify(row);
+    if(sig === sent) return;           /* same booking tapped twice: save once */
+    sent = sig;
+    fetch(SB_URL + '/rest/v1/bookings', {method:'POST', headers:Object.assign({'Prefer':'return=minimal'}, H), body:sig, keepalive:true}).catch(function(){ sent = ''; });
+  });
+})();
 </script>
 </body></html>
