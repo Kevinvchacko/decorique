@@ -1,0 +1,1231 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Decorique: birthday decor and gifting in Chennai. Made by friends, for friends."><style>:root{color-scheme:dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Decorique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500;1,6..96,700&family=Jost:wght@300;400;500;600;800&display=swap">
+<style>
+/* Decorique: burgundy stage, cream seal, coral and mustard accents. Mobile-first. */
+:root{
+  color-scheme: dark;
+  --wine-950:#3A0A1A;
+  --wine-900:#4D1024;
+  --wine-800:#5E1830;
+  --wine-700:#74233F;
+  --wine-500:#8B2D4A;
+  --rose:#F2705C;
+  --coral:#F2705C;
+  --blush:#F3BDB4;
+  --gold:#F0B94A;
+  --gold-hi:#FBDF9B;
+  --ivory:#F4ECDD;
+  --ivory-dim:#D6C6BC;
+  --line:rgba(244,236,221,.16);
+  --font-display:'Bodoni Moda','Didot','Playfair Display',Georgia,serif;
+  --font-body:'Jost','Avenir Next','Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--wine-900);color:var(--ivory);
+  font-family:var(--font-body);font-size:17px;line-height:1.6;font-weight:400;
+  padding-inline:20px;
+}
+img,svg{max-width:100%}
+a{color:inherit}
+.wrap{max-width:1080px;margin-inline:auto}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:4px}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;margin-inline:-20px;padding:12px 20px;background:rgba(77,16,36,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.mark{font-family:var(--font-display);font-size:34px;line-height:1;text-decoration:none;color:var(--ivory)}
+.nav ul{display:flex;gap:26px;list-style:none;margin:0;padding:0}
+.nav ul a{font-size:13px;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--ivory-dim)}
+.nav ul a:hover{color:var(--ivory)}
+.btn{display:inline-block;font:500 13px/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;padding:14px 22px;border-radius:999px;border:1px solid var(--gold);color:var(--ivory);background:transparent;cursor:pointer}
+.btn:hover{background:rgba(240,185,74,.14)}
+.btn.solid{background:var(--coral);color:#3A0A1A;border-color:transparent;font-weight:600}
+.btn.solid:hover{filter:brightness(1.06);background:var(--coral)}
+@media (max-width:760px){.nav ul{display:none}}
+
+/* hero */
+.hero{padding-block:64px 72px;position:relative}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center}
+.hero-copy{min-width:0}
+.eyebrow{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:0 0 20px}
+.hero h1{margin:0 0 22px;font-family:var(--font-display);font-weight:400;font-size:clamp(72px,12vw,150px);line-height:.95;
+  background:linear-gradient(180deg,#fff 20%,#d9d2cc 100%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-bottom:.08em}
+.hero .lede{font-size:clamp(20px,2.4vw,26px);font-weight:300;line-height:1.4;margin:0 0 30px;max-width:30ch;text-wrap:balance}
+.hero .actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-art{position:relative;min-width:0}
+.hero-art::before{content:"";position:absolute;inset:-6% -10% 0;background:radial-gradient(closest-side,rgba(242,112,92,.26),rgba(242,112,92,0));z-index:0}
+.hero-art svg{position:relative;z-index:1;display:block;width:100%;height:auto}
+.fl{animation:float 7s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+.fl.b{animation-duration:8.5s;animation-delay:-2s}.fl.c{animation-duration:6.5s;animation-delay:-4s}.fl.d{animation-duration:9s;animation-delay:-1s}.fl.e{animation-duration:7.5s;animation-delay:-5s}
+@keyframes float{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-9px) rotate(1.2deg)}}
+@media (prefers-reduced-motion:reduce){.fl{animation:none}html{scroll-behavior:auto}}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.hero-art{max-width:380px;margin-inline:auto}.hero{padding-block:40px 56px}}
+
+/* ticker strip */
+.strip{margin-inline:-20px;border-block:1px solid var(--line);padding:16px 20px;background:var(--wine-950)}
+.strip .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 34px;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--blush)}
+
+/* sections */
+section.s{padding-block:88px}
+.head{max-width:620px;margin-bottom:44px}
+.head h2{font-family:var(--font-display);font-weight:400;font-size:clamp(46px,6vw,72px);line-height:1;margin:0 0 14px;color:var(--ivory)}
+.head p{margin:0;color:var(--ivory-dim);font-weight:300;font-size:19px;text-wrap:pretty}
+
+/* steps */
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line)}
+.steps li{padding:26px 24px 30px 0;border-bottom:1px solid var(--line);min-width:0;display:grid;grid-template-columns:auto 1fr;gap:4px 18px;align-items:baseline}
+.steps .n{font-family:var(--font-display);font-size:44px;line-height:1;color:var(--gold)}
+.steps h3{margin:0;font-size:19px;font-weight:500}
+.steps p{grid-column:2;margin:0;color:var(--ivory-dim);font-weight:300;font-size:16px}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+
+/* packages */
+.groups{display:grid;gap:56px}
+.group h3{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:500;margin:0 0 18px;display:flex;align-items:center;gap:14px}
+.group h3::after{content:"";flex:1;height:1px;background:var(--line)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:linear-gradient(180deg,var(--wine-800),var(--wine-950));border:1px solid var(--line);border-radius:18px;padding:28px 26px;display:flex;flex-direction:column;gap:12px;min-width:0;position:relative}
+.card.feature{border:1.5px solid rgba(240,185,74,.7);box-shadow:0 18px 50px rgba(0,0,0,.35)}
+.card h4{margin:0;font-size:22px;font-weight:500}
+.card .price{font-family:var(--font-display);font-size:58px;line-height:1;margin:2px 0 0;color:var(--gold-hi);font-weight:400}
+.card .price small{font-family:var(--font-body);font-size:14px;color:var(--ivory-dim);letter-spacing:.04em;margin-left:6px}
+.card p{margin:0;color:var(--ivory-dim);font-weight:300;font-size:16px}
+.card ul{margin:2px 0 0;padding:0;list-style:none;display:grid;gap:7px;font-size:15px;color:var(--ivory)}
+.card li{display:flex;gap:10px}
+.card li::before{content:"";flex:none;width:7px;height:7px;margin-top:9px;background:var(--gold);transform:rotate(45deg)}
+.tag{position:absolute;top:-12px;left:22px;background:var(--gold);color:var(--wine-900);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+.card .pick{margin-top:auto;padding-top:10px}
+.note{margin:26px 0 0;color:var(--ivory-dim);font-size:15px;font-weight:300}
+
+/* setups */
+.setups{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.setup{border-radius:16px;padding:22px;min-height:210px;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;min-width:0;border:1px solid var(--line);position:relative;overflow:hidden}
+.setup .kind{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.85}
+.setup h3{margin:0;font-family:var(--font-display);font-weight:400;font-size:36px;line-height:1.05}
+.setup p{margin:0;font-size:15px;font-weight:300;opacity:.9}
+.su1{background:radial-gradient(120% 90% at 80% 0,#F2705C,#4D1024 70%)}
+.su2{background:radial-gradient(120% 90% at 20% 0,#8B2D4A,#4D1024 75%)}
+.su3{background:radial-gradient(120% 90% at 70% 0,#F3BDB4,#4A1226 75%)}
+.su4{background:radial-gradient(120% 90% at 30% 0,#F0B94A,#4A1226 78%);color:#fff7e3}
+.su5{background:radial-gradient(120% 90% at 70% 0,#F3BDB4,#4A1226 75%);color:#fff7e3}
+.su6{background:radial-gradient(120% 90% at 40% 0,#7A2340,#2B0A16 75%)}
+@media (max-width:900px){.setups{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.setups{grid-template-columns:1fr}.setup{min-height:170px}}
+
+/* booking */
+.book{display:grid;grid-template-columns:.85fr 1.15fr;gap:48px;align-items:start}
+.book .head{margin-bottom:0}
+form{display:grid;gap:18px;min-width:0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+label{display:grid;gap:7px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--blush);min-width:0}
+input,select,textarea{font:400 17px/1.4 var(--font-body);color:var(--ivory);background:var(--wine-950);border:1px solid var(--line);border-radius:12px;padding:14px 16px;width:100%;min-width:0;letter-spacing:0;text-transform:none}
+textarea{min-height:110px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);outline:none;box-shadow:0 0 0 3px rgba(240,185,74,.25)}
+.preview{background:var(--wine-950);border:1px dashed var(--line);border-radius:12px;padding:16px;font-size:15px;color:var(--ivory-dim);white-space:pre-wrap;overflow-wrap:anywhere;margin:0;font-family:var(--font-body);font-weight:300}
+.out{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.status{font-size:14px;color:var(--gold-hi);min-height:1.4em}
+@media (max-width:860px){.book{grid-template-columns:1fr;gap:32px}}
+@media (max-width:520px){.row2{grid-template-columns:1fr}}
+
+/* faq */
+.faq{display:grid;gap:0;border-top:1px solid var(--line);max-width:760px}
+details{border-bottom:1px solid var(--line);padding:20px 0}
+summary{cursor:pointer;font-size:19px;font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--gold);font-size:24px;line-height:1}
+details[open] summary::after{content:"\2212"}
+details p{margin:12px 0 0;color:var(--ivory-dim);font-weight:300;max-width:62ch}
+
+/* footer */
+footer{margin-inline:-20px;background:var(--wine-950);border-top:1px solid var(--line);padding:56px 20px calc(40px)}
+footer .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:end}
+footer .big{font-family:var(--font-display);font-size:64px;line-height:1;margin:0 0 8px}
+footer p{margin:0;color:var(--ivory-dim);font-weight:300}
+footer .links{display:flex;flex-direction:column;gap:6px;font-size:15px}
+footer .copy{grid-column:1/-1;border-top:1px solid var(--line);padding-top:20px;font-size:13px;color:var(--ivory-dim);letter-spacing:.06em}
+@media (max-width:700px){footer .wrap{grid-template-columns:1fr}}
+
+/* ===== motion layer ===== */
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg}
+body{position:relative}
+main,.nav,footer,.strip{position:relative;z-index:1}
+.amb{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.amb i{position:absolute;bottom:-14vh;width:46px;height:58px;border-radius:50% 50% 48% 48%;opacity:.16;animation:amb 38s linear infinite;background:radial-gradient(circle at 34% 28%,#fff6,transparent 40%),var(--c,#F2705C)}
+.amb i::after{content:"";position:absolute;left:50%;top:100%;width:1px;height:70px;background:rgba(230,201,122,.5)}
+.amb i:nth-child(1){left:6%;--c:#F3BDB4;animation-duration:44s}
+.amb i:nth-child(2){left:22%;--c:#F0B94A;animation-duration:36s;animation-delay:-14s;width:34px;height:43px}
+.amb i:nth-child(3){left:44%;--c:#F2705C;animation-duration:52s;animation-delay:-30s}
+.amb i:nth-child(4){left:63%;--c:#F4ECDD;animation-duration:40s;animation-delay:-6s;width:38px;height:48px}
+.amb i:nth-child(5){left:80%;--c:#8B2D4A;animation-duration:47s;animation-delay:-22s;width:54px;height:68px}
+.amb i:nth-child(6){left:92%;--c:#F0B94A;animation-duration:34s;animation-delay:-18s;width:30px;height:38px}
+@keyframes amb{0%{transform:translate3d(0,0,0) rotate(-3deg)}25%{transform:translate3d(18px,-30vh,0) rotate(3deg)}50%{transform:translate3d(-14px,-62vh,0) rotate(-3deg)}75%{transform:translate3d(16px,-96vh,0) rotate(3deg)}100%{transform:translate3d(0,-130vh,0) rotate(-2deg)}}
+#fx{position:fixed;inset:0;width:100%;height:100%;z-index:60;pointer-events:none}
+#trail{position:fixed;inset:0;z-index:55;pointer-events:none;overflow:hidden}
+#trail i{position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;background:var(--gold-hi);clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%);animation:spark .9s ease-out forwards}
+@keyframes spark{0%{opacity:1;transform:scale(.4) rotate(0)}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.3) rotate(120deg)}}
+.bar{position:fixed;top:0;left:0;right:0;height:3px;z-index:70;background:linear-gradient(90deg,var(--coral),var(--gold),var(--blush));transform-origin:0 50%;transform:scaleX(0)}
+.nav{top:env(safe-area-inset-top,0px)}
+
+/* hero stage */
+.hero{overflow:hidden;margin-inline:-20px;padding-inline:20px}
+.hero .wrap{position:relative;z-index:2}
+.spot{position:absolute;left:50%;top:0;width:min(1100px,140%);height:100%;transform:translateX(-50%);z-index:0;pointer-events:none;
+  background:conic-gradient(from 180deg at 50% -6%,transparent 160deg,rgba(255,226,150,.16) 172deg,rgba(255,226,150,.22) 180deg,rgba(255,226,150,.16) 188deg,transparent 200deg);opacity:1}
+.valance{position:absolute;top:0;left:0;right:0;height:46px;z-index:6;pointer-events:none;background:linear-gradient(180deg,#6c1832,#4A1226);border-bottom:3px solid var(--gold);box-shadow:0 8px 20px rgba(0,0,0,.45)}
+.valance i{position:absolute;left:0;right:0;top:100%;height:20px;background:radial-gradient(circle at 20px 0,#4A1226 19px,transparent 20px) 0 0/40px 20px repeat-x;filter:drop-shadow(0 4px 3px rgba(0,0,0,.35))}
+.curtain{position:absolute;top:0;bottom:0;width:52%;z-index:5;pointer-events:none;
+  background:
+   repeating-linear-gradient(90deg,rgba(0,0,0,.28) 0 6px,rgba(255,255,255,.05) 6px 14px,rgba(0,0,0,.14) 14px 26px),
+   linear-gradient(180deg,#8a1f43,#7A2340 60%,#3b0b18);
+  box-shadow:0 0 60px rgba(0,0,0,.6)}
+.curtain.l{left:0;transform:translateX(-86%);border-right:2px solid rgba(240,185,74,.55)}
+.curtain.r{right:0;transform:translateX(86%);border-left:2px solid rgba(240,185,74,.55)}
+.curtain::after{content:"";position:absolute;top:46%;width:18px;height:90px;border-radius:12px;background:linear-gradient(135deg,var(--gold-hi),var(--gold));box-shadow:0 4px 10px rgba(0,0,0,.5)}
+.curtain.l::after{right:6%}.curtain.r::after{left:6%}
+@media (max-width:820px){.curtain{width:60%}.curtain.l{transform:translateX(-90%)}.curtain.r{transform:translateX(90%)}}
+
+.wm{margin:0 0 22px;line-height:1;font-size:0}
+.wm svg{display:block;width:min(100%,560px);height:auto;overflow:visible;filter:drop-shadow(0 6px 24px rgba(0,0,0,.45))}
+
+/* intro sequence (only when JS runs) */
+.js .hero:not(.go) .curtain.l,.js .hero:not(.go) .curtain.r{transform:none}
+.js .hero .curtain{transition:transform 2.1s cubic-bezier(.7,0,.2,1) .35s}
+.js .hero:not(.go) .spot{opacity:0}
+.js .hero .spot{transition:opacity 1.6s ease 1.2s}
+.js .hero:not(.go) #wmpath{opacity:0}
+.js .hero.go #wmpath{animation:draw 2.4s cubic-bezier(.5,0,.2,1) 1s both, fillin 1s ease 2.6s both}
+@keyframes draw{0%{stroke-dashoffset:var(--len);opacity:1}100%{stroke-dashoffset:0;opacity:1}}
+@keyframes fillin{0%{fill-opacity:0}100%{fill-opacity:1}}
+.js #wmpath{stroke-dasharray:var(--len);fill-opacity:0}
+.js .hero.go #wmpath{fill-opacity:1}
+.js .hero:not(.go) .in-seq{opacity:0;transform:translateY(18px)}
+.js .hero .in-seq{transition:opacity .9s ease var(--s),transform .9s cubic-bezier(.2,.7,.2,1) var(--s)}
+.js .hero:not(.go) .rise{opacity:0}
+.js .hero:not(.go) .strings{opacity:0}
+.js .hero.go .strings{animation:fadeIn 1s ease 3s both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.js .hero.go .rise{animation:rise 1.9s cubic-bezier(.2,.9,.25,1.05) var(--rd,2.2s) both,float 7s ease-in-out calc(var(--rd,2.2s) + 1.9s) infinite}
+.js .hero.go .rise.b{--rd:2.45s;animation-duration:2s,8.5s}
+.js .hero.go .rise.c{--rd:2.7s;animation-duration:2.1s,6.5s}
+.js .hero.go .rise.d{--rd:2.35s;animation-duration:1.8s,9s}
+.js .hero.go .rise.e{--rd:2.9s;animation-duration:2.2s,7.5s}
+@keyframes rise{0%{opacity:0;transform:translateY(420px) scale(.7)}12%{opacity:1}100%{opacity:1;transform:translateY(0) scale(1)}}
+.par{transition:transform .25s ease-out;will-change:transform}
+
+/* marquee */
+.strip{padding:0;overflow:hidden}
+.strip .track{display:flex;width:max-content;animation:mq 34s linear infinite}
+.strip:hover .track{animation-play-state:paused}
+.strip .seg{display:flex;align-items:center;flex:none}
+.strip span{font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--blush);padding:18px 0 18px 0;white-space:nowrap}
+.strip span::after{content:"";display:inline-block;width:8px;height:8px;margin:0 30px;background:var(--gold);transform:rotate(45deg)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* scroll reveal */
+.pre{opacity:0;transform:translateY(34px) scale(.985)}
+.rv{transition:opacity .9s ease var(--d,0s),transform .9s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+
+/* headings foil sweep */
+.head h2,.hero .lede{background-size:260% 100%}
+.head h2{background-image:linear-gradient(100deg,var(--ivory) 38%,#ffffff 46%,var(--gold-hi) 50%,#ffffff 54%,var(--ivory) 62%);-webkit-background-clip:text;background-clip:text;color:transparent;animation:foil 7s ease-in-out infinite;padding-bottom:.1em}
+@keyframes foil{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+
+/* buttons: shimmer + magnetic */
+.btn{position:relative;overflow:hidden;transition:transform .2s ease,background .2s ease,box-shadow .3s ease;will-change:transform}
+.btn.solid{box-shadow:0 0 0 rgba(251,223,155,0)}
+.btn.solid:hover{box-shadow:0 8px 30px rgba(242,112,92,.5)}
+.btn.solid::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.7) 50%,transparent 65%);transform:translateX(-120%);animation:sheen 4.5s ease-in-out infinite}
+@keyframes sheen{0%,55%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}
+
+/* cards: tilt + glare, spinning gold edge on the launch card */
+.card{transition:transform .25s ease-out,box-shadow .3s ease;transform-style:preserve-3d;will-change:transform;overflow:visible}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .25s;background:radial-gradient(260px circle at var(--mx,50%) var(--my,0%),rgba(251,223,155,.22),transparent 60%)}
+.card:hover::after{opacity:1}
+.card.feature{border:1.5px solid transparent;background:linear-gradient(180deg,var(--wine-800),var(--wine-950)) padding-box,conic-gradient(from var(--ang),var(--gold),rgba(240,185,74,.12) 25%,var(--gold-hi) 50%,rgba(240,185,74,.12) 75%,var(--gold)) border-box;animation:spin 6s linear infinite}
+@keyframes spin{to{--ang:360deg}}
+.spots{display:flex;align-items:center;gap:10px;color:var(--gold-hi)!important;font-size:14px!important;letter-spacing:.04em}
+.spots::before{content:"";width:9px;height:9px;border-radius:50%;background:#ff7a8a;box-shadow:0 0 0 0 rgba(255,122,138,.7);animation:pulse 1.8s ease-out infinite}
+.spots b{font-weight:600}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,122,138,.7)}100%{box-shadow:0 0 0 12px rgba(255,122,138,0)}}
+
+/* setups */
+.setup{transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .4s ease}
+.setup::before{content:"";position:absolute;inset:-40%;background:conic-gradient(from 0deg,transparent 0 70%,rgba(251,223,155,.28) 80%,transparent 90%);opacity:0;transition:opacity .4s;animation:spin2 6s linear infinite}
+.setup:hover::before{opacity:1}
+.setup:hover{transform:translateY(-8px) scale(1.015);box-shadow:0 24px 50px rgba(0,0,0,.5)}
+.setup>*{position:relative;z-index:1}
+@keyframes spin2{to{transform:rotate(360deg)}}
+
+.steps li{transition:background .3s}
+.steps li:hover{background:linear-gradient(90deg,rgba(240,185,74,.08),transparent)}
+.steps .n{display:inline-block;transition:transform .4s cubic-bezier(.2,.9,.3,1.4)}
+.steps li:hover .n{transform:scale(1.25) rotate(-6deg)}
+.replay{background:none;border:0;color:var(--blush);font:inherit;letter-spacing:inherit;text-decoration:underline;cursor:pointer;padding:0}
+
+@media (prefers-reduced-motion:reduce){
+  .amb,#trail,#fx{display:none}
+  .strip .track{animation:none;flex-wrap:wrap;width:auto;justify-content:center}.strip .seg:nth-child(2){display:none}
+  .head h2,.card.feature,.btn.solid::after,.setup::before,.spots::before{animation:none}
+  .pre{opacity:1;transform:none}
+  .js .hero .curtain,.js .hero .spot,.js .hero .in-seq{transition:none}
+  .js .hero:not(.go) .curtain.l{transform:translateX(-86%)}.js .hero:not(.go) .curtain.r{transform:translateX(86%)}
+  .js .hero:not(.go) .spot,.js .hero:not(.go) #wmpath,.js .hero:not(.go) .rise,.js .hero:not(.go) .strings,.js .hero:not(.go) .in-seq{opacity:1;transform:none}
+  .js #wmpath{stroke-dasharray:none;fill-opacity:1}
+  .js .hero.go #wmpath,.js .hero.go .rise,.js .hero.go .strings{animation:none}
+}
+
+/* ===== interactive balloons ===== */
+.bal{cursor:pointer;transform-box:view-box;transform-origin:170px 400px;outline:none}
+.bal .body{transform-box:fill-box;transform-origin:50% 50%}
+.bal .str{transform-box:view-box;transform-origin:170px 400px}
+.bal:not(.popped):not(.back):hover .body{animation:wob .55s ease-in-out infinite}
+@keyframes wob{0%,100%{transform:scale(1,1)}30%{transform:scale(1.05,.96)}60%{transform:scale(.97,1.05)}}
+.bal:focus-visible .body ellipse{stroke:#FBDF9B;stroke-width:3}
+.bal.popped .body{animation:popb .3s ease-out forwards}
+@keyframes popb{0%{transform:scale(1);opacity:1}35%{transform:scale(1.28);opacity:1}100%{transform:scale(1.6);opacity:0}}
+.bal.popped .str{animation:dropstr 1.3s cubic-bezier(.5,0,.9,.6) .1s forwards}
+@keyframes dropstr{0%{transform:translateY(0) rotate(0);opacity:1}100%{transform:translateY(150px) rotate(10deg);opacity:0}}
+.bal.popped{pointer-events:none}
+.bal.back .body{animation:inflate 1s cubic-bezier(.2,.9,.3,1.5) both}
+@keyframes inflate{0%{transform:scale(0);opacity:1}100%{transform:scale(1);opacity:1}}
+.bal.back .str{animation:fadeIn .8s ease both}
+.hint{display:flex;align-items:center;justify-content:center;gap:14px;margin:6px 0 0;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--blush);min-height:30px}
+.hint #hintTxt{animation:hintp 2.4s ease-in-out infinite}
+@keyframes hintp{0%,100%{opacity:.65}50%{opacity:1}}
+.snd{background:none;border:1px solid var(--line);border-radius:999px;color:var(--ivory-dim);font:500 11px/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;cursor:pointer}
+.snd:hover{color:var(--ivory);border-color:var(--gold)}
+#tada{position:fixed;left:50%;top:44%;z-index:80;pointer-events:none;font-family:var(--font-display);font-size:clamp(110px,24vw,300px);line-height:1;white-space:nowrap;opacity:0;transform:translate(-50%,-50%) scale(.4);
+  background:linear-gradient(180deg,#fff,#FBDF9B 55%,#F0B94A);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 10px 40px rgba(0,0,0,.6));padding:.05em .15em}
+#tada.show{animation:tada 2s cubic-bezier(.2,.9,.3,1.2) forwards}
+@keyframes tada{0%{opacity:0;transform:translate(-50%,-50%) scale(.4) rotate(-6deg)}20%{opacity:1;transform:translate(-50%,-50%) scale(1.08) rotate(2deg)}70%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0)}100%{opacity:0;transform:translate(-50%,-62%) scale(1.15)}}
+@media (prefers-reduced-motion:reduce){.bal .body,.bal .str{animation:none!important}.bal.popped .body,.bal.popped .str{opacity:0}.hint #hintTxt{animation:none}#tada.show{animation:none;opacity:1;transform:translate(-50%,-50%)}}
+
+fieldset.extras{border:1px solid var(--line);border-radius:12px;padding:14px 16px 8px;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px 18px;min-width:0}
+fieldset.extras legend{padding:0 8px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--blush)}
+label.chk{display:flex;align-items:center;gap:10px;grid-template-columns:none;text-transform:none;letter-spacing:0;font-size:16px;color:var(--ivory);cursor:pointer;padding:6px 0}
+label.chk input{width:18px;height:18px;padding:0;flex:none;accent-color:var(--gold)}
+label.chk em{font-style:normal;color:var(--gold-hi);margin-left:6px}
+.total{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:0;color:var(--ivory-dim);font-size:15px}
+.total b{font-family:var(--font-display);font-weight:400;font-size:44px;line-height:1;color:var(--gold-hi)}
+.total small{font-size:13px}
+.next{border:1px solid rgba(240,185,74,.5);border-radius:14px;padding:18px 20px;background:rgba(240,185,74,.07)}
+.next h3{margin:0 0 8px;font-family:var(--font-display);font-weight:400;font-size:34px;color:var(--gold-hi)}
+.next ol{margin:0;padding-left:20px;color:var(--ivory);display:grid;gap:6px;font-size:15px}
+.btn[aria-disabled="true"]{opacity:.45;cursor:not-allowed;box-shadow:none}
+.wafab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;display:flex;align-items:center;gap:10px;padding:13px 20px;border-radius:999px;text-decoration:none;font:600 13px/1 var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:#3A0A1A;background:var(--coral);box-shadow:0 10px 30px rgba(0,0,0,.45);animation:fabin .8s cubic-bezier(.2,.9,.3,1.3) 5s both}
+.wafab::before{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:0 0 0 0 rgba(251,223,155,.6);animation:pulse2 2.6s ease-out 6s infinite}
+.wafab[hidden]{display:none}
+@keyframes fabin{from{opacity:0;transform:translateY(30px) scale(.8)}to{opacity:1;transform:none}}
+@keyframes pulse2{0%{box-shadow:0 0 0 0 rgba(251,223,155,.55)}100%{box-shadow:0 0 0 18px rgba(251,223,155,0)}}
+@media (max-width:480px){.wafab span{display:none}.wafab{padding:15px}}
+@media (prefers-reduced-motion:reduce){.wafab,.wafab::before{animation:none}}
+
+/* ===== phone-first layer: this is how most customers will see the site ===== */
+.groups{grid-template-columns:minmax(0,1fr)}.group{min-width:0}
+.wafab.away{animation:none!important;opacity:0!important;pointer-events:none;transform:translateY(20px)!important}
+.wafab.away::before{animation:none}
+.wafab{transition:opacity .25s,transform .25s}
+@media (max-width:640px){
+  body{font-size:16px;padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
+  .nav{padding-block:8px}
+  .mark{font-size:32px}
+  .nav .btn{padding:12px 16px;font-size:12px}
+  .btn{min-height:48px;display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;text-align:center}
+  /* hero: copy and the first CTA fit on the first screen, curtains stay out of the text */
+  .hero{padding-block:64px 36px;padding-inline:26px}
+  .preview{font-size:13px;max-height:132px;overflow-y:auto;padding:12px}
+  .curtain{width:40%}
+  .curtain.l{transform:translateX(-94%)}.curtain.r{transform:translateX(94%)}
+  .valance{height:34px}
+  .eyebrow{font-size:11px;letter-spacing:.2em;margin-bottom:10px}
+  .hero h1,.wm{margin-bottom:14px}
+  .hero .lede{font-size:19px;margin-bottom:20px}
+  .hero .actions{flex-direction:column;gap:10px}
+  .hero .actions .btn{width:100%}
+  .hero-art{max-width:300px}
+  .strip{padding-block:12px}
+  .strip .wrap{gap:6px 22px;font-size:11px}
+  /* shorter page */
+  section.s{padding-block:52px}
+  .head{margin-bottom:26px}
+  .head h2{font-size:46px}
+  .head p{font-size:17px}
+  .steps li{padding:18px 8px 20px 0}
+  .groups{gap:40px}
+  /* packages and setups swipe sideways instead of stacking */
+  .cards,.setups{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:-20px;padding:16px 20px 10px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .cards::-webkit-scrollbar,.setups::-webkit-scrollbar{display:none}
+  .card{flex:0 0 84%;scroll-snap-align:center;padding:24px 20px}
+  .setup{flex:0 0 76%;scroll-snap-align:center;min-height:190px}
+  .card .price{font-size:52px}
+  .group h3::after{display:none}
+  .group h3::before{content:"";display:none}
+  .swipe-hint{display:block}
+  /* form: big thumb targets, 16px inputs so iOS does not zoom */
+  input,select,textarea{font-size:16px;padding:15px 16px;min-height:52px}
+  textarea{min-height:96px}
+  form{gap:16px}
+  fieldset.extras{grid-template-columns:1fr 1fr;gap:4px 10px;padding:10px 12px}
+  label.chk{min-height:48px;padding:4px 0;font-size:15px;align-items:center}
+  label.chk input{width:24px;height:24px;min-height:0}
+  label.chk span{display:flex;flex-direction:column;gap:0;line-height:1.25}
+  label.chk em{margin-left:0;font-size:14px}
+  .out .btn{width:100%}
+  .total b{font-size:40px}
+  /* faq and small buttons */
+  summary{min-height:48px;align-items:center;font-size:17px}
+  details{padding:8px 0}
+  .snd{padding:12px 16px;min-height:44px;font-size:12px}
+  .replay{min-height:44px;padding:0 4px}
+  .hint{min-height:48px}
+  /* bottom bar replaces the round chat button */
+  .wafab{left:16px;right:16px;justify-content:center;padding:17px 20px;font-size:14px;min-height:56px}
+  .wafab span{display:inline}
+  /* lighter ambient layer for phones */
+  .amb i:nth-child(n+4){display:none}
+  footer{padding-block:40px 28px}
+  footer .big{font-size:52px}
+  footer .links a{min-height:44px;display:inline-flex;align-items:center}
+}
+.swipe-hint{display:none;margin:-4px 0 0;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--blush)}
+
+/* ===== Decorique skin ===== */
+.mark{display:inline-flex;align-items:center;gap:10px;font:800 17px/1 var(--font-body);letter-spacing:.16em;text-transform:uppercase}
+.mark svg{width:40px;height:40px;flex:none;filter:drop-shadow(0 2px 6px rgba(0,0,0,.35))}
+.hero h1.tagh{font-family:var(--font-display);font-weight:700;font-size:clamp(38px,6.4vw,76px);line-height:1.04;margin:0 0 20px;letter-spacing:-.01em;background:none;color:var(--ivory);padding:0;-webkit-text-fill-color:currentColor}
+.hero h1.tagh em{font-style:italic;font-weight:500;color:var(--coral)}
+.sealhero{display:block;width:clamp(120px,15vw,170px);height:auto;margin:0 0 22px;filter:drop-shadow(0 10px 28px rgba(0,0,0,.4))}
+.head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(32px,4.6vw,52px);line-height:1.06;letter-spacing:-.01em}
+.steps .n{font-family:var(--font-display);font-weight:700;font-size:34px}
+.card .price{font-family:var(--font-display);font-weight:700;font-size:46px;letter-spacing:-.01em}
+.card .price small{font-family:var(--font-body);font-weight:400}
+.setup h3{font-family:var(--font-display);font-weight:700;font-size:27px;line-height:1.1}
+.total b{font-family:var(--font-display);font-weight:700;font-size:36px}
+.next h3{font-family:var(--font-display);font-weight:700;font-size:26px}
+.sealfoot{display:block;width:120px;height:auto;margin:0 0 14px}
+footer .big{font:800 26px/1 var(--font-body);letter-spacing:.2em;text-transform:uppercase;margin:0 0 10px}
+.eyebrow{color:var(--gold)}
+#tada{font-family:var(--font-display);font-style:italic;font-weight:700;font-size:clamp(84px,19vw,230px);background:linear-gradient(180deg,#fff,#FBDF9B 55%,#F2705C)}
+.tag{color:#3A0A1A}
+@media (max-width:640px){
+  .hero{padding-block:56px 36px}
+  .sealhero{width:112px;margin-bottom:16px}
+  .hero h1.tagh{font-size:40px;margin-bottom:14px}
+  .head h2{font-size:34px}
+  .card .price{font-size:42px}
+  .mark svg{width:36px;height:36px}
+  .mark{font-size:15px}
+  footer .big{font-size:22px}
+}
+
+/* ===== polish pass ===== */
+.head h2{animation:none;background:none;color:var(--ivory);-webkit-text-fill-color:currentColor}
+label.chk input{appearance:none;-webkit-appearance:none;border:2px solid var(--gold);border-radius:6px;background:var(--wine-950);display:grid;place-content:center;cursor:pointer;flex:none}
+label.chk input::after{content:"";width:12px;height:7px;border-left:3px solid #3A0A1A;border-bottom:3px solid #3A0A1A;transform:rotate(-45deg) scale(0);margin-top:-3px;transition:transform .12s}
+label.chk input:checked{background:var(--gold)}
+label.chk input:checked::after{transform:rotate(-45deg) scale(1)}
+select{appearance:none;-webkit-appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);background-position:calc(100% - 22px) 52%,calc(100% - 16px) 52%;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:44px}
+.mark{min-height:44px}
+.eyebrow{font-size:12px}
+@media (max-width:640px){
+  .eyebrow{font-size:12px;letter-spacing:.18em}
+  body{padding-bottom:0}
+  footer{padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}
+}
+
+/* ===== breathing room + new sections ===== */
+body{line-height:1.7}
+.head{margin-bottom:36px}
+.head p{line-height:1.65}
+section.s{padding-block:96px}
+.steps li{padding:30px 22px 32px 0;gap:8px 18px}
+.steps p{line-height:1.65}
+.card{gap:16px;padding:30px 26px}
+.card ul{gap:11px;margin-top:4px}
+.card p{line-height:1.65}
+.groups{gap:64px}
+.group h3{margin-bottom:22px}
+.note{line-height:1.7;margin-top:30px;max-width:62ch}
+.note a{color:var(--gold-hi)}
+.setup{padding:26px 24px;gap:8px}
+form{gap:22px}
+.row2{gap:20px}
+label{gap:9px}
+fieldset.extras{padding:18px 18px 12px;gap:8px 20px}
+.total{gap:8px 16px}
+.next{padding:22px}
+.next ol{gap:10px;line-height:1.6}
+details{padding:24px 0}
+details p{line-height:1.7}
+.hero .lede{line-height:1.5;margin-bottom:34px}
+.hero .actions{gap:14px}
+.crafts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.craft{background:linear-gradient(180deg,var(--wine-800),var(--wine-950));border:1px solid var(--line);border-radius:18px;padding:30px 26px;display:grid;gap:12px;align-content:start;min-width:0}
+.craft .ico{width:84px;height:84px;display:grid;place-items:center;border-radius:50%;background:rgba(244,236,221,.06);border:1px solid var(--line);margin-bottom:6px}
+.craft .ico svg{width:60px;height:60px}
+.craft h3{margin:0;font:700 24px/1.15 var(--font-display)}
+.craft p{margin:0;color:var(--ivory-dim);font-weight:300;font-size:16px;line-height:1.65}
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line)}
+.why div{padding:28px 26px 30px 0;border-bottom:1px solid var(--line);min-width:0}
+.why b{display:block;font:700 22px/1.2 var(--font-display);color:var(--gold-hi);margin-bottom:10px}
+.why p{margin:0;color:var(--ivory-dim);font-weight:300;font-size:16px;line-height:1.65}
+footer{padding-top:64px}
+footer .wrap{gap:36px}
+footer .links{gap:14px;align-items:flex-start}
+footer p{line-height:1.7}
+@media (max-width:900px){.crafts,.why{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){
+  section.s{padding-block:68px}
+  .head{margin-bottom:30px}
+  .head h2{margin-bottom:16px}
+  .hero{padding-block:52px 44px}
+  .sealhero{margin-bottom:20px}
+  .hero h1.tagh{line-height:1.1;margin-bottom:18px}
+  .hero .lede{font-size:19px;margin-bottom:28px}
+  .steps li{padding:26px 6px 28px 0}
+  .card{padding:28px 22px}
+  .setup{min-height:200px}
+  .crafts,.why{grid-template-columns:1fr;gap:14px}
+  .craft{grid-template-columns:auto 1fr;column-gap:18px;align-items:center;padding:22px 20px}
+  .craft .ico{grid-row:1/3;width:72px;height:72px;margin:0}
+  .craft .ico svg{width:50px;height:50px}
+  .craft h3{font-size:22px;align-self:end}
+  .craft p{align-self:start;font-size:15px}
+  .why div{padding:24px 0 26px}
+  .why{gap:0}
+  fieldset.extras{padding:14px 14px 10px}
+  form{gap:20px}
+  footer .links .btn{width:100%}
+  details{padding:14px 0}
+}
+
+/* ===== performance pass: only transform/opacity animate, nothing repaints continuously ===== */
+.nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(77,16,36,.97)}
+.mark svg,.sealhero,.wm svg{filter:none}
+.sealhero{box-shadow:none}
+.btn.solid::after{display:none}
+.card{will-change:auto}
+.card:hover{will-change:transform}
+.card.feature{animation:none;background:linear-gradient(180deg,var(--wine-800),var(--wine-950)) padding-box,linear-gradient(135deg,var(--gold),var(--coral)) border-box}
+.setup::before{display:none}
+.setup:hover{transform:translateY(-6px)}
+.spots::before{animation:blink 2s ease-in-out infinite;box-shadow:none}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+.wafab::before{display:none}
+.amb i:nth-child(n+4){display:none}
+.amb i{will-change:transform;opacity:.12}
+.amb i::after{display:none}
+/* balloons: one float on the whole bunch, individual rise-in only once */
+.fl,.fl.b,.fl.c,.fl.d,.fl.e{animation:none}
+.balwrap{animation:float 8s ease-in-out infinite;will-change:transform}
+.js .hero.go .rise{animation:rise 1.3s cubic-bezier(.2,.9,.25,1.05) var(--rd,.5s) both}
+.js .hero.go .rise.b{--rd:.62s;animation-duration:1.3s}
+.js .hero.go .rise.c{--rd:.74s;animation-duration:1.3s}
+.js .hero.go .rise.d{--rd:.56s;animation-duration:1.3s}
+.js .hero.go .rise.e{--rd:.86s;animation-duration:1.3s}
+.js .hero.go .strings{animation:fadeIn .8s ease 1.2s both}
+.js .hero .in-seq{transition:opacity .6s ease var(--s),transform .6s cubic-bezier(.2,.7,.2,1) var(--s)}
+@keyframes rise{0%{opacity:0;transform:translateY(240px) scale(.8)}20%{opacity:1}100%{opacity:1;transform:translateY(0) scale(1)}}
+.strip .track{animation-duration:46s}
+@media (hover:none){
+  .amb{display:none}
+  .balwrap{animation-duration:10s}
+}
+@media (prefers-reduced-motion:reduce){.balwrap,.spots::before{animation:none}}
+
+/* photo cards */
+.setups{grid-template-columns:repeat(4,minmax(0,1fr))}
+.setup.ph{background:var(--wine-900);min-height:0;aspect-ratio:4/5;padding:18px;color:#fff7e3;transition:none}
+.setup.ph:hover{transform:none;box-shadow:none}
+.setup.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.setup.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,10,22,0) 38%,rgba(43,10,22,.92) 100%);z-index:0}
+.setup.ph>*{z-index:1}
+.setup.ph h3{font-size:24px}
+.setup.ph p{font-size:14px;min-height:2.9em}
+.setup.ph img[src*="vogue"]{object-position:62% 50%}
+.setup.ph img[src*="cake.jpg"]{object-position:50% 60%}
+.setup.ph .kind{font-size:11px}
+.feat{margin:34px 0 0;border-radius:18px;overflow:hidden;border:1px solid var(--line);position:relative}
+.feat img{display:block;width:100%;height:clamp(240px,42vw,460px);object-fit:cover;object-position:50% 55%}
+.feat figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 22px 18px;background:linear-gradient(180deg,transparent,rgba(43,10,22,.9));color:#fff7e3;font-size:15px}
+@media (max-width:900px){.setups{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.setup.ph{flex:0 0 78%;aspect-ratio:4/5;min-height:0}.feat{margin-top:24px}}
+
+.gico{width:64px;height:64px;display:grid;place-items:center;border-radius:50%;background:rgba(244,236,221,.06);border:1px solid var(--line);margin-bottom:4px}
+.gico svg{width:44px;height:44px}
+.card .price.ask{font-size:30px;font-weight:700;line-height:1.1;margin-top:6px}
+.feat{margin-top:28px}
+@media (min-width:641px){.group:first-child .cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1000px){.group:first-child .cards{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* declutter hero: seal becomes a badge on the balloon art */
+.hero-art{position:relative}
+.hero .eyebrow{margin-bottom:22px}
+.hero h1.tagh{margin-bottom:24px}
+.hero .lede{margin-bottom:34px}
+.hero-art .sealhero{position:absolute;z-index:3;left:2%;bottom:6%;width:clamp(120px,12vw,160px);margin:0;transform:rotate(-8deg)}
+@media (max-width:640px){
+  .hero-art .sealhero{left:auto;right:4px;bottom:4px;width:84px;transform:rotate(-8deg)}
+  .hero .eyebrow{margin-bottom:16px}
+  .hero h1.tagh{margin-bottom:18px}
+  .hero .lede{margin-bottom:26px}
+}
+
+/* pop story + reveal */
+#tada{display:none}
+.wish{position:fixed;z-index:90;pointer-events:none;transform:translate(-50%,-50%);font:700 italic clamp(20px,4.6vw,28px)/1.1 var(--font-display);color:var(--ivory);text-align:center;white-space:nowrap;text-shadow:0 2px 14px rgba(43,10,22,.9);animation:wish 2.2s ease-out forwards}
+@keyframes wish{0%{opacity:0;transform:translate(-50%,-30%) scale(.8)}15%{opacity:1;transform:translate(-50%,-70%) scale(1)}75%{opacity:1}100%{opacity:0;transform:translate(-50%,-190%) scale(1)}}
+.reveal{position:absolute;z-index:5;left:50%;top:44%;width:min(340px,92%);padding:26px 24px 22px;border-radius:20px;text-align:center;background:linear-gradient(180deg,#5e1830,#3a0c1e);border:1px solid rgba(240,185,74,.55);box-shadow:0 24px 60px rgba(0,0,0,.55);opacity:0;transform:translate(-50%,-46%) scale(.9);transition:opacity .45s ease,transform .5s cubic-bezier(.2,.9,.3,1.2)}
+.reveal.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.reveal .rk{display:block;font:700 italic 44px/1 var(--font-display);color:var(--gold-hi,#FBDF9B);margin-bottom:10px}
+.reveal .rt{margin:0 0 6px;color:var(--ivory);font-size:16px;line-height:1.5}
+.reveal .rs{margin:0 0 18px;color:var(--coral);font:700 italic 22px/1.2 var(--font-display)}
+.reveal .ra{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.reveal .btn{padding:12px 18px;font-size:12px}
+@media (prefers-reduced-motion:reduce){.wish{animation:none;opacity:1}.reveal{transition:none}}
+
+/* overlap fixes */
+.hero-art .sealhero{left:-13%;bottom:2%;transition:opacity .3s}
+.hero-art.rev .sealhero{visibility:hidden}
+@media (max-width:900px){.hero-art .sealhero{left:2%;bottom:auto;top:0}}
+@media (max-width:900px){.hero-art .sealhero{display:none}}
+.gph{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;border:1px solid var(--line);margin-bottom:6px}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="seal" viewBox="220 20 560 560"><circle cx="500" cy="300" r="270" fill="#F4ECDD"/><circle cx="500" cy="300" r="254" fill="none" stroke="#4D1024" stroke-width="2"/><circle cx="500" cy="300" r="166" fill="none" stroke="#4D1024" stroke-width="2"/><g transform="translate(313.0 220.9) rotate(-67.1)"><path d="M3.39-10.21L3.39-10.21Q4.63-10.72 5.39-11.66L5.39-11.66Q6.20-12.69 6.20-14.12L6.20-14.12Q6.20-15.74 5.39-16.79Q4.58-17.85 3.15-18.37Q1.71-18.90-0.18-18.90L-0.18-18.90L-6.47-18.90L-6.47 0L0.23 0Q2.34 0 3.93-0.57Q5.52-1.13 6.40-2.32Q7.28-3.51 7.28-5.37L7.28-5.37Q7.28-6.78 6.70-7.78Q6.12-8.78 5.12-9.42L5.12-9.42Q4.33-9.91 3.39-10.21ZM-2.61-3.08L-2.61-8.53L-0.12-8.53Q0.61-8.53 1.23-8.38Q1.85-8.23 2.32-7.90Q2.79-7.56 3.05-7.06Q3.31-6.56 3.31-5.86L3.31-5.86Q3.31-4.89 2.86-4.27Q2.42-3.65 1.63-3.36Q0.85-3.08-0.12-3.08L-0.12-3.08L-2.61-3.08ZM-0.53-11.34L-2.61-11.34L-2.61-15.82L-0.53-15.82Q0.74-15.82 1.49-15.25Q2.23-14.69 2.23-13.61L2.23-13.61Q2.23-12.91 1.89-12.39Q1.55-11.88 0.93-11.61Q0.31-11.34-0.53-11.34L-0.53-11.34Z" fill="#4D1024"/></g><g transform="translate(320.5 205.2) rotate(-62.1)"><path d="M1.97-18.90L-1.94-18.90L-1.94 0L1.97 0L1.97-18.90Z" fill="#4D1024"/></g><g transform="translate(329.3 190.2) rotate(-57.3)"><path d="M0.03-18.90L-6.32-18.90L-6.32 0L-2.46 0L-2.46-6.86L-0.78-6.86L3.65 0L8.21 0L3.11-7.32Q3.48-7.45 3.83-7.61L3.83-7.61Q5.40-8.37 6.24-9.73Q7.07-11.10 7.07-12.88L7.07-12.88Q7.07-14.69 6.24-16.04Q5.40-17.39 3.83-18.14Q2.27-18.90 0.03-18.90L0.03-18.90ZM-0.22-9.94L-2.46-9.94L-2.46-15.61L-0.22-15.61Q0.81-15.61 1.55-15.27Q2.29-14.93 2.70-14.30Q3.11-13.66 3.11-12.77Q3.11-11.88 2.70-11.25Q2.29-10.61 1.55-10.27Q0.81-9.94-0.22-9.94L-0.22-9.94Z" fill="#4D1024"/></g><g transform="translate(341.2 173.5) rotate(-51.5)"><path d="M-7.01-18.90L-7.01-15.42L-1.93-15.42L-1.93 0L1.93 0L1.93-15.42L7.03-15.42L7.03-18.90L-7.01-18.90Z" fill="#4D1024"/></g><g transform="translate(356.1 156.8) rotate(-45.1)"><path d="M8.29-18.90L4.43-18.90L4.43-11.80L-4.40-11.80L-4.40-18.90L-8.26-18.90L-8.26 0L-4.40 0L-4.40-8.32L4.43-8.32L4.43 0L8.29 0L8.29-18.90Z" fill="#4D1024"/></g><g transform="translate(374.8 140.2) rotate(-38.1)"><path d="M-1.19-18.90L-7.61-18.90L-7.61 0L-1.19 0Q1.78 0 4.01-1.16Q6.24-2.32 7.48-4.44Q8.72-6.56 8.72-9.45Q8.72-12.34 7.48-14.46Q6.24-16.58 4.01-17.74Q1.78-18.90-1.19-18.90L-1.19-18.90ZM-1.32-3.51L-3.67-3.51L-3.67-15.39L-1.32-15.39Q-0.08-15.39 1.03-15.05Q2.13-14.71 2.97-13.99Q3.81-13.26 4.28-12.14Q4.75-11.02 4.75-9.45Q4.75-7.88 4.28-6.76Q3.81-5.64 2.97-4.91Q2.13-4.18 1.03-3.85Q-0.08-3.51-1.32-3.51L-1.32-3.51Z" fill="#4D1024"/></g><g transform="translate(394.7 126.5) rotate(-31.3)"><path d="M-3.25-4.29L3.23-4.29L5.22 0L9.60 0L0.01-20.01L-9.57 0L-5.22 0L-3.25-4.29ZM-2.36-7.34L0.01-12.77L2.36-7.34L-2.36-7.34Z" fill="#4D1024"/></g><g transform="translate(415.0 115.6) rotate(-24.7)"><path d="M8.46-18.90L4.06-18.90L-0.01-11.29L-4.06-18.90L-8.46-18.90L-1.96-7.80L-1.96 0L1.96 0L1.96-7.83L8.46-18.90Z" fill="#4D1024"/></g><g transform="translate(431.2 109.0) rotate(-19.8)"><path d="" fill="#4D1024"/></g><g transform="translate(449.1 103.5) rotate(-14.5)"><path d="M-1.19-18.90L-7.61-18.90L-7.61 0L-1.19 0Q1.78 0 4.01-1.16Q6.24-2.32 7.48-4.44Q8.72-6.56 8.72-9.45Q8.72-12.34 7.48-14.46Q6.24-16.58 4.01-17.74Q1.78-18.90-1.19-18.90L-1.19-18.90ZM-1.32-3.51L-3.67-3.51L-3.67-15.39L-1.32-15.39Q-0.08-15.39 1.03-15.05Q2.13-14.71 2.97-13.99Q3.81-13.26 4.28-12.14Q4.75-11.02 4.75-9.45Q4.75-7.88 4.28-6.76Q3.81-5.64 2.97-4.91Q2.13-4.18 1.03-3.85Q-0.08-3.51-1.32-3.51L-1.32-3.51Z" fill="#4D1024"/></g><g transform="translate(471.2 99.1) rotate(-8.2)"><path d="M6.16-18.90L-5.86-18.90L-5.86 0L6.16 0L6.16-3.27L-2.13-3.27L-2.13-8.42L5.62-8.42L5.62-11.64L-2.13-11.64L-2.13-15.63L6.16-15.63L6.16-18.90Z" fill="#4D1024"/></g><g transform="translate(493.3 97.1) rotate(-1.9)"><path d="M-4.24-9.45L-4.24-9.45Q-4.24-11.34-3.39-12.72Q-2.54-14.09-1.16-14.84Q0.22-15.58 1.84-15.58L1.84-15.58Q3.19-15.58 4.24-15.23Q5.29-14.88 6.14-14.28Q6.99-13.69 7.61-12.99L7.61-12.99L7.61-17.33Q6.45-18.25 5.09-18.77Q3.73-19.28 1.65-19.28L1.65-19.28Q-0.51-19.28-2.36-18.58Q-4.21-17.87-5.58-16.55Q-6.94-15.23-7.68-13.43Q-8.42-11.64-8.42-9.45L-8.42-9.45Q-8.42-7.26-7.68-5.47Q-6.94-3.67-5.58-2.35Q-4.21-1.03-2.36-0.32Q-0.51 0.38 1.65 0.38L1.65 0.38Q3.73 0.38 5.09-0.14Q6.45-0.65 7.61-1.57L7.61-1.57L7.61-5.91Q6.99-5.21 6.14-4.62Q5.29-4.02 4.24-3.67Q3.19-3.32 1.84-3.32L1.84-3.32Q0.22-3.32-1.16-4.06Q-2.54-4.81-3.39-6.20Q-4.24-7.59-4.24-9.45Z" fill="#4D1024"/></g><g transform="translate(518.6 97.9) rotate(5.3)"><path d="M-5.90-9.45L-5.90-9.45Q-5.90-11.26-5.14-12.66Q-4.39-14.07-3.06-14.88Q-1.74-15.69 0.01-15.69L0.01-15.69Q1.80-15.69 3.12-14.88Q4.44-14.07 5.17-12.66Q5.90-11.26 5.90-9.45L5.90-9.45Q5.90-7.64 5.16-6.24Q4.41-4.83 3.09-4.02Q1.77-3.21 0.01-3.21L0.01-3.21Q-1.74-3.21-3.06-4.02Q-4.39-4.83-5.14-6.24Q-5.90-7.64-5.90-9.45ZM-9.98-9.45L-9.98-9.45Q-9.98-7.32-9.25-5.49Q-8.52-3.67-7.17-2.32Q-5.82-0.97-4.00-0.23Q-2.17 0.51 0.01 0.51L0.01 0.51Q2.20 0.51 4.02-0.23Q5.85-0.97 7.18-2.32Q8.52-3.67 9.26-5.49Q10.00-7.32 10.00-9.45L10.00-9.45Q10.00-11.61 9.26-13.41Q8.52-15.20 7.16-16.52Q5.79-17.85 3.98-18.56Q2.17-19.28 0.01-19.28L0.01-19.28Q-2.12-19.28-3.94-18.56Q-5.76-17.85-7.11-16.52Q-8.46-15.20-9.22-13.41Q-9.98-11.61-9.98-9.45Z" fill="#4D1024"/></g><g transform="translate(542.6 101.5) rotate(12.1)"><path d="M0.03-18.90L-6.32-18.90L-6.32 0L-2.46 0L-2.46-6.86L-0.78-6.86L3.65 0L8.21 0L3.11-7.32Q3.48-7.45 3.83-7.61L3.83-7.61Q5.40-8.37 6.24-9.73Q7.07-11.10 7.07-12.88L7.07-12.88Q7.07-14.69 6.24-16.04Q5.40-17.39 3.83-18.14Q2.27-18.90 0.03-18.90L0.03-18.90ZM-0.22-9.94L-2.46-9.94L-2.46-15.61L-0.22-15.61Q0.81-15.61 1.55-15.27Q2.29-14.93 2.70-14.30Q3.11-13.66 3.11-12.77Q3.11-11.88 2.70-11.25Q2.29-10.61 1.55-10.27Q0.81-9.94-0.22-9.94L-0.22-9.94Z" fill="#4D1024"/></g><g transform="translate(559.4 105.9) rotate(17.0)"><path d="" fill="#4D1024"/></g><g transform="translate(577.2 112.2) rotate(22.3)"><path d="M-4.13-10.50L-4.13-10.50Q-4.72-10.23-5.37-9.91L-5.37-9.91Q-6.26-9.45-7.02-8.79Q-7.78-8.13-8.26-7.21Q-8.75-6.29-8.75-5.02L-8.75-5.02Q-8.75-3.38-7.86-2.17Q-6.97-0.97-5.51-0.32Q-4.05 0.32-2.32 0.32L-2.32 0.32Q-0.38 0.32 1.27-0.35L1.27-0.35Q2.59-0.89 3.78-1.73L3.78-1.73L5.32 0L9.34 0L6.02-3.67Q6.45-4.10 6.86-4.56L6.86-4.56Q7.99-5.91 8.94-7.24L8.94-7.24L6.53-8.99Q5.67-7.72 4.70-6.59L4.70-6.59Q4.37-6.18 4.05-5.83L4.05-5.83L0.32-9.94Q1.00-10.39 1.57-10.80L1.57-10.80Q2.38-11.39 2.94-12.02Q3.51-12.64 3.81-13.31Q4.10-13.99 4.10-14.85L4.10-14.85Q4.10-15.98 3.51-17.00Q2.92-18.01 1.76-18.66Q0.59-19.30-1.05-19.30L-1.05-19.30Q-2.73-19.30-3.94-18.68Q-5.16-18.06-5.83-17.02Q-6.51-15.98-6.51-14.77L-6.51-14.77Q-6.51-13.80-6.06-12.99Q-5.62-12.18-4.99-11.47L-4.99-11.47Q-4.56-10.96-4.13-10.50ZM-2.29-8.45L-2.29-8.45L1.78-3.92Q1.13-3.48 0.46-3.19L0.46-3.19Q-0.70-2.67-1.89-2.67L-1.89-2.67Q-2.86-2.67-3.58-3.01Q-4.29-3.35-4.68-3.96Q-5.08-4.56-5.08-5.32L-5.08-5.32Q-5.08-6.21-4.62-6.80Q-4.16-7.40-3.43-7.83L-3.43-7.83Q-2.89-8.15-2.29-8.45ZM-1.38-11.83L-1.38-11.83Q-1.92-12.45-2.35-12.96L-2.35-12.96Q-3.08-13.77-3.08-14.61L-3.08-14.61Q-3.08-15.36-2.56-15.92Q-2.05-16.47-1.08-16.47L-1.08-16.47Q-0.46-16.47-0.03-16.21Q0.41-15.96 0.63-15.53Q0.86-15.09 0.86-14.58L0.86-14.58Q0.86-13.80 0.05-12.96L0.05-12.96Q-0.49-12.37-1.38-11.83Z" fill="#4D1024"/></g><g transform="translate(594.2 120.2) rotate(27.7)"><path d="" fill="#4D1024"/></g><g transform="translate(611.3 130.3) rotate(33.3)"><path d="M0.40-10.10L0.40-7.02L5.83-7.02Q5.59-6.16 5.13-5.43Q4.67-4.70 4.01-4.13Q3.35-3.56 2.43-3.25Q1.51-2.94 0.35-2.94L0.35-2.94Q-1.40-2.94-2.79-3.75Q-4.18-4.56-5.00-6.03Q-5.80-7.51-5.80-9.45L-5.80-9.45Q-5.80-11.42-4.98-12.85Q-4.16-14.28-2.75-15.05Q-1.35-15.82 0.35-15.82L0.35-15.82Q2.16-15.82 3.42-15.05Q4.67-14.28 5.37-13.04L5.37-13.04L8.67-14.96Q7.80-16.28 6.60-17.24Q5.40-18.20 3.85-18.74Q2.29-19.28 0.35-19.28L0.35-19.28Q-1.84-19.28-3.70-18.58Q-5.56-17.87-6.94-16.58Q-8.32-15.28-9.09-13.46Q-9.86-11.64-9.86-9.45L-9.86-9.45Q-9.86-7.26-9.11-5.43Q-8.37-3.59-7.01-2.27Q-5.64-0.94-3.79-0.22Q-1.94 0.51 0.24 0.51L0.24 0.51Q2.56 0.51 4.37-0.32Q6.18-1.16 7.41-2.63Q8.64-4.10 9.22-6.02Q9.80-7.94 9.72-10.10L9.72-10.10L0.40-10.10Z" fill="#4D1024"/></g><g transform="translate(627.3 141.9) rotate(38.8)"><path d="M1.97-18.90L-1.94-18.90L-1.94 0L1.97 0L1.97-18.90Z" fill="#4D1024"/></g><g transform="translate(639.5 152.6) rotate(43.4)"><path d="M5.75-18.90L-5.18-18.90L-5.18 0L-1.46 0L-1.46-8.07L5.48-8.07L5.48-11.29L-1.46-11.29L-1.46-15.53L5.75-15.53L5.75-18.90Z" fill="#4D1024"/></g><g transform="translate(652.9 166.5) rotate(48.9)"><path d="M-7.01-18.90L-7.01-15.42L-1.93-15.42L-1.93 0L1.93 0L1.93-15.42L7.03-15.42L7.03-18.90L-7.01-18.90Z" fill="#4D1024"/></g><g transform="translate(663.1 179.1) rotate(53.4)"><path d="M1.97-18.90L-1.94-18.90L-1.94 0L1.97 0L1.97-18.90Z" fill="#4D1024"/></g><g transform="translate(674.0 195.4) rotate(59.0)"><path d="M8.59-18.90L4.86-18.90L4.86-7.18L-8.59-19.84L-8.59 0L-4.86 0L-4.86-11.72L8.59 0.94L8.59-18.90Z" fill="#4D1024"/></g><g transform="translate(686.1 218.8) rotate(66.4)"><path d="M0.40-10.10L0.40-7.02L5.83-7.02Q5.59-6.16 5.13-5.43Q4.67-4.70 4.01-4.13Q3.35-3.56 2.43-3.25Q1.51-2.94 0.35-2.94L0.35-2.94Q-1.40-2.94-2.79-3.75Q-4.18-4.56-5.00-6.03Q-5.80-7.51-5.80-9.45L-5.80-9.45Q-5.80-11.42-4.98-12.85Q-4.16-14.28-2.75-15.05Q-1.35-15.82 0.35-15.82L0.35-15.82Q2.16-15.82 3.42-15.05Q4.67-14.28 5.37-13.04L5.37-13.04L8.67-14.96Q7.80-16.28 6.60-17.24Q5.40-18.20 3.85-18.74Q2.29-19.28 0.35-19.28L0.35-19.28Q-1.84-19.28-3.70-18.58Q-5.56-17.87-6.94-16.58Q-8.32-15.28-9.09-13.46Q-9.86-11.64-9.86-9.45L-9.86-9.45Q-9.86-7.26-9.11-5.43Q-8.37-3.59-7.01-2.27Q-5.64-0.94-3.79-0.22Q-1.94 0.51 0.24 0.51L0.24 0.51Q2.56 0.51 4.37-0.32Q6.18-1.16 7.41-2.63Q8.64-4.10 9.22-6.02Q9.80-7.94 9.72-10.10L9.72-10.10L0.40-10.10Z" fill="#4D1024"/></g><g transform="translate(289.4 379.1) rotate(69.4)"><path d="M-6.70 0L-5.48-10.61L0-1.75L5.48-10.61L6.70 0L10.72 0L7.91-19.84L0-7.64L-7.91-19.84L-10.72 0L-6.70 0Z" fill="#4D1024"/></g><g transform="translate(300.1 403.2) rotate(62.7)"><path d="M-3.25-4.29L3.23-4.29L5.22 0L9.60 0L0.01-20.01L-9.57 0L-5.22 0L-3.25-4.29ZM-2.36-7.34L0.01-12.77L2.36-7.34L-2.36-7.34Z" fill="#4D1024"/></g><g transform="translate(312.4 424.3) rotate(56.5)"><path d="M-1.19-18.90L-7.61-18.90L-7.61 0L-1.19 0Q1.78 0 4.01-1.16Q6.24-2.32 7.48-4.44Q8.72-6.56 8.72-9.45Q8.72-12.34 7.48-14.46Q6.24-16.58 4.01-17.74Q1.78-18.90-1.19-18.90L-1.19-18.90ZM-1.32-3.51L-3.67-3.51L-3.67-15.39L-1.32-15.39Q-0.08-15.39 1.03-15.05Q2.13-14.71 2.97-13.99Q3.81-13.26 4.28-12.14Q4.75-11.02 4.75-9.45Q4.75-7.88 4.28-6.76Q3.81-5.64 2.97-4.91Q2.13-4.18 1.03-3.85Q-0.08-3.51-1.32-3.51L-1.32-3.51Z" fill="#4D1024"/></g><g transform="translate(325.9 442.6) rotate(50.7)"><path d="M6.16-18.90L-5.86-18.90L-5.86 0L6.16 0L6.16-3.27L-2.13-3.27L-2.13-8.42L5.62-8.42L5.62-11.64L-2.13-11.64L-2.13-15.63L6.16-15.63L6.16-18.90Z" fill="#4D1024"/></g><g transform="translate(337.3 455.4) rotate(46.3)"><path d="" fill="#4D1024"/></g><g transform="translate(350.0 467.7) rotate(41.8)"><path d="M3.39-10.21L3.39-10.21Q4.63-10.72 5.39-11.66L5.39-11.66Q6.20-12.69 6.20-14.12L6.20-14.12Q6.20-15.74 5.39-16.79Q4.58-17.85 3.15-18.37Q1.71-18.90-0.18-18.90L-0.18-18.90L-6.47-18.90L-6.47 0L0.23 0Q2.34 0 3.93-0.57Q5.52-1.13 6.40-2.32Q7.28-3.51 7.28-5.37L7.28-5.37Q7.28-6.78 6.70-7.78Q6.12-8.78 5.12-9.42L5.12-9.42Q4.33-9.91 3.39-10.21ZM-2.61-3.08L-2.61-8.53L-0.12-8.53Q0.61-8.53 1.23-8.38Q1.85-8.23 2.32-7.90Q2.79-7.56 3.05-7.06Q3.31-6.56 3.31-5.86L3.31-5.86Q3.31-4.89 2.86-4.27Q2.42-3.65 1.63-3.36Q0.85-3.08-0.12-3.08L-0.12-3.08L-2.61-3.08ZM-0.53-11.34L-2.61-11.34L-2.61-15.82L-0.53-15.82Q0.74-15.82 1.49-15.25Q2.23-14.69 2.23-13.61L2.23-13.61Q2.23-12.91 1.89-12.39Q1.55-11.88 0.93-11.61Q0.31-11.34-0.53-11.34L-0.53-11.34Z" fill="#4D1024"/></g><g transform="translate(367.2 481.6) rotate(36.2)"><path d="M8.46-18.90L4.06-18.90L-0.01-11.29L-4.06-18.90L-8.46-18.90L-1.96-7.80L-1.96 0L1.96 0L1.96-7.83L8.46-18.90Z" fill="#4D1024"/></g><g transform="translate(381.9 491.5) rotate(31.7)"><path d="" fill="#4D1024"/></g><g transform="translate(396.2 499.6) rotate(27.5)"><path d="M5.75-18.90L-5.18-18.90L-5.18 0L-1.46 0L-1.46-8.07L5.48-8.07L5.48-11.29L-1.46-11.29L-1.46-15.53L5.75-15.53L5.75-18.90Z" fill="#4D1024"/></g><g transform="translate(415.0 508.3) rotate(22.2)"><path d="M0.03-18.90L-6.32-18.90L-6.32 0L-2.46 0L-2.46-6.86L-0.78-6.86L3.65 0L8.21 0L3.11-7.32Q3.48-7.45 3.83-7.61L3.83-7.61Q5.40-8.37 6.24-9.73Q7.07-11.10 7.07-12.88L7.07-12.88Q7.07-14.69 6.24-16.04Q5.40-17.39 3.83-18.14Q2.27-18.90 0.03-18.90L0.03-18.90ZM-0.22-9.94L-2.46-9.94L-2.46-15.61L-0.22-15.61Q0.81-15.61 1.55-15.27Q2.29-14.93 2.70-14.30Q3.11-13.66 3.11-12.77Q3.11-11.88 2.70-11.25Q2.29-10.61 1.55-10.27Q0.81-9.94-0.22-9.94L-0.22-9.94Z" fill="#4D1024"/></g><g transform="translate(431.5 514.3) rotate(17.7)"><path d="M1.97-18.90L-1.94-18.90L-1.94 0L1.97 0L1.97-18.90Z" fill="#4D1024"/></g><g transform="translate(447.9 518.9) rotate(13.4)"><path d="M6.16-18.90L-5.86-18.90L-5.86 0L6.16 0L6.16-3.27L-2.13-3.27L-2.13-8.42L5.62-8.42L5.62-11.64L-2.13-11.64L-2.13-15.63L6.16-15.63L6.16-18.90Z" fill="#4D1024"/></g><g transform="translate(471.2 523.1) rotate(7.4)"><path d="M8.59-18.90L4.86-18.90L4.86-7.18L-8.59-19.84L-8.59 0L-4.86 0L-4.86-11.72L8.59 0.94L8.59-18.90Z" fill="#4D1024"/></g><g transform="translate(496.5 525.0) rotate(0.9)"><path d="M-1.19-18.90L-7.61-18.90L-7.61 0L-1.19 0Q1.78 0 4.01-1.16Q6.24-2.32 7.48-4.44Q8.72-6.56 8.72-9.45Q8.72-12.34 7.48-14.46Q6.24-16.58 4.01-17.74Q1.78-18.90-1.19-18.90L-1.19-18.90ZM-1.32-3.51L-3.67-3.51L-3.67-15.39L-1.32-15.39Q-0.08-15.39 1.03-15.05Q2.13-14.71 2.97-13.99Q3.81-13.26 4.28-12.14Q4.75-11.02 4.75-9.45Q4.75-7.88 4.28-6.76Q3.81-5.64 2.97-4.91Q2.13-4.18 1.03-3.85Q-0.08-3.51-1.32-3.51L-1.32-3.51Z" fill="#4D1024"/></g><g transform="translate(519.5 524.2) rotate(-5.0)"><path d="M-4.41-6.34L-4.41-6.34L-7.17-4.40Q-6.55-3.08-5.44-1.94Q-4.33-0.81-2.83-0.15Q-1.34 0.51 0.39 0.51L0.39 0.51Q1.69 0.51 2.86 0.12Q4.04-0.27 4.98-1.01Q5.93-1.75 6.47-2.83Q7.01-3.92 7.01-5.29L7.01-5.29Q7.01-6.51 6.62-7.44Q6.22-8.37 5.54-9.06Q4.85-9.75 4.00-10.23Q3.15-10.72 2.23-11.04L2.23-11.04Q0.80-11.53-0.15-12.00Q-1.09-12.47-1.55-13.00Q-2.01-13.53-2.01-14.23L-2.01-14.23Q-2.01-14.93-1.44-15.46Q-0.88-15.98 0.26-15.98L0.26-15.98Q1.12-15.98 1.80-15.65Q2.47-15.31 3.00-14.76Q3.52-14.20 3.90-13.53L3.90-13.53L6.93-15.20Q6.44-16.20 5.56-17.13Q4.68-18.06 3.38-18.67Q2.07-19.28 0.26-19.28L0.26-19.28Q-1.50-19.28-2.92-18.64Q-4.33-18.01-5.16-16.83Q-5.98-15.66-5.98-14.04L-5.98-14.04Q-5.98-12.69-5.47-11.73Q-4.95-10.77-4.17-10.11Q-3.39-9.45-2.51-9.03Q-1.63-8.61-0.96-8.37L-0.96-8.37Q0.31-7.88 1.19-7.47Q2.07-7.05 2.51-6.51Q2.96-5.97 2.96-5.08L2.96-5.08Q2.96-4.05 2.23-3.46Q1.50-2.86 0.34-2.86L0.34-2.86Q-0.66-2.86-1.53-3.29Q-2.39-3.73-3.11-4.51Q-3.82-5.29-4.41-6.34Z" fill="#4D1024"/></g><g transform="translate(536.9 522.0) rotate(-9.4)"><path d="M2.66-2.11L-0.82-2.97L-3.20 4.02L-0.61 4.64L2.66-2.11Z" fill="#4D1024"/></g><g transform="translate(550.1 519.3) rotate(-12.9)"><path d="" fill="#4D1024"/></g><g transform="translate(566.0 515.1) rotate(-17.1)"><path d="M5.75-18.90L-5.18-18.90L-5.18 0L-1.46 0L-1.46-8.07L5.48-8.07L5.48-11.29L-1.46-11.29L-1.46-15.53L5.75-15.53L5.75-18.90Z" fill="#4D1024"/></g><g transform="translate(587.9 507.1) rotate(-23.0)"><path d="M-5.90-9.45L-5.90-9.45Q-5.90-11.26-5.14-12.66Q-4.39-14.07-3.06-14.88Q-1.74-15.69 0.01-15.69L0.01-15.69Q1.80-15.69 3.12-14.88Q4.44-14.07 5.17-12.66Q5.90-11.26 5.90-9.45L5.90-9.45Q5.90-7.64 5.16-6.24Q4.41-4.83 3.09-4.02Q1.77-3.21 0.01-3.21L0.01-3.21Q-1.74-3.21-3.06-4.02Q-4.39-4.83-5.14-6.24Q-5.90-7.64-5.90-9.45ZM-9.98-9.45L-9.98-9.45Q-9.98-7.32-9.25-5.49Q-8.52-3.67-7.17-2.32Q-5.82-0.97-4.00-0.23Q-2.17 0.51 0.01 0.51L0.01 0.51Q2.20 0.51 4.02-0.23Q5.85-0.97 7.18-2.32Q8.52-3.67 9.26-5.49Q10.00-7.32 10.00-9.45L10.00-9.45Q10.00-11.61 9.26-13.41Q8.52-15.20 7.16-16.52Q5.79-17.85 3.98-18.56Q2.17-19.28 0.01-19.28L0.01-19.28Q-2.12-19.28-3.94-18.56Q-5.76-17.85-7.11-16.52Q-8.46-15.20-9.22-13.41Q-9.98-11.61-9.98-9.45Z" fill="#4D1024"/></g><g transform="translate(609.9 496.4) rotate(-29.2)"><path d="M0.03-18.90L-6.32-18.90L-6.32 0L-2.46 0L-2.46-6.86L-0.78-6.86L3.65 0L8.21 0L3.11-7.32Q3.48-7.45 3.83-7.61L3.83-7.61Q5.40-8.37 6.24-9.73Q7.07-11.10 7.07-12.88L7.07-12.88Q7.07-14.69 6.24-16.04Q5.40-17.39 3.83-18.14Q2.27-18.90 0.03-18.90L0.03-18.90ZM-0.22-9.94L-2.46-9.94L-2.46-15.61L-0.22-15.61Q0.81-15.61 1.55-15.27Q2.29-14.93 2.70-14.30Q3.11-13.66 3.11-12.77Q3.11-11.88 2.70-11.25Q2.29-10.61 1.55-10.27Q0.81-9.94-0.22-9.94L-0.22-9.94Z" fill="#4D1024"/></g><g transform="translate(624.8 487.2) rotate(-33.7)"><path d="" fill="#4D1024"/></g><g transform="translate(638.2 477.6) rotate(-37.9)"><path d="M5.75-18.90L-5.18-18.90L-5.18 0L-1.46 0L-1.46-8.07L5.48-8.07L5.48-11.29L-1.46-11.29L-1.46-15.53L5.75-15.53L5.75-18.90Z" fill="#4D1024"/></g><g transform="translate(653.9 464.1) rotate(-43.2)"><path d="M0.03-18.90L-6.32-18.90L-6.32 0L-2.46 0L-2.46-6.86L-0.78-6.86L3.65 0L8.21 0L3.11-7.32Q3.48-7.45 3.83-7.61L3.83-7.61Q5.40-8.37 6.24-9.73Q7.07-11.10 7.07-12.88L7.07-12.88Q7.07-14.69 6.24-16.04Q5.40-17.39 3.83-18.14Q2.27-18.90 0.03-18.90L0.03-18.90ZM-0.22-9.94L-2.46-9.94L-2.46-15.61L-0.22-15.61Q0.81-15.61 1.55-15.27Q2.29-14.93 2.70-14.30Q3.11-13.66 3.11-12.77Q3.11-11.88 2.70-11.25Q2.29-10.61 1.55-10.27Q0.81-9.94-0.22-9.94L-0.22-9.94Z" fill="#4D1024"/></g><g transform="translate(666.2 451.6) rotate(-47.6)"><path d="M1.97-18.90L-1.94-18.90L-1.94 0L1.97 0L1.97-18.90Z" fill="#4D1024"/></g><g transform="translate(677.2 438.6) rotate(-52.0)"><path d="M6.16-18.90L-5.86-18.90L-5.86 0L6.16 0L6.16-3.27L-2.13-3.27L-2.13-8.42L5.62-8.42L5.62-11.64L-2.13-11.64L-2.13-15.63L6.16-15.63L6.16-18.90Z" fill="#4D1024"/></g><g transform="translate(690.8 419.2) rotate(-58.0)"><path d="M8.59-18.90L4.86-18.90L4.86-7.18L-8.59-19.84L-8.59 0L-4.86 0L-4.86-11.72L8.59 0.94L8.59-18.90Z" fill="#4D1024"/></g><g transform="translate(703.1 396.9) rotate(-64.5)"><path d="M-1.19-18.90L-7.61-18.90L-7.61 0L-1.19 0Q1.78 0 4.01-1.16Q6.24-2.32 7.48-4.44Q8.72-6.56 8.72-9.45Q8.72-12.34 7.48-14.46Q6.24-16.58 4.01-17.74Q1.78-18.90-1.19-18.90L-1.19-18.90ZM-1.32-3.51L-3.67-3.51L-3.67-15.39L-1.32-15.39Q-0.08-15.39 1.03-15.05Q2.13-14.71 2.97-13.99Q3.81-13.26 4.28-12.14Q4.75-11.02 4.75-9.45Q4.75-7.88 4.28-6.76Q3.81-5.64 2.97-4.91Q2.13-4.18 1.03-3.85Q-0.08-3.51-1.32-3.51L-1.32-3.51Z" fill="#4D1024"/></g><g transform="translate(711.9 375.7) rotate(-70.3)"><path d="M-4.41-6.34L-4.41-6.34L-7.17-4.40Q-6.55-3.08-5.44-1.94Q-4.33-0.81-2.83-0.15Q-1.34 0.51 0.39 0.51L0.39 0.51Q1.69 0.51 2.86 0.12Q4.04-0.27 4.98-1.01Q5.93-1.75 6.47-2.83Q7.01-3.92 7.01-5.29L7.01-5.29Q7.01-6.51 6.62-7.44Q6.22-8.37 5.54-9.06Q4.85-9.75 4.00-10.23Q3.15-10.72 2.23-11.04L2.23-11.04Q0.80-11.53-0.15-12.00Q-1.09-12.47-1.55-13.00Q-2.01-13.53-2.01-14.23L-2.01-14.23Q-2.01-14.93-1.44-15.46Q-0.88-15.98 0.26-15.98L0.26-15.98Q1.12-15.98 1.80-15.65Q2.47-15.31 3.00-14.76Q3.52-14.20 3.90-13.53L3.90-13.53L6.93-15.20Q6.44-16.20 5.56-17.13Q4.68-18.06 3.38-18.67Q2.07-19.28 0.26-19.28L0.26-19.28Q-1.50-19.28-2.92-18.64Q-4.33-18.01-5.16-16.83Q-5.98-15.66-5.98-14.04L-5.98-14.04Q-5.98-12.69-5.47-11.73Q-4.95-10.77-4.17-10.11Q-3.39-9.45-2.51-9.03Q-1.63-8.61-0.96-8.37L-0.96-8.37Q0.31-7.88 1.19-7.47Q2.07-7.05 2.51-6.51Q2.96-5.97 2.96-5.08L2.96-5.08Q2.96-4.05 2.23-3.46Q1.50-2.86 0.34-2.86L0.34-2.86Q-0.66-2.86-1.53-3.29Q-2.39-3.73-3.11-4.51Q-3.82-5.29-4.41-6.34Z" fill="#4D1024"/></g><path transform="translate(290 300)" d="M0 -11Q1.1 -1.1 11 0Q1.1 1.1 0 11Q-1.1 1.1 -11 0Q-1.1 -1.1 0 -11Z" fill="#F0B94A" opacity="1"/><path transform="translate(710 300)" d="M0 -11Q1.1 -1.1 11 0Q1.1 1.1 0 11Q-1.1 1.1 -11 0Q-1.1 -1.1 0 -11Z" fill="#F0B94A" opacity="1"/><path d="M454.00 188.75L496.09 188.75Q511.72 188.75 522.89 194.96Q534.05 201.16 540.02 212.26Q546 223.36 546 238L546 238Q546 249.03 542.45 258.06Q538.91 267.09 532.31 273.62Q525.71 280.16 516.52 283.70Q507.32 287.25 496.09 287.25L496.09 287.25L454.00 287.25L454.00 284.69L465.89 284.69L465.89 191.31L454.00 191.31L454.00 188.75ZM486.31 191.31L486.31 284.69L496.09 284.69Q503.71 284.69 508.87 281.08Q514.02 277.47 517.14 271.06Q520.26 264.66 521.64 256.19Q523.02 247.72 523.02 238L523.02 238Q523.02 228.28 521.44 219.81Q519.86 211.34 516.65 204.94Q513.43 198.53 508.34 194.92Q503.25 191.31 496.09 191.31L496.09 191.31L486.31 191.31Z" fill="#4D1024"/><g transform="rotate(0 548 192)"><path d="M548 225c8 9.6 -8 19.2 0 32" fill="none" stroke="#a94e40" stroke-width="2.2"/><path d="M542 225L548 213L554 225Z" fill="#c25a4a"/><path d="M548 169C569.25 169 565.85 209.25 548 215C530.15 209.25 526.75 169 548 169Z" fill="#F2705C"/><ellipse cx="542.05" cy="182.8" rx="2.04" ry="5.52" fill="#fff" opacity=".4" transform="rotate(-25 542.05 182.8)"/></g><path d="M366.56 324.20L355.00 324.20L355.00 355.09L366.56 355.09Q371.81 355.09 375.59 353.22Q379.36 351.34 381.41 347.88Q383.47 344.41 383.47 339.65L383.47 339.65Q383.47 334.84 381.41 331.39Q379.36 327.95 375.59 326.08Q371.81 324.20 366.56 324.20L366.56 324.20ZM366.21 347.59L363.87 347.59L363.87 331.70L366.21 331.70Q367.75 331.70 369.23 332.03Q370.71 332.36 371.90 333.23Q373.09 334.09 373.82 335.65Q374.55 337.22 374.55 339.65Q374.55 342.07 373.82 343.64Q373.09 345.21 371.90 346.07Q370.71 346.93 369.23 347.26Q367.75 347.59 366.21 347.59L366.21 347.59Z" fill="#4D1024"/><path d="M412.55 324.20L391.15 324.20L391.15 355.09L412.55 355.09L412.55 348.16L399.35 348.16L399.35 342.38L411.67 342.38L411.67 335.67L399.35 335.67L399.35 331.13L412.55 331.13L412.55 324.20Z" fill="#4D1024"/><path d="M429.19 339.65L429.19 339.65Q429.19 337.04 430.36 335.21Q431.53 333.38 433.47 332.43Q435.41 331.48 437.75 331.48L437.75 331.48Q439.96 331.48 441.59 332.06Q443.22 332.63 444.50 333.53Q445.78 334.44 446.75 335.45L446.75 335.45L446.75 326.45Q444.94 325.08 442.76 324.24Q440.57 323.41 437.18 323.41L437.18 323.41Q433.34 323.41 430.11 324.55Q426.89 325.70 424.60 327.86Q422.30 330.03 421.05 333.00Q419.79 335.98 419.79 339.65L419.79 339.65Q419.79 343.31 421.05 346.29Q422.30 349.27 424.60 351.43Q426.89 353.59 430.11 354.74Q433.34 355.89 437.18 355.89L437.18 355.89Q440.57 355.89 442.76 355.03Q444.94 354.17 446.75 352.84L446.75 352.84L446.75 343.84Q445.78 344.85 444.50 345.76Q443.22 346.66 441.59 347.24Q439.96 347.81 437.75 347.81L437.75 347.81Q435.41 347.81 433.47 346.86Q431.53 345.91 430.36 344.08Q429.19 342.25 429.19 339.65Z" fill="#4D1024"/><path d="M463.04 339.65L463.04 339.65Q463.04 337.13 464.01 335.23Q464.98 333.34 466.75 332.25Q468.51 331.17 470.89 331.17L470.89 331.17Q473.41 331.17 475.15 332.25Q476.90 333.34 477.82 335.23Q478.75 337.13 478.75 339.65L478.75 339.65Q478.75 342.12 477.78 344.04Q476.81 345.96 475.06 347.04Q473.32 348.12 470.89 348.12L470.89 348.12Q468.51 348.12 466.75 347.04Q464.98 345.96 464.01 344.04Q463.04 342.12 463.04 339.65ZM453.99 339.65L453.99 339.65Q453.99 343.27 455.23 346.31Q456.46 349.36 458.74 351.58Q461.01 353.81 464.10 355.03Q467.19 356.24 470.89 356.24L470.89 356.24Q474.60 356.24 477.71 355.03Q480.82 353.81 483.07 351.58Q485.33 349.36 486.56 346.31Q487.80 343.27 487.80 339.65L487.80 339.65Q487.80 335.98 486.54 333.00Q485.28 330.03 482.99 327.89Q480.69 325.74 477.62 324.58Q474.56 323.41 470.89 323.41L470.89 323.41Q467.32 323.41 464.25 324.58Q461.18 325.74 458.89 327.89Q456.59 330.03 455.29 333.00Q453.99 335.98 453.99 339.65Z" fill="#4D1024"/><path d="M507.61 324.20L495.48 324.20L495.48 355.09L504.04 355.09L504.04 344.85L505.85 344.85L511.94 355.09L521.91 355.09L514.19 343.75Q514.41 343.66 514.63 343.53L514.63 343.53Q517.37 342.25 518.71 339.89Q520.06 337.53 520.06 334.53L520.06 334.53Q520.06 331.48 518.71 329.17Q517.37 326.85 514.61 325.52Q511.85 324.20 507.61 324.20L507.61 324.20ZM506.91 338.37L504.04 338.37L504.04 331.44L506.91 331.44Q508.27 331.44 509.20 331.84Q510.13 332.23 510.64 333.00Q511.14 333.78 511.14 334.88Q511.14 335.98 510.64 336.78Q510.13 337.57 509.20 337.97Q508.27 338.37 506.91 338.37L506.91 338.37Z" fill="#4D1024"/><path d="M537.01 324.20L528.27 324.20L528.27 355.09L537.01 355.09L537.01 324.20Z" fill="#4D1024"/><path d="M544.68 339.65L544.68 339.65Q544.68 343.27 545.94 346.31Q547.20 349.36 549.52 351.58Q551.83 353.81 554.95 355.03Q558.06 356.24 561.76 356.24Q565.47 356.24 568.56 355.01L568.56 355.01Q570.06 354.43 571.34 353.59L571.34 353.59L573.72 355.80L582.68 355.80L575.67 349.44Q576.64 347.99 577.30 346.31L577.30 346.31Q578.49 343.27 578.49 339.65L578.49 339.65Q578.49 335.98 577.26 333.00Q576.02 330.03 573.79 327.89Q571.56 325.74 568.49 324.58Q565.43 323.41 561.76 323.41L561.76 323.41Q558.19 323.41 555.10 324.58Q552.01 325.74 549.65 327.89Q547.29 330.03 545.99 333.00Q544.68 335.98 544.68 339.65ZM553.73 339.65L553.73 339.65Q553.73 337.13 554.75 335.23Q555.76 333.34 557.57 332.25Q559.38 331.17 561.76 331.17L561.76 331.17Q564.63 331.17 566.58 332.52Q568.52 333.87 569.51 336.03Q570.50 338.19 570.50 340.71L570.50 340.71Q570.50 342.65 569.89 344.19L569.89 344.19L567.33 341.85L558.72 341.85L565.65 348.30Q564.24 348.83 562.47 348.83L562.47 348.83Q560.09 348.83 558.10 347.72Q556.12 346.62 554.92 344.55Q553.73 342.47 553.73 339.65Z" fill="#4D1024"/><path d="M596.94 324.20L588.38 324.20L588.38 344.94Q588.38 348.08 589.39 350.28Q590.41 352.49 592.19 353.88Q593.98 355.27 596.34 355.93Q598.70 356.59 601.35 356.59L601.35 356.59Q604.04 356.59 606.38 355.93Q608.72 355.27 610.53 353.88Q612.34 352.49 613.36 350.28Q614.37 348.08 614.37 344.94L614.37 344.94L614.37 324.20L605.81 324.20L605.81 344.24Q605.81 346.36 604.71 347.66Q603.60 348.96 601.35 348.96L601.35 348.96Q599.15 348.96 598.04 347.66Q596.94 346.36 596.94 344.24L596.94 344.24L596.94 324.20Z" fill="#4D1024"/><path d="M645.00 324.20L623.60 324.20L623.60 355.09L645.00 355.09L645.00 348.16L631.80 348.16L631.80 342.38L644.12 342.38L644.12 335.67L631.80 335.67L631.80 331.13L645.00 331.13L645.00 324.20Z" fill="#4D1024"/><path transform="translate(500 396)" d="M0 -10Q1 -1 10 0Q1 1 0 10Q-1 1 -10 0Q-1 -1 0 -10Z" fill="#F0B94A" opacity="1"/></symbol></svg>
+<div class="amb" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<canvas id="fx" aria-hidden="true"></canvas>
+<div id="trail" aria-hidden="true"></div>
+<div class="bar" id="bar" aria-hidden="true"></div>
+<header class="nav">
+  <div class="wrap">
+    <a class="mark" href="#top" aria-label="Decorique home"><svg viewBox="0 0 560 560" aria-hidden="true"><use href="#seal" width="560" height="560"/></svg><span>Decorique</span></a>
+    <ul>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#prices">Packages</a></li>
+      <li><a href="#story">Our story</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn solid" href="#book">Book a date</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" id="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow in-seq" style="--s:.15s">Birthday decor &amp; gifting &middot; Chennai</p>
+        <h1 class="tagh in-seq" style="--s:.45s">Made by friends, <em>for friends.</em></h1>
+        <p class="lede in-seq" style="--s:.6s">Birthdays designed around one person, built by friends who care how it looks.</p>
+        <div class="actions in-seq" style="--s:.75s">
+          <a class="btn solid" href="#book">Plan a surprise</a>
+          <a class="btn" href="#prices">See packages</a>
+        </div>
+      </div>
+      <div class="hero-art"><svg class="sealhero in-seq" style="--s:.9s" viewBox="0 0 560 560" role="img" aria-label="Decorique seal: birthday decor and gifting, made by friends, for friends"><use href="#seal" width="560" height="560"/></svg><div class="par" id="par"><div class="balwrap">
+        <svg viewBox="0 0 340 440" role="group" aria-label="Five balloons you can pop">
+          <defs>
+            <radialGradient id="gold" cx=".34" cy=".28" r=".85"><stop offset="0" stop-color="#FFE9B0"/><stop offset=".5" stop-color="#F0B94A"/><stop offset="1" stop-color="#B98419"/></radialGradient>
+            <radialGradient id="blush" cx=".34" cy=".28" r=".85"><stop offset="0" stop-color="#FFE9E4"/><stop offset=".5" stop-color="#F3BDB4"/><stop offset="1" stop-color="#C98B86"/></radialGradient>
+            <radialGradient id="rose" cx=".34" cy=".28" r=".85"><stop offset="0" stop-color="#FF9C8A"/><stop offset=".5" stop-color="#F2705C"/><stop offset="1" stop-color="#B4402F"/></radialGradient>
+            <radialGradient id="wine" cx=".34" cy=".28" r=".85"><stop offset="0" stop-color="#C45A78"/><stop offset=".5" stop-color="#9A3556"/><stop offset="1" stop-color="#5E1830"/></radialGradient>
+            <radialGradient id="pearl" cx=".34" cy=".28" r=".85"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".45" stop-color="#F4ECDD"/><stop offset="1" stop-color="#CFC3B0"/></radialGradient>
+          </defs>
+          <g class="rise fl bal" data-c="pearl" tabindex="0" role="button" aria-label="Pop the cream balloon"><g class="lean">
+            <path class="str" d="M170 400 C176 330 176 250 168 192 C164 160 164 140 168 112" fill="none" stroke="#F4ECDD" stroke-width="2" stroke-linecap="round"/>
+            <g class="body"><ellipse cx="168" cy="72" rx="42" ry="52" fill="url(#pearl)"/><path d="M162 122 L174 122 L168 134Z" fill="url(#pearl)"/><ellipse cx="152" cy="52" rx="7" ry="16" fill="#fff" opacity=".75" transform="rotate(28 152 52)"/></g></g></g>
+          <g class="rise fl b bal" data-c="rose" tabindex="0" role="button" aria-label="Pop the coral balloon"><g class="lean">
+            <path class="str" d="M170 400 C166 350 190 300 214 254 C232 220 236 180 228 140" fill="none" stroke="#F4ECDD" stroke-width="2" stroke-linecap="round"/>
+            <g class="body"><ellipse cx="228" cy="104" rx="34" ry="42" fill="url(#rose)"/><path d="M223 144 L233 144 L228 154Z" fill="url(#rose)"/><ellipse cx="216" cy="88" rx="6" ry="13" fill="#fff" opacity=".7" transform="rotate(28 216 88)"/></g></g></g>
+          <g class="rise fl c bal" data-c="blush" tabindex="0" role="button" aria-label="Pop the pink balloon"><g class="lean">
+            <path class="str" d="M170 400 C160 340 110 280 70 244 C56 226 52 200 56 176" fill="none" stroke="#F4ECDD" stroke-width="2" stroke-linecap="round"/>
+            <g class="body"><ellipse cx="60" cy="140" rx="38" ry="46" fill="url(#blush)"/><path d="M55 184 L65 184 L60 195Z" fill="url(#blush)"/><ellipse cx="46" cy="124" rx="6" ry="14" fill="#fff" opacity=".75" transform="rotate(28 46 124)"/></g></g></g>
+          <g class="rise fl d bal" data-c="gold" tabindex="0" role="button" aria-label="Pop the mustard balloon"><g class="lean">
+            <path class="str" d="M170 400 C176 360 170 330 150 296 C128 260 118 226 120 190" fill="none" stroke="#F4ECDD" stroke-width="2" stroke-linecap="round"/>
+            <g class="body"><ellipse cx="124" cy="158" rx="45" ry="55" fill="url(#gold)"/><path d="M118 212 L130 212 L124 225Z" fill="url(#gold)"/><ellipse cx="107" cy="138" rx="8" ry="17" fill="#fff" opacity=".7" transform="rotate(28 107 138)"/></g></g></g>
+          <g class="rise fl e bal" data-c="wine" tabindex="0" role="button" aria-label="Pop the plum balloon"><g class="lean">
+            <path class="str" d="M170 400 C186 350 226 300 252 270 C268 252 272 220 268 196" fill="none" stroke="#F4ECDD" stroke-width="2" stroke-linecap="round"/>
+            <g class="body"><ellipse cx="266" cy="170" rx="28" ry="35" fill="url(#wine)"/><path d="M262 203 L270 203 L266 212Z" fill="url(#wine)"/><ellipse cx="257" cy="157" rx="5" ry="10" fill="#fff" opacity=".5" transform="rotate(28 257 157)"/></g></g></g>
+          <path d="M300 40 l4 -14 l4 14 l14 4 l-14 4 l-4 14 l-4 -14 l-14 -4z" fill="#FBDF9B" aria-hidden="true"/>
+          <path d="M24 60 l3 -9 l3 9 l9 3 l-9 3 l-3 9 l-3 -9 l-9 -3z" fill="#FBDF9B" opacity=".85" aria-hidden="true"/>
+        </svg></div>
+        <div class="reveal" id="reveal" role="status" aria-live="polite" hidden>
+          <span class="rk">Surprise!</span>
+          <p class="rt">That is the whole plan: cake, lights, photos, a hidden gift and everyone shouting.</p>
+          <p class="rs">Now let&rsquo;s build yours.</p>
+          <div class="ra"><a class="btn solid" href="#book">Plan a surprise</a><button type="button" class="btn" id="again">Pop again</button></div>
+        </div>
+        <p class="hint" aria-live="polite"><span id="hintTxt">Go on, pop one</span><button type="button" id="snd" class="snd" aria-pressed="true">Sound on</button></p>
+      </div></div>
+    </div>
+  </section>
+
+  <div class="strip" aria-label="What we do"><div class="track"><div class="seg"><span>Birthday decor</span><span>Personalised gifts</span><span>Concept in 24 hours</span><span>Chennai</span><span>Photos and a reel of the reveal</span><span>Built around one person</span></div><div class="seg" aria-hidden="true"><span>Birthday decor</span><span>Personalised gifts</span><span>Concept in 24 hours</span><span>Chennai</span><span>Photos and a reel of the reveal</span><span>Built around one person</span></div></div></div>
+
+  <section class="s" id="how">
+    <div class="wrap">
+      <div class="head" data-r="up">
+        <h2>How a Decorique birthday comes together</h2>
+        <p>Six steps, and you only do the first one. Give us three days' notice and we handle the rest.</p>
+      </div>
+      <ol class="steps" data-stagger>
+        <li><span class="n">1</span><h3>Tell us about them</h3><p>Date, place, budget, and one question: what are they obsessed with?</p></li>
+        <li><span class="n">2</span><h3>Get the concept</h3><p>A mood image and a fixed price within 24 hours.</p></li>
+        <li><span class="n">3</span><h3>Lock the date</h3><p>A 50% advance holds your slot. The balance is due on the day.</p></li>
+        <li><span class="n">4</span><h3>We build it</h3><p>Gifts are made 3 to 5 days ahead. Decor goes up 2 to 3 hours before the surprise.</p></li>
+        <li><span class="n">5</span><h3>The reveal</h3><p>You walk them in. We capture photos and a reel, with your permission.</p></li>
+        <li><span class="n">6</span><h3>The day after</h3><p>We check in, and a friend you refer gets &#8377;150 off, same as you.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="s" id="prices" style="padding-top:0">
+    <div class="wrap">
+      <div class="head" data-r="up">
+        <h2>Packages and prices</h2>
+        <p>Fixed prices, quoted before you pay anything. Custom themes cost the same as ours.</p>
+      </div>
+      <div class="groups">
+        <div class="group">
+          <h3>Gifts</h3>
+          <div class="cards" data-stagger>
+            <article class="card">
+              <h4>Polaroid set</h4>
+              <p class="price">&#8377;599</p>
+              <p>A string of polaroids made from your photos, each with a caption you pick.</p>
+              <ul><li>Made 3 to 5 days ahead</li><li>Ready to hang or gift</li></ul>
+              <div class="pick"><a class="btn" href="#book" data-pick="Polaroid set (&#8377;599)">Choose this</a></div>
+            </article>
+            <article class="card">
+              <h4>Chart board</h4>
+              <p class="price">&#8377;799</p>
+              <p>Their name and story, told letter by letter on one board, in the style of a "Chapter 20" birthday.</p>
+              <ul><li>Built from your story</li><li>Made 3 to 5 days ahead</li></ul>
+              <div class="pick"><a class="btn" href="#book" data-pick="Chart board (&#8377;799)">Choose this</a></div>
+            </article>
+            <article class="card">
+              <div class="gico"><svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="56" r="34" fill="none" stroke="#F4ECDD" stroke-width="3"/><circle cx="60" cy="56" r="5" fill="#F0B94A"/><path d="M60 22V90M26 56H94M36 32L84 80M84 32L36 80" stroke="#F4ECDD" stroke-width="2"/><g fill="#F2705C"><circle cx="60" cy="22" r="6"/><circle cx="94" cy="56" r="6"/><circle cx="60" cy="90" r="6"/><circle cx="26" cy="56" r="6"/></g><g fill="#F3BDB4"><circle cx="84" cy="32" r="5"/><circle cx="84" cy="80" r="5"/><circle cx="36" cy="80" r="5"/><circle cx="36" cy="32" r="5"/></g><path d="M60 56L40 108M60 56L80 108M30 108H90" stroke="#F4ECDD" stroke-width="3" stroke-linecap="round"/></svg></div>
+              <h4>Photo Ferris wheel</h4>
+              <p class="price ask">Price on request</p>
+              <p>Their favourite photos, riding a wheel we build by hand.</p>
+              <ul><li>Built by hand around your photos</li><li>Made 3 to 5 days ahead</li></ul>
+              <div class="pick"><a class="btn" href="#book" data-pick="Photo Ferris wheel (quote on request)">Ask for a quote</a></div>
+            </article>
+            <article class="card">
+              <div class="gico"><svg viewBox="0 0 120 120" aria-hidden="true"><path d="M60 108V60M60 80L40 62M60 70L82 50" stroke="#F4ECDD" stroke-width="4" stroke-linecap="round"/><g><rect x="22" y="26" width="26" height="30" rx="3" fill="#F4ECDD" transform="rotate(-12 35 41)"/><rect x="26" y="29" width="18" height="18" fill="#F3BDB4" transform="rotate(-12 35 41)"/><rect x="50" y="14" width="26" height="30" rx="3" fill="#F4ECDD" transform="rotate(6 63 29)"/><rect x="54" y="17" width="18" height="18" fill="#F2705C" transform="rotate(6 63 29)"/><rect x="76" y="32" width="26" height="30" rx="3" fill="#F4ECDD" transform="rotate(14 89 47)"/><rect x="80" y="35" width="18" height="18" fill="#F0B94A" transform="rotate(14 89 47)"/></g></svg></div>
+              <h4>Polaroid tree</h4>
+              <p class="price ask">Price on request</p>
+              <p>A little tree that grows polaroids, one memory per branch.</p>
+              <ul><li>One memory per branch</li><li>Made 3 to 5 days ahead</li></ul>
+              <div class="pick"><a class="btn" href="#book" data-pick="Polaroid tree (quote on request)">Ask for a quote</a></div>
+            </article>
+          </div>
+        </div>
+        <div class="group">
+          <h3>Decor and events</h3>
+          <div class="cards" data-stagger>
+            <article class="card feature">
+              <span class="tag">Launch price</span>
+              <h4>Decor Basic</h4>
+              <p class="price">&#8377;1,800<small>then &#8377;2,200</small></p>
+              <p>One themed wall or corner, styled around what they love.</p><p class="spots"><b id="spots">10</b> of 10 launch spots open</p>
+              <ul><li>Balloons, props and lights</li><li>Set up 2 to 3 hours before</li><li>Photos and reel shared with you</li></ul>
+              <div class="pick"><a class="btn solid" href="#book" data-pick="Decor Basic (launch price &#8377;1,800)">Book at launch price</a></div>
+            </article>
+            <article class="card">
+              <h4>Decor Signature</h4>
+              <p class="price">&#8377;2,900</p>
+              <p>A full room, terrace or tent, from backdrop to table.</p>
+              <ul><li>Backdrop and balloon garland</li><li>Lighting and table styling</li><li>A corner made for photos</li></ul>
+              <div class="pick"><a class="btn" href="#book" data-pick="Decor Signature (&#8377;2,900)">Choose this</a></div>
+            </article>
+            <article class="card">
+              <h4>Full event</h4>
+              <p class="price">Custom</p>
+              <p>Decor, cake design, a gift and the whole day, set up and taken down by us.</p>
+              <ul><li>Quoted after a short chat</li><li>Limited dates each month</li></ul>
+              <div class="pick"><a class="btn" href="#book" data-pick="Full event (custom quote)">Ask for a quote</a></div>
+            </article>
+          </div>
+        </div>
+      </div>
+      <p class="note">Launch price: the first 10 Decor Basic bookings pay &#8377;1,800 and agree to share a photo, a video and a short review. Prices cover Chennai. Materials for custom themes are included.</p>
+          <figure class="feat"><img src="img/tentnight.jpg" alt="Photo Ferris wheel and polaroid tree at a candlelit night picnic" loading="lazy" decoding="async"><figcaption>Our handmade Ferris wheel and polaroid tree, set up for a real birthday night.</figcaption></figure>
+    </div>
+  </section>
+
+
+  
+
+  <section class="s" id="setups" style="padding-top:0">
+    <div class="wrap">
+      <div class="head" data-r="up">
+        <h2>Setups we've made</h2>
+        <p>Each one started with a single question about the person.</p>
+      </div>
+      <div class="setups" data-stagger>
+        <article class="setup ph"><img src="img/vogue.jpg" alt="Vogue-style birthday wall with black and cream balloons" loading="lazy" decoding="async"><span class="kind">Decor &middot; 21st birthday</span><h3>The Vogue wall</h3><p>A magazine-cover backdrop with hand-lettered headlines.</p></article>
+        <article class="setup ph"><img src="img/curtain.jpg" alt="Red curtain setup with fairy lights and a GT 650 banner" loading="lazy" decoding="async"><span class="kind">Decor &middot; Surprise</span><h3>GT 650 corner</h3><p>A bike lover's velvet-curtain corner with a racing banner.</p></article>
+        <article class="setup ph"><img src="img/tentnight.jpg" alt="Candlelit night tent with a photo Ferris wheel and polaroid tree" loading="lazy" decoding="async"><span class="kind">Decor &middot; Night picnic</span><h3>The candlelit tent</h3><p>Ferris wheel, polaroid tree and candles in the dark.</p></article>
+        <article class="setup ph"><img src="img/roof.jpg" alt="Terrace decorated with fairy lights, balloons and rose petals" loading="lazy" decoding="async"><span class="kind">Decor &middot; Terrace</span><h3>Fairy-light terrace</h3><p>A rooftop turned into a sky of lights and petals.</p></article>
+        <article class="setup ph"><img src="img/bows.jpg" alt="Red and black balloon setup with bows and gifts" loading="lazy" decoding="async"><span class="kind">Decor &middot; Home</span><h3>Red, black and bows</h3><p>Hanging balloons, paper bows and a wrapped-gift corner.</p></article>
+        <article class="setup ph"><img src="img/tentB.jpg" alt="Indoor tent with gold fringe curtain and balloons" loading="lazy" decoding="async"><span class="kind">Decor &middot; Indoor</span><h3>The golden tent</h3><p>Gold fringe, a pennant banner and a polaroid line.</p></article>
+        <article class="setup ph"><img src="img/cake.jpg" alt="Half Batman, half Spider-Man cake" loading="lazy" decoding="async"><span class="kind">Cake &middot; Custom</span><h3>The split cake</h3><p>Two favourite heroes, one cake.</p></article>
+        <article class="setup ph"><img src="img/photocake.jpg" alt="Chocolate cake topped with small printed photos" loading="lazy" decoding="async"><span class="kind">Cake &middot; Photo toppers</span><h3>Cake of memories</h3><p>Small printed photos, one for each memory.</p></article>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="s" id="story" style="padding-top:0">
+    <div class="wrap">
+      <div class="head" data-r="up">
+        <h2>Why we do this</h2>
+        <p>Decorique started with a group of friends who love making a birthday feel special.</p>
+      </div>
+      <div class="why" data-stagger>
+        <div><b>Make people happy</b><p>A birthday should feel like the whole world remembered. That is the only goal.</p></div>
+        <div><b>Bring out our creative side</b><p>Every wall, chart and gift is designed by us, not picked from a catalogue.</p></div>
+        <div><b>Have fun doing it</b><p>We work as friends, and it shows. You get people who care, not a vendor.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="book" style="padding-top:0">
+    <div class="wrap book">
+      <div class="head" data-r="up">
+        <h2>Book a date</h2>
+        <p>Fill this in and we reply with a concept and a price within 24 hours. Nothing is charged until you confirm.</p>
+      </div>
+      <form id="f" autocomplete="off" data-r="up">
+        <div class="row2">
+          <label for="name">Your name<input id="name" type="text" placeholder="Ananya"></label>
+          <label for="who">Birthday person<input id="who" type="text" placeholder="Her best friend, Meera"></label>
+        </div>
+        <div class="row2">
+          <label for="date">Date<input id="date" type="date"></label>
+          <label for="slot">Setup time
+            <select id="slot"><option>Morning</option><option selected>Afternoon</option><option>Evening</option></select>
+          </label>
+        </div>
+        <label for="area">Area in Chennai<input id="area" type="text" placeholder="Ramapuram"></label>
+        <p class="total" id="clash" hidden role="status" style="color:#ffb3b3"></p>
+        <label for="pkg">Package
+          <select id="pkg">
+            <option>Not sure yet</option>
+            <option>Polaroid set (&#8377;599)</option>
+            <option>Chart board (&#8377;799)</option>
+            <option>Photo Ferris wheel (quote on request)</option>
+            <option>Polaroid tree (quote on request)</option>
+            <option>Decor Basic (launch price &#8377;1,800)</option>
+            <option>Decor Signature (&#8377;2,900)</option>
+            <option>Full event (custom quote)</option>
+          </select>
+        </label>
+        <fieldset class="extras"><legend>Add extras</legend>
+          <label class="chk" for="x1"><input type="checkbox" id="x1" data-x="Polaroid set"><span>Polaroid set <em>&#8377;599</em></span></label>
+          <label class="chk" for="x2"><input type="checkbox" id="x2" data-x="Balloon bouquet"><span>Balloon bouquet <em>&#8377;400</em></span></label>
+          <label class="chk" for="x3"><input type="checkbox" id="x3" data-x="Photo corner"><span>Photo corner <em>&#8377;500</em></span></label>
+          <label class="chk" for="x4"><input type="checkbox" id="x4" data-x="Cake topper"><span>Cake topper <em>&#8377;250</em></span></label>
+        </fieldset>
+        <p class="total">Estimated total <b id="total">&#8377;0</b><small id="totalNote">Your final price is confirmed with the concept.</small></p>
+        <label for="obs">What are they obsessed with?
+          <textarea id="obs" placeholder="Bikes, a film, one colour, an inside joke"></textarea>
+        </label>
+        <div>
+          <p class="eyebrow" style="margin-bottom:8px">Your message</p>
+          <pre class="preview" id="msg" aria-live="polite"></pre>
+        </div>
+        <div class="out">
+          <a class="btn solid" id="wa" href="#book" target="_blank" rel="noopener" hidden>Send on WhatsApp</a>
+          <button class="btn" type="submit" id="copy">Copy message</button>
+          <span class="status" id="status" role="status"></span>
+        </div>
+        <div class="next" id="next" hidden>
+          <h3>What happens next</h3>
+          <ol><li>Your message lands in our WhatsApp. Press send there if it hasn't gone yet.</li><li>Within 24 hours you get a mood image and a fixed price.</li><li>Pay 50% to lock your date. The rest is due on the day.</li></ol>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="s" id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="head" data-r="up"><h2>Questions</h2></div>
+      <div class="faq" data-stagger>
+        <details><summary>How far ahead should I book?</summary><p>At least 3 days for decor and a week for gifts. For a weekend birthday, book earlier. We take a limited number of setups each week so every one gets full attention.</p></details>
+        <details><summary>What if I need to cancel?</summary><p>The 50% advance is refundable until 48 hours before the date. After that we've already bought the materials, so it isn't.</p></details>
+        <details><summary>Can I pick my own theme?</summary><p>Yes, that's the point. Tell us what they love and we design around it. A custom theme costs the same as one of ours.</p></details>
+        <details><summary>Do you work outside Chennai?</summary><p>Decor is Chennai only for now. Gifts will ship across India soon. Message us and we'll tell you what's possible for your city.</p></details>
+        <details><summary>My budget is smaller. What can you do?</summary><p>Tell us the number. A single wall, a polaroid set or a chart board can still make the day, and we'll say plainly what fits.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <svg class="sealfoot" viewBox="0 0 560 560" role="img" aria-label="Decorique seal"><use href="#seal" width="560" height="560"/></svg>
+      <p class="big">Decorique</p>
+      <p>Birthday decor and gifting, made in Chennai. Made by friends, for friends.</p>
+    </div>
+    <div class="links">
+      <a class="btn solid" id="fwa" href="#book" target="_blank" rel="noopener">Message us on WhatsApp</a>
+      <span>Instagram: <strong id="ig">@decorique</strong></span>
+      <span>City: Chennai, Tamil Nadu</span>
+    </div>
+    <div class="copy">&copy; 2026 Decorique. Decor, gifts and surprises.</div>
+  </div>
+</footer>
+
+
+<a id="wafab" class="wafab" href="#book" target="_blank" rel="noopener" hidden aria-label="Chat with Decorique on WhatsApp"><svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M4 4h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-8l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" fill="currentColor"/></svg><span>Chat with us</span></a>
+<script>
+document.documentElement.classList.add('js');
+(function(){
+var RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+var FINE = window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+/* launch spots left: change this number as bookings come in */
+var LAUNCH_SPOTS_LEFT = 10;
+var sp = document.getElementById('spots'); if(sp) sp.textContent = LAUNCH_SPOTS_LEFT;
+
+/* ---------- confetti ---------- */
+var cv = document.getElementById('fx'), cx = cv.getContext('2d'), parts = [], raf = 0, W = 0, H = 0, DPR = Math.min(window.devicePixelRatio||1, FINE ? 2 : 1.5);
+function size(){ W = cv.clientWidth; H = cv.clientHeight; cv.width = W*DPR; cv.height = H*DPR; cx.setTransform(DPR,0,0,DPR,0,0); }
+size(); window.addEventListener('resize', size);
+var COLORS = ['#F2705C','#F0B94A','#F3BDB4','#F4ECDD','#FF9C8A','#FFE9B0','#FFFFFF'];
+function burst(x, y, n, spread, power, pal){
+  if(RM) return;
+  n = Math.round((n || 110) * (FINE ? 1 : .55)); spread = spread || Math.PI*2; power = power || 13;
+  var base = -Math.PI/2;
+  for(var i=0;i<n;i++){
+    var a = base + (Math.random()-.5)*spread, v = power*(0.35+Math.random()*0.9);
+    parts.push({x:x,y:y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,w:5+Math.random()*7,h:3+Math.random()*5,r:Math.random()*6,vr:(Math.random()-.5)*.4,
+      c:(pal||COLORS)[(Math.random()*(pal||COLORS).length)|0],shape:Math.random()<.25?1:0,life:1,decay:.006+Math.random()*.006,wob:Math.random()*6});
+  }
+  if(!raf) raf = requestAnimationFrame(tick);
+}
+function tick(){
+  cx.clearRect(0,0,W,H);
+  for(var i=parts.length-1;i>=0;i--){
+    var p = parts[i];
+    p.vx *= .985; p.vy = p.vy*.985 + .32; p.x += p.vx + Math.sin(p.wob+=.08)*.6; p.y += p.vy; p.r += p.vr; p.life -= p.decay;
+    if(p.life <= 0 || p.y > H+30){ parts.splice(i,1); continue; }
+    cx.save(); cx.globalAlpha = Math.min(1,p.life*1.6); cx.translate(p.x,p.y); cx.rotate(p.r); cx.fillStyle = p.c;
+    if(p.shape){ cx.beginPath(); cx.arc(0,0,p.h*.7,0,6.3); cx.fill(); } else { cx.fillRect(-p.w/2,-p.h/2,p.w,p.h); }
+    cx.restore();
+  }
+  raf = parts.length ? requestAnimationFrame(tick) : 0;
+  if(!raf) cx.clearRect(0,0,W,H);
+}
+document.addEventListener('visibilitychange', function(){ if(document.hidden){ parts.length = 0; } });
+window.__burst = burst;
+
+/* ---------- intro ---------- */
+var hero = document.getElementById('hero'), wm = document.getElementById('wmpath'), timers = [];
+var LEN = 0; try { LEN = Math.ceil(wm.getTotalLength()); } catch(e){}
+if(LEN) wm.style.setProperty('--len', LEN);
+function intro(){
+  timers.forEach(clearTimeout); timers = [];
+  hero.classList.remove('go'); void hero.offsetWidth;
+  timers.push(setTimeout(function(){ hero.classList.add('go'); }, 250));
+}
+if(RM){ hero.classList.add('go'); } else { intro(); }
+var rp = document.getElementById('replay');
+if(rp) rp.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); setTimeout(intro, RM?0:500); });
+
+/* ---------- scroll: progress bar + reveal ---------- */
+var bar = document.getElementById('bar');
+function prog(){ var h = document.documentElement.scrollHeight - innerHeight; bar.style.transform = 'scaleX(' + (h>0 ? Math.min(1, scrollY/h) : 0) + ')'; }
+var pt = 0; window.addEventListener('scroll', function(){ if(!pt){ pt = requestAnimationFrame(function(){ pt = 0; prog(); }); } }, {passive:true}); prog();
+
+var targets = [];
+document.querySelectorAll('[data-r]').forEach(function(e){ targets.push(e); });
+document.querySelectorAll('[data-stagger]').forEach(function(box){
+  Array.prototype.forEach.call(box.children, function(c, i){ c.style.setProperty('--d', (i*0.09)+'s'); targets.push(c); });
+});
+if(!RM && 'IntersectionObserver' in window){
+  var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); }, {threshold:.12, rootMargin:'0px 0px -6% 0px'});
+  targets.forEach(function(t){
+    var r = t.getBoundingClientRect();
+    if(r.top > innerHeight*0.92){ t.classList.add('rv','pre'); io.observe(t); }
+  });
+}
+
+/* ---------- pointer effects (desktop only) ---------- */
+var par = document.getElementById('par');
+if(FINE && !RM){
+  var pnx = 0, pny = 0, pq = 0;
+  document.addEventListener('pointermove', function(e){
+    pnx = (e.clientX/innerWidth - .5); pny = (e.clientY/innerHeight - .5);
+    if(!pq && par){ pq = requestAnimationFrame(function(){ pq = 0; par.style.transform = 'translate3d(' + (pnx*-26) + 'px,' + (pny*-18) + 'px,0)'; }); }
+  }, {passive:true});
+
+  var trail = document.getElementById('trail'), last = 0;
+  document.addEventListener('pointermove', function(e){
+    var t = performance.now(); if(t - last < 45) return; last = t;
+    if(trail.childElementCount > 22) return;
+    var i = document.createElement('i');
+    i.style.left = e.clientX + 'px'; i.style.top = e.clientY + 'px';
+    i.style.setProperty('--dx', ((Math.random()-.5)*40)+'px'); i.style.setProperty('--dy', (10+Math.random()*34)+'px');
+    i.style.background = Math.random()<.5 ? '#FBDF9B' : '#F3BDB4';
+    i.addEventListener('animationend', function(){ i.remove(); });
+    trail.appendChild(i);
+  }, {passive:true});
+
+  document.querySelectorAll('.card').forEach(function(c){
+    c.addEventListener('pointermove', function(e){
+      var r = c.getBoundingClientRect(), px = (e.clientX - r.left)/r.width, py = (e.clientY - r.top)/r.height;
+      c.style.transform = 'perspective(900px) rotateX(' + ((.5-py)*8) + 'deg) rotateY(' + ((px-.5)*10) + 'deg) translateY(-4px)';
+      c.style.setProperty('--mx', (px*100)+'%'); c.style.setProperty('--my', (py*100)+'%');
+    });
+    c.addEventListener('pointerleave', function(){ c.style.transform = ''; });
+  });
+
+  document.querySelectorAll('.btn.solid').forEach(function(b){
+    b.addEventListener('pointermove', function(e){
+      var r = b.getBoundingClientRect();
+      b.style.transform = 'translate(' + ((e.clientX-(r.left+r.width/2))*.22) + 'px,' + ((e.clientY-(r.top+r.height/2))*.35) + 'px)';
+    });
+    b.addEventListener('pointerleave', function(){ b.style.transform = ''; });
+  });
+}
+
+/* ---------- confetti on the main buttons ---------- */
+document.querySelectorAll('a.btn.solid, [data-pick]').forEach(function(b){
+  b.addEventListener('click', function(){ var r = b.getBoundingClientRect(); burst(r.left + r.width/2, r.top + r.height/2, 70, Math.PI*1.5, 11); });
+});
+/* ---------- interactive balloons ---------- */
+(function(){
+  var bals = Array.prototype.slice.call(document.querySelectorAll('.bal'));
+  var PAL = {pearl:['#FFFFFF','#F4ECDD','#CFC3B0','#F0B94A'],rose:['#F2705C','#FF9C8A','#B4402F','#F4ECDD'],blush:['#F3BDB4','#FFE9E4','#C98B86','#F2705C'],gold:['#F0B94A','#FFE9B0','#B98419','#F4ECDD'],wine:['#9A3556','#C45A78','#5E1830','#F3BDB4']};
+  var hint = document.getElementById('hintTxt'), tada = document.getElementById('tada'), snd = document.getElementById('snd');
+  var HINT0 = 'Go on, pop one', popped = 0, soundOn = true, ac = null, resetT = 0;
+
+  function audio(){ if(!ac){ try{ ac = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){} } if(ac && ac.state === 'suspended'){ ac.resume(); } return ac; }
+  function popSound(){
+    if(!soundOn) return; var c = audio(); if(!c) return;
+    var t = c.currentTime, n = Math.floor(c.sampleRate*0.09), buf = c.createBuffer(1,n,c.sampleRate), d = buf.getChannelData(0);
+    for(var i=0;i<n;i++){ d[i] = (Math.random()*2-1)*Math.pow(1-i/n,3); }
+    var src = c.createBufferSource(); src.buffer = buf;
+    var hp = c.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 700;
+    var g = c.createGain(); g.gain.setValueAtTime(.32,t); g.gain.exponentialRampToValueAtTime(.001,t+.1);
+    src.connect(hp); hp.connect(g); g.connect(c.destination); src.start(t);
+    var o = c.createOscillator(), og = c.createGain(); o.type = 'sine'; o.frequency.setValueAtTime(170,t); o.frequency.exponentialRampToValueAtTime(45,t+.08);
+    og.gain.setValueAtTime(.3,t); og.gain.exponentialRampToValueAtTime(.001,t+.1); o.connect(og); og.connect(c.destination); o.start(t); o.stop(t+.12);
+  }
+  function chime(){
+    if(!soundOn) return; var c = audio(); if(!c) return; var t = c.currentTime;
+    [523.25,659.25,783.99,1046.5].forEach(function(f,i){
+      var o = c.createOscillator(), g = c.createGain(); o.type = 'triangle'; o.frequency.value = f;
+      g.gain.setValueAtTime(0.0001,t+i*.08); g.gain.linearRampToValueAtTime(.12,t+i*.08+.02); g.gain.exponentialRampToValueAtTime(.001,t+i*.08+.7);
+      o.connect(g); g.connect(c.destination); o.start(t+i*.08); o.stop(t+i*.08+.75);
+    });
+  }
+  function center(b){ var r = b.querySelector('ellipse').getBoundingClientRect(); return [r.left+r.width/2, r.top+r.height/2]; }
+  function respawn(b){ if(!b.classList.contains('popped')) return; b.classList.remove('popped'); b.classList.add('back'); popped = Math.max(0,popped-1); setTimeout(function(){ b.classList.remove('back'); }, 1100); }
+  function label(){ hint.textContent = popped === 0 ? HINT0 : popped + ' of ' + bals.length + ' popped'; }
+  var revealEl = document.getElementById('reveal'), againBtn = document.getElementById('again');
+  var WISHES = ['Cake first.','Then the fairy lights.','Photos on every wall.','One friend hides the gift.','Everyone shouts surprise.'];
+  function wish(p, n){
+    Array.prototype.forEach.call(document.querySelectorAll('.wish'), function(o){ o.parentNode.removeChild(o); });
+    var d = document.createElement('div'); d.className = 'wish'; d.textContent = WISHES[(n-1) % WISHES.length];
+    var x = Math.max(80, Math.min(innerWidth-80, p[0]));
+    d.style.left = x + 'px'; d.style.top = p[1] + 'px'; document.body.appendChild(d);
+    setTimeout(function(){ if(d.parentNode) d.parentNode.removeChild(d); }, 2400);
+  }
+  function reset(){
+    clearTimeout(resetT); revealEl.classList.remove('on'); revealEl.closest('.hero-art').classList.remove('rev'); setTimeout(function(){ revealEl.hidden = true; }, 400);
+    bals.forEach(function(x,i){ setTimeout(function(){ respawn(x); label(); }, i*160); });
+  }
+  againBtn.addEventListener('click', reset);
+  function pop(b){
+    if(b.classList.contains('popped')) return;
+    b.classList.add('popped'); b.classList.remove('back'); popped++;
+    var p = center(b); burst(p[0], p[1], 46, Math.PI*2, 9, PAL[b.getAttribute('data-c')]); popSound();
+    if(popped < bals.length) wish(p, popped);
+    if(popped >= bals.length){
+      hint.textContent = 'All five popped'; chime();
+      var W2 = innerWidth, H2 = innerHeight;
+      [0,160,320,480,640].forEach(function(dl,i){ setTimeout(function(){ burst(W2*(.12+i*.19), H2*.82, 90, Math.PI*.9, 17); }, dl); });
+      clearTimeout(resetT);
+      setTimeout(function(){ revealEl.hidden = false; void revealEl.offsetWidth; revealEl.classList.add('on'); revealEl.closest('.hero-art').classList.add('rev'); }, 500);
+      resetT = setTimeout(reset, 16000);
+    } else {
+      label();
+      setTimeout(function(){ if(popped < bals.length){ respawn(b); label(); } }, 5500);
+    }
+  }
+  bals.forEach(function(b){
+    b.addEventListener('click', function(){ pop(b); });
+    b.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); pop(b); } });
+  });
+  snd.addEventListener('click', function(){ soundOn = !soundOn; snd.textContent = soundOn ? 'Sound on' : 'Sound off'; snd.setAttribute('aria-pressed', String(soundOn)); if(soundOn) audio(); });
+
+  /* balloons lean away from the pointer */
+  if(window.matchMedia && matchMedia('(hover:hover) and (pointer:fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var st = bals.map(function(b){ return {el:b.querySelector('.lean'), a:0, t:0}; }), running = false;
+    var loop = function(){
+      var moving = false;
+      st.forEach(function(s){ s.a += (s.t - s.a)*.12; if(Math.abs(s.t - s.a) > .03){ moving = true; } s.el.setAttribute('transform','rotate('+s.a.toFixed(2)+' 170 400)'); });
+      if(moving){ requestAnimationFrame(loop); } else { running = false; }
+    };
+    document.addEventListener('pointermove', function(e){
+      bals.forEach(function(b,i){
+        var p = center(b), dx = e.clientX - p[0], dy = e.clientY - p[1], d = Math.sqrt(dx*dx+dy*dy), R = 280;
+        st[i].t = d < R ? -(dx<0?-1:1)*(1 - d/R)*11 : 0;
+      });
+      if(!running){ running = true; requestAnimationFrame(loop); }
+    }, {passive:true});
+  }
+})();
+
+})();
+</script>
+<script>
+/* ================= SETTINGS: edit these, nothing else needs touching ================= */
+/* Bookings go to this WhatsApp number (international format, digits only). */
+var WHATSAPP_NUMBER = '918667828159';
+/* Prices in rupees. Package names must match the dropdown text exactly. */
+var PACKAGE_PRICE = {
+  'Not sure yet': 0,
+  'Polaroid set (\u20b9599)': 599,
+  'Chart board (\u20b9799)': 799,
+  'Photo Ferris wheel (quote on request)': 0,
+  'Polaroid tree (quote on request)': 0,
+  'Decor Basic (launch price \u20b91,800)': 1800,
+  'Decor Signature (\u20b92,900)': 2900,
+  'Full event (custom quote)': 0
+};
+var EXTRA_PRICE = {'Polaroid set': 599, 'Balloon bouquet': 400, 'Photo corner': 500, 'Cake topper': 250};
+/* Slots already taken by a confirmed decor setup. Format 'YYYY-MM-DD|Morning' (or Afternoon, Evening).
+   Use 'YYYY-MM-DD|*' to block a whole day. Paste the list from the Order Log page. */
+var BOOKED_SLOTS = [];
+/* ==================================================================================== */
+
+var f = document.getElementById('f');
+var ids = ['name','who','date','slot','area','pkg','obs'];
+var el = {}; ids.forEach(function(i){ el[i] = document.getElementById(i); });
+var msgEl = document.getElementById('msg'), wa = document.getElementById('wa'), fab = document.getElementById('wafab');
+var status = document.getElementById('status'), totalEl = document.getElementById('total'), totalNote = document.getElementById('totalNote'), nextEl = document.getElementById('next');
+var boxes = Array.prototype.slice.call(document.querySelectorAll('input[data-x]'));
+
+function inr(n){ return '\u20b9' + n.toLocaleString('en-IN'); }
+function fmtDate(v){
+  if(!v) return 'a date I will confirm';
+  var d = new Date(v + 'T00:00:00');
+  return isNaN(d) ? v : d.toLocaleDateString('en-IN', {weekday:'long', day:'numeric', month:'long', year:'numeric'});
+}
+function extras(){ return boxes.filter(function(b){ return b.checked; }).map(function(b){ return b.getAttribute('data-x'); }); }
+function estimate(){
+  var base = PACKAGE_PRICE[el.pkg.value] || 0, ex = extras(), add = ex.reduce(function(t,k){ return t + (EXTRA_PRICE[k]||0); }, 0);
+  return {base:base, add:add, total:base + add, quote:/custom quote/.test(el.pkg.value)};
+}
+function isGift(){ return /^(Polaroid set|Chart board)/.test(el.pkg.value); }
+function clashing(){
+  if(!el.date.value || isGift()) return false;
+  return BOOKED_SLOTS.indexOf(el.date.value + '|*') > -1 || BOOKED_SLOTS.indexOf(el.date.value + '|' + el.slot.value) > -1;
+}
+function freeSlots(){
+  return ['Morning','Afternoon','Evening'].filter(function(s){ return BOOKED_SLOTS.indexOf(el.date.value + '|*') < 0 && BOOKED_SLOTS.indexOf(el.date.value + '|' + s) < 0; });
+}
+function ready(){ return el.name.value.trim() && el.date.value && !clashing(); }
+function build(){
+  var e = estimate(), ex = extras();
+  var lines = [
+    'Hi Decorique! I would like to book a birthday surprise.',
+    '',
+    'Name: ' + (el.name.value.trim() || '(your name)'),
+    'Birthday person: ' + (el.who.value.trim() || '(who is it for?)'),
+    'Date: ' + fmtDate(el.date.value),
+    'Setup time: ' + el.slot.value,
+    'Area: ' + (el.area.value.trim() || '(area in Chennai)'),
+    'Package: ' + el.pkg.value,
+    'Extras: ' + (ex.length ? ex.join(', ') : 'none'),
+    'They are obsessed with: ' + (el.obs.value.trim() || '(tell us in a line)'),
+    '',
+    e.quote ? 'Estimate: custom quote please' : (e.total ? 'Estimated total: ' + inr(e.total) + ' (final price after concept)' : 'Estimate: please suggest a package')
+  ];
+  return lines.join('\n');
+}
+function setLink(a, m){ a.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(m); }
+function refresh(){
+  var m = build(), e = estimate();
+  var cl = document.getElementById('clash');
+  if(clashing()){
+    var fs = freeSlots();
+    cl.textContent = fs.length ? 'That slot is taken. Free that day: ' + fs.join(', ') + '. Or pick another date.' : 'That day is fully booked. Please pick another date.';
+    cl.hidden = false;
+  } else { cl.hidden = true; }
+  msgEl.textContent = m;
+  totalEl.textContent = e.quote ? 'Quote' : inr(e.total);
+  totalNote.textContent = e.quote ? 'We price full events after a short chat.' : 'Your final price is confirmed with the concept.';
+  if(WHATSAPP_NUMBER){
+    wa.hidden = false; setLink(wa, m);
+    wa.setAttribute('aria-disabled', ready() ? 'false' : 'true');
+    fab.hidden = false; setLink(fab, 'Hi Decorique! I would like to plan a birthday surprise.'); var fwa = document.getElementById('fwa'); if(fwa){ setLink(fwa, 'Hi Decorique! I have a question about a birthday setup.'); }
+  }
+}
+/* phone niceties: no past dates, hide the bottom bar while the booking form is on screen */
+try{ el.date.min = new Date().toISOString().slice(0,10); }catch(e){}
+try{
+  var bookEl = document.getElementById('book');
+  if(bookEl && 'IntersectionObserver' in window){
+    new IntersectionObserver(function(en){ fab.classList.toggle('away', en[0].isIntersecting); }, {threshold:0.12}).observe(bookEl);
+  }
+}catch(e){}
+ids.forEach(function(i){ el[i].addEventListener('input', refresh); el[i].addEventListener('change', refresh); });
+boxes.forEach(function(b){ b.addEventListener('change', refresh); });
+
+document.querySelectorAll('[data-pick]').forEach(function(a){
+  a.addEventListener('click', function(){
+    var v = a.getAttribute('data-pick');
+    var tmp = document.createElement('textarea'); tmp.innerHTML = v; v = tmp.value;
+    for(var i = 0; i < el.pkg.options.length; i++){ if(el.pkg.options[i].text === v){ el.pkg.selectedIndex = i; } }
+    refresh();
+  });
+});
+
+wa.addEventListener('click', function(ev){
+  if(!ready()){
+    ev.preventDefault();
+    status.textContent = clashing() ? 'Pick a free slot or another date first.' : 'Add your name and the date first.';
+    (el.name.value.trim() ? el.date : el.name).focus();
+    return;
+  }
+  status.textContent = 'Opening WhatsApp with your message.';
+  nextEl.hidden = false;
+  setTimeout(function(){ nextEl.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 200);
+  if(window.__burst){ var r = wa.getBoundingClientRect(); window.__burst(r.left + r.width/2, r.top, 140, Math.PI*1.5, 14); }
+});
+
+f.addEventListener('submit', function(e){
+  e.preventDefault();
+  var m = build();
+  function done(ok){
+    status.textContent = ok ? 'Copied. Paste it into WhatsApp or an Instagram message.' : 'Select the message above and copy it.';
+    if(ok && window.__burst){ var b = document.getElementById('copy').getBoundingClientRect(); window.__burst(b.left+b.width/2, b.top, 120, Math.PI*1.4, 14); }
+    if(!ok){
+      var r = document.createRange(); r.selectNodeContents(msgEl);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+    }
+  }
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(m).then(function(){ done(true); }, function(){ done(false); });
+  } else { done(false); }
+});
+
+var today = new Date(); today.setDate(today.getDate() + 3);
+try { el.date.min = today.toISOString().slice(0,10); } catch(e){}
+refresh();
+</script>
+</body></html>
