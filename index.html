@@ -543,12 +543,12 @@ footer p{line-height:1.7}
 .setups{grid-template-columns:repeat(4,minmax(0,1fr))}
 .setup.ph{background:var(--wine-900);min-height:0;aspect-ratio:4/5;padding:18px;color:#fff7e3;transition:none}
 .setup.ph:hover{transform:none;box-shadow:none}
-.setup.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.setup.ph img,.setup.ph video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
 .setup.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(43,10,22,0) 38%,rgba(43,10,22,.92) 100%);z-index:0}
 .setup.ph>*{z-index:1}
 .setup.ph h3{font-size:24px}
 .setup.ph p{font-size:14px;min-height:2.9em}
-.setup.ph img[src*="vogue"]{object-position:62% 50%}
+.setup.ph video{object-position:50% 50%}
 .setup.ph img[src*="cake.jpg"]{object-position:50% 60%}
 .setup.ph .kind{font-size:11px}
 .feat{margin:34px 0 0;border-radius:18px;overflow:hidden;border:1px solid var(--line);position:relative}
@@ -561,6 +561,13 @@ footer p{line-height:1.7}
 .gico svg{width:44px;height:44px}
 .card .price.ask{font-size:30px;font-weight:700;line-height:1.1;margin-top:6px}
 .feat{margin-top:28px}
+.feat2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px;max-width:760px;margin-inline:auto}
+.feat2 .feat{margin:0}
+.feat2 .feat img{height:auto;aspect-ratio:4/5;object-position:50% 50%}
+@media (max-width:520px){.feat2{gap:10px}.feat2 figcaption{font-size:12px;padding:30px 12px 10px}}
+.setup.ph img[src*="movie"]{object-position:62% 50%}
+.setup.ph img[src*="beach"]{object-position:45% 60%}
+
 @media (min-width:641px){.group:first-child .cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1000px){.group:first-child .cards{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
@@ -758,6 +765,8 @@ footer p{line-height:1.7}
       </div>
       <p class="note">Launch price: the first 10 Decor Basic bookings pay &#8377;1,800 and agree to share a photo, a video and a short review. Prices cover Chennai. Materials for custom themes are included.</p>
           <figure class="feat"><img src="img/tentnight.jpg" alt="Photo Ferris wheel and polaroid tree at a candlelit night picnic" loading="lazy" decoding="async"><figcaption>Our handmade Ferris wheel and polaroid tree, set up for a real birthday night.</figcaption></figure>
+          <div class="feat2"><figure class="feat"><img src="img/chart.jpg" alt="Black chart board covered in printed photos, doodles and handwritten notes" loading="lazy" decoding="async" style="object-position:50% 40%"><figcaption>A chart board of memories: photos, doodles and handwritten notes.</figcaption></figure>
+          <figure class="feat"><img src="img/spider.jpg" alt="Spider-Man themed ribbon bouquet in black wrap" loading="lazy" decoding="async"><figcaption>A themed bouquet, made to match the birthday person's favourite hero.</figcaption></figure></div>
     </div>
   </section>
 
@@ -771,7 +780,7 @@ footer p{line-height:1.7}
         <p>Each one started with a single question about the person.</p>
       </div>
       <div class="setups" data-stagger>
-        <article class="setup ph"><img src="img/vogue.jpg" alt="Vogue-style birthday wall with black and cream balloons" loading="lazy" decoding="async"><span class="kind">Decor &middot; 21st birthday</span><h3>The Vogue wall</h3><p>A magazine-cover backdrop with hand-lettered headlines.</p></article>
+        <article class="setup ph"><video src="img/vogue.mp4" poster="img/vogue_poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Vogue-style birthday wall with black and cream balloons"></video><span class="kind">Decor &middot; 21st birthday</span><h3>The Vogue wall</h3><p>A magazine-cover backdrop with hand-lettered headlines.</p></article>
         <article class="setup ph"><img src="img/curtain.jpg" alt="Red curtain setup with fairy lights and a GT 650 banner" loading="lazy" decoding="async"><span class="kind">Decor &middot; Surprise</span><h3>GT 650 corner</h3><p>A bike lover's velvet-curtain corner with a racing banner.</p></article>
         <article class="setup ph"><img src="img/tentnight.jpg" alt="Candlelit night tent with a photo Ferris wheel and polaroid tree" loading="lazy" decoding="async"><span class="kind">Decor &middot; Night picnic</span><h3>The candlelit tent</h3><p>Ferris wheel, polaroid tree and candles in the dark.</p></article>
         <article class="setup ph"><img src="img/roof.jpg" alt="Terrace decorated with fairy lights, balloons and rose petals" loading="lazy" decoding="async"><span class="kind">Decor &middot; Terrace</span><h3>Fairy-light terrace</h3><p>A rooftop turned into a sky of lights and petals.</p></article>
@@ -779,6 +788,10 @@ footer p{line-height:1.7}
         <article class="setup ph"><img src="img/tentB.jpg" alt="Indoor tent with gold fringe curtain and balloons" loading="lazy" decoding="async"><span class="kind">Decor &middot; Indoor</span><h3>The golden tent</h3><p>Gold fringe, a pennant banner and a polaroid line.</p></article>
         <article class="setup ph"><img src="img/cake.jpg" alt="Half Batman, half Spider-Man cake" loading="lazy" decoding="async"><span class="kind">Cake &middot; Custom</span><h3>The split cake</h3><p>Two favourite heroes, one cake.</p></article>
         <article class="setup ph"><img src="img/photocake.jpg" alt="Chocolate cake topped with small printed photos" loading="lazy" decoding="async"><span class="kind">Cake &middot; Photo toppers</span><h3>Cake of memories</h3><p>Small printed photos, one for each memory.</p></article>
+        <article class="setup ph"><img src="img/movie.jpg" alt="TV room decorated as a film premiere with film strips and balloons" loading="lazy" decoding="async"><span class="kind">Decor &middot; Movie theme</span><h3>Movie night premiere</h3><p>Film strips, a custom credits screen and a balloon cluster.</p></article>
+        <article class="setup ph"><img src="img/redblack.jpg" alt="Red and black balloon wall with Happy Birthday banner and candlelit fireplace corner" loading="lazy" decoding="async"><span class="kind">Decor &middot; Home</span><h3>The candle hearth</h3><p>Red balloons, paper bows and a glowing candle fireplace.</p></article>
+        <article class="setup ph"><img src="img/princess.jpg" alt="Chocolate cake reading Happy 20 Princess beside a ribbon bouquet" loading="lazy" decoding="async"><span class="kind">Cake &middot; Custom</span><h3>Princess cake</h3><p>Hand-piped message, bunting and a ribbon bouquet.</p></article>
+        <article class="setup ph"><img src="img/beach.jpg" alt="Candlelit beach picnic table with lanterns at night" loading="lazy" decoding="async"><span class="kind">Decor &middot; Beach night</span><h3>Beach candle table</h3><p>Low table, lanterns and tea lights by the sea.</p></article>
       </div>
     </div>
   </section>
@@ -1130,7 +1143,7 @@ function estimate(){
   var base = PACKAGE_PRICE[el.pkg.value] || 0, ex = extras(), add = ex.reduce(function(t,k){ return t + (EXTRA_PRICE[k]||0); }, 0);
   return {base:base, add:add, total:base + add, quote:/custom quote/.test(el.pkg.value)};
 }
-function isGift(){ return /^(Polaroid set|Chart board|Photo Ferris wheel|Polaroid tree)/.test(el.pkg.value); }
+function isGift(){ return /^(Polaroid set|Chart board)/.test(el.pkg.value); }
 function clashing(){
   if(!el.date.value || isGift()) return false;
   return BOOKED_SLOTS.indexOf(el.date.value + '|*') > -1 || BOOKED_SLOTS.indexOf(el.date.value + '|' + el.slot.value) > -1;
@@ -1228,7 +1241,6 @@ var today = new Date(); today.setDate(today.getDate() + 3);
 try { el.date.min = today.toISOString().slice(0,10); } catch(e){}
 refresh();
 </script>
-
 <script>
 /* ===== Order log connection (Supabase). The key below is the public anon key; it can only INSERT bookings. ===== */
 (function(){
