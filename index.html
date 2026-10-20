@@ -1245,9 +1245,9 @@ refresh();
 /* ===== Order log connection (Supabase). The key below is the public anon key; it can only INSERT bookings. ===== */
 (function(){
   var SB_URL = 'https://cbkzelyrgxfazcqwunqu.supabase.co';
-  var SB_KEY = '__SUPABASE_ANON_KEY__';
+  var SB_KEY = 'sb_publishable_x1g9tEmAtugyn85r9xyt4w_xFBeWxOJ';
   if(SB_KEY.indexOf('__') === 0) return;
-  var H = {'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json'};
+  var H = {'apikey': SB_KEY, 'Content-Type': 'application/json'};
   /* 1. Pull confirmed decor slots so the form blocks them automatically. */
   fetch(SB_URL + '/rest/v1/rpc/booked_slots', {method:'POST', headers:H, body:'{}'})
     .then(function(r){ return r.ok ? r.json() : []; })
