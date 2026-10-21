@@ -17,7 +17,7 @@ if (stage && webgl()){
 }
 
 function start(){
-  const PHOTOS = ['chart', 'princess', 'roof', 'cake', 'curtain', 'photocake', 'redblack', 'bows'];
+  const PHOTOS = ['tent-gift', 'redroom-friends', 'racing-guest', 'rooftop', 'vogue-cover', 'tent-balloons', 'redroom-portrait', 'spider-room'];
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 1.75));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -88,7 +88,8 @@ function start(){
 
   // the polaroids
   const loader = new THREE.TextureLoader();
-  const paper = new THREE.MeshStandardMaterial({ color: 0xf4ecdd, roughness: 0.8, side: THREE.DoubleSide });
+  // the card is drawn first and the photo after it, pulled forward, so the two never fight over the same depth
+  const paper = new THREE.MeshStandardMaterial({ color: 0xf4ecdd, roughness: 0.8, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1 });
   const cards = [];
   PHOTOS.forEach((name, i) => {
     const a = (i / N) * Math.PI * 2 + Math.PI / N;
@@ -96,10 +97,10 @@ function start(){
     const swing = new THREE.Group(); pivot.add(swing);
     const card = new THREE.Group(); card.position.y = -0.92; swing.add(card);
     const back = new THREE.Mesh(new THREE.PlaneGeometry(1.06, 1.32), paper); card.add(back);
-    const tex = loader.load('img/' + name + '.jpg', (t) => { fit(t, 0.9 / 0.98); if (!running) draw(); });
+    const tex = loader.load('img/' + name + '.jpg', (t) => { fit(t, 0.9 / 0.98); dirty = true; });
     tex.colorSpace = THREE.SRGBColorSpace; tex.anisotropy = 4;
     const photo = new THREE.Mesh(new THREE.PlaneGeometry(0.9, 0.98), new THREE.MeshBasicMaterial({ map: tex, toneMapped: false }));
-    photo.position.set(0, 0.1, 0.002); card.add(photo);
+    photo.position.set(0, 0.1, 0.012); photo.renderOrder = 1; card.add(photo);
     swing.add(rod(new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, -0.28, 0), 0.012, joint));
     const clip = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.06, 0.03), joint); clip.position.set(0, -0.3, 0.01); swing.add(clip);
     wheel.add(pivot);
@@ -123,64 +124,74 @@ function start(){
     camera.position.y = -0.9;
     camera.lookAt(0, -0.9, 0);
     camera.updateProjectionMatrix();
-    draw();
+    dirty = true;
   }
 
-  // motion: idle turn + scroll + drag with inertia
-  let angle = 0, vel = reduced ? 0 : 0.12, idle = reduced ? 0 : 0.12, drag = null, lastScroll = scrollY, hover = -1;
+  // motion: a slow turn of its own, a nudge from the scroll, and drag with inertia.
+  // Speeds are capped, so a quick flick or a fast scroll can never send it spinning wildly.
+  const MAXV = 3.5;
+  let angle = 0, vel = reduced ? 0 : 0.12, idle = reduced ? 0 : 0.12, drag = null, lastScroll = scrollY, hover = -1, dirty = true;
+  const clampV = (v) => Math.max(-MAXV, Math.min(MAXV, v));
   const ray = new THREE.Raycaster(), ndc = new THREE.Vector2(), tilt = { x: 0, y: 0, tx: 0, ty: 0 };
   const el = renderer.domElement;
   el.style.touchAction = 'pan-y';
-  el.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, a: angle, t: performance.now(), lastX: e.clientX }; el.setPointerCapture(e.pointerId); el.classList.add('grab'); });
+  el.addEventListener('pointerdown', (e) => { drag = { t: performance.now(), lastX: e.clientX }; vel = 0; el.setPointerCapture(e.pointerId); wake(); });
   el.addEventListener('pointermove', (e) => {
     const r = el.getBoundingClientRect();
     ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
-    tilt.tx = ndc.x * 0.12; tilt.ty = ndc.y * 0.08;
+    if (!reduced){ tilt.tx = ndc.x * 0.12; tilt.ty = ndc.y * 0.08; }
     if (drag){
-      const dx = e.clientX - drag.lastX, now = performance.now();
-      angle -= dx * 0.008; vel = -dx * 0.008 / Math.max(0.008, (now - drag.t) / 1000); drag.lastX = e.clientX; drag.t = now;
+      const now = performance.now(), dx = e.clientX - drag.lastX, dt = Math.max(0.016, (now - drag.t) / 1000);
+      angle -= dx * 0.006;
+      vel = clampV(vel * 0.6 + (-dx * 0.006 / dt) * 0.4);   // smoothed, so the release speed matches the hand
+      drag.lastX = e.clientX; drag.t = now;
     }
     ray.setFromCamera(ndc, camera);
     const hit = ray.intersectObjects(cards.flatMap((c) => c.hit))[0];
     hover = hit ? hit.object.userData.c : -1;
     el.style.cursor = drag ? 'grabbing' : hover > -1 ? 'pointer' : 'grab';
-    if (!running) draw();
+    wake();
   });
-  const end = () => { drag = null; el.classList.remove('grab'); };
+  const end = () => { if (drag && performance.now() - drag.t > 80) vel = 0; drag = null; wake(); };
   el.addEventListener('pointerup', end); el.addEventListener('pointercancel', end);
-  el.addEventListener('pointerleave', () => { hover = -1; tilt.tx = tilt.ty = 0; });
-  addEventListener('scroll', () => { const d = scrollY - lastScroll; lastScroll = scrollY; if (!reduced && !drag) vel += d * 0.0009; }, { passive: true });
+  el.addEventListener('pointerleave', () => { hover = -1; tilt.tx = tilt.ty = 0; wake(); });
+  addEventListener('scroll', () => { const d = scrollY - lastScroll; lastScroll = scrollY; if (!reduced && !drag && visible) { vel = clampV(vel + Math.max(-30, Math.min(30, d)) * 0.004); wake(); } }, { passive: true });
   const spin = document.getElementById('wheelSpin');
-  if (spin) spin.addEventListener('click', () => { vel += reduced ? 0 : 3.2; if (reduced){ angle += Math.PI / 4; draw(); } });
+  if (spin) spin.addEventListener('click', () => { vel = clampV(vel + 2.6); wake(); });
 
-  function draw(){
+  function draw(dt){
+    const k = Math.min(1, dt * 9);
+    let moving = false;
     wheel.rotation.z = angle;
     cards.forEach((c, i) => {
       c.pivot.rotation.z = -angle;                     // the polaroids hang upright as the wheel turns
-      const target = hover === i ? 1 : 0;
-      c.lift += (target - c.lift) * 0.15;
-      c.card.position.z = c.lift * 0.6;
+      const target = hover === i ? 1 : 0, prev = c.lift;
+      c.lift += (target - c.lift) * k;
+      if (Math.abs(c.lift - prev) > 0.001) moving = true;
+      c.card.position.z = 0.02 + c.lift * 0.6;
       c.card.scale.setScalar(1 + c.lift * 0.22);
     });
-    tilt.x += (tilt.tx - tilt.x) * 0.06; tilt.y += (tilt.ty - tilt.y) * 0.06;
+    tilt.x += (tilt.tx - tilt.x) * Math.min(1, dt * 4); tilt.y += (tilt.ty - tilt.y) * Math.min(1, dt * 4);
     all.rotation.y = -0.18 + tilt.x; all.rotation.x = tilt.y;
     renderer.render(scene, camera);
+    return moving || Math.abs(tilt.tx - tilt.x) > 0.001;
   }
 
-  let running = false, last = performance.now();
+  // one loop, running only while the wheel is on screen and something is moving
+  let visible = false, looping = false, last = performance.now();
+  function wake(){ dirty = true; if (visible && !looping){ looping = true; last = performance.now(); requestAnimationFrame(loop); } }
   function loop(now){
-    if (!running) return;
     const dt = Math.min(0.05, (now - last) / 1000); last = now;
-    if (!drag){ vel += (idle - vel) * Math.min(1, dt * 1.2); angle += vel * dt; }
+    if (!drag){ vel += (idle - vel) * Math.min(1, dt * (reduced ? 4 : 0.9)); angle += vel * dt; }
     const t = now / 1000;
-    cards.forEach((c) => { c.swing.rotation.z = Math.sin(t * 1.3 + c.phase) * 0.05 - vel * 0.04; });
-    bulbs.forEach((b, i) => { b.material.opacity = 0.65 + 0.35 * Math.sin(t * 2.2 + i * 0.9); });
-    draw();
-    requestAnimationFrame(loop);
+    cards.forEach((c) => { c.swing.rotation.z = (reduced ? 0 : Math.sin(t * 1.3 + c.phase) * 0.05) - vel * 0.03; });
+    if (!reduced) bulbs.forEach((b, i) => { b.material.opacity = 0.65 + 0.35 * Math.sin(t * 2.2 + i * 0.9); });
+    const anim = draw(dt); dirty = false;
+    const still = Math.abs(vel) < 0.002 && !drag && !anim;
+    if (visible && (!reduced || !still)) requestAnimationFrame(loop); else looping = false;
   }
   new ResizeObserver(size).observe(stage); size();
-  if (!reduced){
-    new IntersectionObserver((en) => { running = en[0].isIntersecting; if (running){ last = performance.now(); requestAnimationFrame(loop); } }).observe(stage);
-  }
+  new IntersectionObserver((en) => { visible = en[0].isIntersecting; if (visible) wake(); }).observe(stage);
+  setInterval(() => { if (dirty && !looping && visible) wake(); }, 250);
   stage.classList.add('on');
 }

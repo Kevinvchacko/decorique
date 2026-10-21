@@ -12,7 +12,8 @@ const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 function webgl(){ try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch(e){ return false; } }
 
-if (holder && wide.matches && !reduced && webgl()) start();
+// with reduced motion the balloons still show and still pop, they just hold still
+if (holder && wide.matches && webgl()) start();
 
 function start(){
   holder.classList.add('on');   // shown first, so the canvas is measured at its real size
@@ -154,8 +155,8 @@ function start(){
     const t = now / 1000, sy = scrollY / H * visH;
     balloons.forEach((b, i) => {
       // spring back to rest, pushed by the pointer
-      const lift = sy * (0.25 + 0.08 * (i % 3));
-      if (ptr.on){
+      const lift = reduced ? 0 : sy * (0.25 + 0.08 * (i % 3));
+      if (ptr.on && !reduced){
         tmp.set(b.base.x + b.off.x - ptr.x, b.base.y + b.off.y + lift - ptr.y, 0);
         const d = tmp.length(), R = 1.6 * b.scale;
         if (d < R && d > 0.001) b.vel.addScaledVector(tmp.normalize(), (1 - d / R) * 22 * dt);
@@ -163,10 +164,10 @@ function start(){
       b.vel.addScaledVector(b.off, -6 * dt);
       b.vel.multiplyScalar(1 - 2.6 * dt);
       b.off.addScaledVector(b.vel, dt);
-      const bob = Math.sin(t * 0.9 + b.phase) * 0.12;
+      const bob = reduced ? 0 : Math.sin(t * 0.9 + b.phase) * 0.12;
       b.g.position.set(b.base.x + b.off.x, b.base.y + b.off.y + bob + lift, 0);
-      b.g.rotation.z = Math.sin(t * 0.7 + b.phase) * 0.06 - b.vel.x * 0.25;
-      b.g.rotation.y = t * 0.25 + b.phase;
+      b.g.rotation.z = reduced ? 0 : Math.sin(t * 0.7 + b.phase) * 0.06 - b.vel.x * 0.25;
+      b.g.rotation.y = reduced ? b.phase : t * 0.25 + b.phase;
       let s = b.scale;
       if (b.popped){ const k = (now - b.popped) / 90; s = k < 1 ? b.scale * (1 + 0.35 * k) : 0; }
       else if (b.back){ const k = Math.min(1, (now - b.back) / 700); s = b.scale * (1 - Math.pow(1 - k, 3)); if (k >= 1) b.back = 0; }

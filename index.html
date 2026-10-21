@@ -131,17 +131,27 @@ main{position:relative;z-index:2;background:var(--field)}
 .cout .cn i{font-style:normal;display:inline-block;white-space:pre;animation:letter .5s var(--spring) both;animation-delay:calc(var(--i)*28ms)}
 @keyframes letter{from{opacity:0;transform:translateY(.5em) rotate(8deg) scale(.6)}to{opacity:1;transform:none}}
 
-/* polaroids tucked behind the card */
-.pol{position:absolute;z-index:1;margin:0;width:clamp(190px,17vw,272px);background:var(--paper);padding:12px 12px 0;color:var(--ink);transition:transform .9s var(--ease-out)}
-.pol img{width:100%;aspect-ratio:1;object-fit:cover}
-.pol figcaption{font:400 var(--s-small)/1 var(--display);padding:16px 2px 18px;text-align:center}
-.pol.a{left:var(--m);top:clamp(200px,22vw,320px);--rot:-7deg;transform:rotate(var(--rot))}
-.pol.b{right:var(--m);top:clamp(300px,30vw,440px);--rot:6deg;transform:rotate(var(--rot))}
-.pol.c{left:calc(var(--m) + 3vw);top:clamp(560px,52vw,760px);--rot:4deg;transform:rotate(var(--rot));width:clamp(170px,14vw,230px)}
-.pol.d{right:calc(var(--m) + 2vw);top:clamp(720px,64vw,980px);--rot:-5deg;transform:rotate(var(--rot));width:clamp(170px,14vw,230px)}
-.pol.a img{object-position:45% 50%}
-@media (max-width:1180px){.pol.c,.pol.d{display:none}}
-@media (max-width:900px){.pol{display:none}}
+/* polaroids pegged on a string of fairy lights, hanging from the top of the page */
+.hero{--gh:clamp(200px,19vw,300px);padding-top:calc(var(--gh) + 16px)}
+.garland{--pw:clamp(92px,8.4vw,136px);position:absolute;left:0;right:0;top:0;height:var(--gh);z-index:4;pointer-events:none}
+.garland.team{position:relative;height:clamp(230px,22vw,320px);--pw:clamp(110px,10vw,160px);width:100%;margin-bottom:-24px}
+.gl-string{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.gl-string path{fill:none;stroke:#e8d2b4;stroke-width:2}
+.gl-string circle{fill:#ffe1a0;animation:twinkle 2.8s ease-in-out infinite;animation-delay:var(--d,0s)}
+@keyframes twinkle{50%{opacity:.35}}
+.gp{position:absolute;top:0;left:0;width:var(--pw);margin:0;padding:0;border:0;background:none;color:var(--ink);cursor:pointer;pointer-events:auto;transform-origin:50% 0;will-change:transform;-webkit-tap-highlight-color:transparent}
+.gp .thread{display:block;width:2px;height:var(--len,12px);margin:0 auto;background:#e8d2b4}
+.gp .peg{display:block;width:12px;height:22px;margin:-4px auto -10px;position:relative;z-index:2;background:#c9a273}
+.gp .in{display:block;position:relative;transform-style:preserve-3d;transition:transform .9s var(--spring)}
+.gp.on .in{transform:rotateY(180deg)}
+.gp .fr,.gp .bk{display:block;background:var(--paper);padding:7px 7px 0;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.gp .fr img{width:100%;aspect-ratio:1;object-fit:cover;pointer-events:none}
+.gp .fr span{display:block;font:400 var(--s-small)/1.1 var(--display);padding:9px 0 11px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gp .bk{position:absolute;inset:0;transform:rotateY(180deg);display:grid;place-items:center;padding:12px;font:italic 400 var(--s-small)/1.3 var(--text);text-align:center}
+.gp:focus-visible{outline:none}
+.gp:focus-visible .fr{outline:3px solid var(--gold);outline-offset:2px}
+@media (max-width:1000px){.hero .garland .gp .fr{padding-bottom:16px}.hero .garland .gp .fr span{display:none}}
+@media (max-width:640px){.hero .garland .gp:nth-child(n+7){display:none}.garland{--pw:74px}.hero{--gh:176px}.garland.team{--pw:86px;height:200px}.gp .fr{padding-bottom:16px}.gp .fr span{display:none}.gp .thread{height:calc(var(--len,12px) * .5)}}
 
 /* ===== sections ===== */
 .sec{padding:var(--gap-section) var(--m) 0}
@@ -264,6 +274,8 @@ label.chk em{font-style:normal;font-weight:600}
 .total b.bump{animation:bump .5s var(--spring)}
 @keyframes bump{40%{transform:scale(1.08) translateY(-3px)}}
 #clash{color:#A3261A;font-weight:600}
+.advbox{background:var(--gold);padding:16px 18px;font-size:var(--s-small);display:grid;gap:6px;animation:advIn .5s var(--ease-out)}
+@keyframes advIn{from{opacity:0;transform:translateY(-8px)}}
 .msgbox p{font-size:var(--s-small);font-weight:600;margin-bottom:8px}
 .preview{margin:0;background:var(--paper-2);padding:16px;font:400 var(--s-small)/1.55 var(--text);color:var(--ink-soft);white-space:pre-wrap;overflow-wrap:anywhere;max-height:220px;overflow:auto}
 .out{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
@@ -328,7 +340,6 @@ footer{position:relative;z-index:1;background:var(--field-deep);padding:clamp(56
 .balloons canvas{display:block;width:100%;height:100%}
 .pophint{position:absolute;z-index:3;left:var(--m);top:calc(100svh - 120px);max-width:170px;font-size:var(--s-small);font-weight:600;color:var(--on-soft);opacity:0;transition:opacity .8s ease 2.4s;pointer-events:none}
 .balloons.on ~ .pophint{opacity:1}
-.balloons.on ~ .pol.a,.balloons.on ~ .pol.b{display:none}
 .card{will-change:transform}
 
 /* ===== the reveal: a photo that opens to the whole screen ===== */
@@ -337,14 +348,14 @@ footer{position:relative;z-index:1;background:var(--field-deep);padding:clamp(56
 .rv-copy h2{font-size:var(--s-head);margin-bottom:20px}
 .rv-copy p{font-size:var(--s-lead);line-height:1.4;max-width:30ch}
 .rv-photo{margin:0;overflow:hidden}
-.rv-photo img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:45% 50%}
+.rv-photo img,.rv-photo video{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:45% 50%}
 .rv-line{font:400 var(--s-lead)/1.25 var(--display);letter-spacing:-.01em;max-width:24ch;background:var(--paper);color:var(--ink);padding:22px 26px;justify-self:start}
 html.js .reveal.is-live .scene-stage{padding:0;display:block}
 html.js .reveal.is-live .rv-copy{position:absolute;z-index:2;left:var(--m);right:var(--m);top:max(96px,12svh);display:flex;justify-content:space-between;align-items:flex-end;gap:32px}
 html.js .reveal.is-live .rv-copy h2{margin:0;white-space:nowrap}
 html.js .reveal.is-live .rv-copy p{max-width:28ch}
 html.js .reveal.is-live .rv-photo{position:absolute;inset:0;z-index:1;clip-path:inset(36% 30% 10% 30%)}
-html.js .reveal.is-live .rv-photo img{height:100%;aspect-ratio:auto;transform-origin:50% 50%}
+html.js .reveal.is-live .rv-photo img,html.js .reveal.is-live .rv-photo video{height:100%;aspect-ratio:auto;transform-origin:50% 50%}
 html.js .reveal.is-live .rv-line{position:absolute;z-index:3;left:var(--m);bottom:clamp(24px,5vh,56px);opacity:0}
 @media (max-width:767px){
   html.js .reveal.is-live .rv-copy{top:max(76px,9svh);display:block}
@@ -371,6 +382,48 @@ html.js .reveal.is-live .rv-line{position:absolute;z-index:3;left:var(--m);botto
   .wheel-stage{height:72svh;min-height:420px;margin-top:24px;margin-inline:calc(-1*var(--m))}
 }
 
+/* ===== customised gifts ===== */
+.gifts-head{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:end;margin-bottom:56px}
+.gifts-head>div{grid-column:1/8}
+.gifts-clip{grid-column:9/13;margin:0;justify-self:end;width:min(100%,320px)}
+.gifts-clip .ph{aspect-ratio:4/5;overflow:hidden;background:var(--field-2)}
+.gifts-clip video{width:100%;height:100%;object-fit:cover}
+.gifts-clip figcaption{font-size:var(--s-small);color:var(--on-soft);margin-top:10px}
+.advance{--n:18px;display:grid;grid-template-columns:1fr 1.3fr;background:var(--paper);color:var(--ink);margin-bottom:72px;
+  -webkit-mask:radial-gradient(circle var(--n) at 0 50%,#0000 97%,#000) 0 0/51% 100% no-repeat,radial-gradient(circle var(--n) at 100% 50%,#0000 97%,#000) 100% 0/51% 100% no-repeat; /* taste-skill-ignore: ticket notches */
+          mask:radial-gradient(circle var(--n) at 0 50%,#0000 97%,#000) 0 0/51% 100% no-repeat,radial-gradient(circle var(--n) at 100% 50%,#0000 97%,#000) 100% 0/51% 100% no-repeat} /* taste-skill-ignore */
+.adv-main{padding:clamp(28px,4vw,52px);background:var(--gold)}
+.adv-main h3{font:400 var(--s-lead)/1.15 var(--display);letter-spacing:-.01em;margin-bottom:14px}
+.adv-main p{max-width:40ch}
+.adv-steps{list-style:none;margin:0;padding:clamp(28px,4vw,52px);display:grid;gap:18px;border-left:7px dotted var(--field);align-content:center}
+.adv-steps b{display:block;font-weight:600}
+.gift-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:36px 20px}
+.gift{background:var(--paper);color:var(--ink);padding:10px 10px 18px;display:flex;flex-direction:column;gap:8px;transform:rotate(var(--tilt,0deg));transition:transform .6s var(--spring)}
+.gift:nth-child(4n+1){--tilt:-1.6deg}.gift:nth-child(4n+2){--tilt:1.2deg}.gift:nth-child(4n+3){--tilt:-.6deg}.gift:nth-child(4n+4){--tilt:1.8deg}
+.gift:hover{transform:rotate(0deg) translateY(-8px) scale(1.02)}
+.gift .ph{aspect-ratio:4/5;overflow:hidden;background:var(--paper-2);margin-bottom:6px}
+.gift .ph img,.gift .ph video{width:100%;height:100%;object-fit:cover;transition:transform 1.1s var(--ease-out)}
+.gift:hover .ph img,.gift:hover .ph video{transform:scale(1.06)}
+.gift-t{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.gift-t h3{font:600 var(--s-body)/1.2 var(--text);letter-spacing:0}
+.gift-t b{font-size:var(--s-small);white-space:nowrap}
+.gift p{font-size:var(--s-small);color:var(--ink-soft);line-height:1.45;flex:1}
+.gift .btn{min-height:44px;margin-top:6px;align-self:flex-start;padding:0 18px}
+.gifts-note{font-size:var(--s-small);color:var(--on-soft);margin-top:48px;max-width:70ch}
+@media (max-width:1100px){.gift-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){
+  .gifts-head{grid-template-columns:1fr;margin-bottom:36px}.gifts-head>div,.gifts-clip{grid-column:1}.gifts-clip{justify-self:start;width:62%}
+  .advance{grid-template-columns:1fr;-webkit-mask:none;mask:none}
+  .adv-steps{border-left:0;border-top:7px dotted var(--field)}
+  .gift-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
+  .gift{padding:7px 7px 12px}.gift .btn{width:100%;padding:0 8px}
+  .gift-t{flex-direction:column;gap:2px}
+}
+
+/* paper and coral fields sit on the wine like cards, with scalloped edges, so the page reads as one piece */
+.prices,.letter-wrap{-webkit-mask:radial-gradient(circle 22px at 50% 0,#0000 97%,#000) 0 0/44px 22px repeat-x,linear-gradient(#000 0 0) 0 22px/100% calc(100% - 44px) no-repeat,radial-gradient(circle 22px at 50% 100%,#0000 97%,#000) 0 100%/44px 22px repeat-x; /* taste-skill-ignore: scalloped edges */
+  mask:radial-gradient(circle 22px at 50% 0,#0000 97%,#000) 0 0/44px 22px repeat-x,linear-gradient(#000 0 0) 0 22px/100% calc(100% - 44px) no-repeat,radial-gradient(circle 22px at 50% 100%,#0000 97%,#000) 0 100%/44px 22px repeat-x} /* taste-skill-ignore */
+
 /* heading words rise out of their own line */
 .sw .w{display:inline-block;overflow:clip;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
 .sw .w>span{display:inline-block}
@@ -390,8 +443,8 @@ html.js .reveal.is-live .rv-line{position:absolute;z-index:3;left:var(--m);botto
 .js .hero .card{transition:opacity .9s ease .1s,transform 1.4s var(--ease-out) .1s}
 .js .hero:not(.go) .card>.q{opacity:0;transform:translateY(18px)}
 .js .hero .card>.q{transition:opacity .8s ease var(--s),transform 1s var(--ease-out) var(--s)}
-.js .hero:not(.go) .pol{opacity:0;transform:translateY(120px) rotate(calc(var(--rot) * -2))}
-.js .hero .pol{transition:opacity .9s ease var(--s),transform 1.6s var(--ease-out) var(--s)}
+.js .hero:not(.go) .garland{opacity:0;transform:translateY(-60px)}
+.js .hero .garland{transition:opacity .9s ease .2s,transform 1.4s var(--spring) .2s}
 .js .hero:not(.go) .seal{transform:rotate(-120deg) scale(.6)}
 .js .hero .seal{transition:transform 1.6s var(--spring) .45s}
 
@@ -420,7 +473,7 @@ html.js .reveal.is-live .rv-line{position:absolute;z-index:3;left:var(--m);botto
   .post .msg{padding-right:84px}
 }
 @media (max-width:640px){
-  .hero{padding:24px 12px 0}
+  .hero{padding:calc(var(--gh) + 6px) 12px 0}
   .card{--r:22px}
   .card h1 .l1,.card h1 .l2{transform:none}
   .card .acts{flex-direction:column;width:100%}
@@ -467,6 +520,7 @@ html.js .reveal.is-live .rv-line{position:absolute;z-index:3;left:var(--m);botto
   <nav aria-label="Sections">
     <a href="#how">How it works</a>
     <a href="#prices">Prices</a>
+    <a href="#gifts">Gifts</a>
     <a href="#setups">Setups</a>
     <a href="#faq">Questions</a>
   </nav>
@@ -477,10 +531,17 @@ html.js .reveal.is-live .rv-line{position:absolute;z-index:3;left:var(--m);botto
   <section class="hero" id="hero" aria-label="Decorique">
     <div class="balloons" id="balloons" aria-hidden="true"></div>
     <p class="pophint" id="popHint" aria-hidden="true">Go on, pop a balloon.</p>
-    <figure class="pol a" style="--s:.55s" data-depth="-.10"><img src="img/tentnight.jpg" alt="A birthday girl holding a candlelit cake in a night tent, beside a photo Ferris wheel" width="1100" height="825" fetchpriority="high"><figcaption>The candlelit tent</figcaption></figure>
-    <figure class="pol b" style="--s:.7s" data-depth="-.16"><img src="img/roof.jpg" alt="Terrace with fairy lights, red and white balloons and rose petals" width="825" height="1100"><figcaption>Fairy-light terrace</figcaption></figure>
-    <figure class="pol c" style="--s:.85s" data-depth="-.06"><img src="img/chart.jpg" alt="Chart board covered in printed photos and handwritten notes" width="825" height="1100" loading="lazy"><figcaption>A chart board</figcaption></figure>
-    <figure class="pol d" style="--s:1s" data-depth="-.12"><img src="img/curtain.jpg" alt="Red curtain corner with fairy lights and a GT 650 banner" width="825" height="1100" loading="lazy"><figcaption>GT 650 corner</figcaption></figure>
+    <div class="garland" data-garland aria-label="Polaroids from real Decorique birthdays. Tap one to turn it over.">
+      <button type="button" class="gp" style="--len:6px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/tentnight.jpg" alt="Birthday girl with a candlelit cake in a beach tent" width="1100" height="825" style="object-position:45% 50%"><span>Beach tent</span></span><span class="bk">A tent of candles on the beach, and a Ferris wheel of her photos.</span></span></button>
+      <button type="button" class="gp" style="--len:30px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/rooftop.jpg" alt="Rooftop with fairy lights, red and white balloons and rose petals" width="1050" height="1400"><span>Rooftop, 20th</span></span><span class="bk">An empty terrace, until now. Petals, lights and a cake made for her.</span></span></button>
+      <button type="button" class="gp" style="--len:14px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/racing.jpg" alt="Racing-pit setup with red curtains, a bike and a cake" width="1050" height="1400"><span>Racing pit</span></span><span class="bk">Checkered flags and a speed-limit 21 sign for a bike lover.</span></span></button>
+      <button type="button" class="gp" style="--len:40px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/vogue-cover.jpg" alt="A Vogue magazine cover with the birthday girl on an easel" width="1050" height="1400"><span>Vogue, 21st</span></span><span class="bk">She got her own magazine cover. Issue no. 21.</span></span></button>
+      <button type="button" class="gp" style="--len:8px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/redroom-portrait.jpg" alt="Birthday girl in a red and black room of hanging balloons" width="788" height="1400" style="object-position:50% 30%"><span>Red &amp; black</span></span><span class="bk">Red, black, white. Balloons hung at different heights.</span></span></button>
+      <button type="button" class="gp" style="--len:34px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/tent-gift.jpg" alt="Birthday girl holding up a photo gift in a fairy-light tent" width="787" height="1400" style="object-position:50% 40%"><span>Gift after gift</span></span><span class="bk">One gift at a time, in a tent of fairy lights.</span></span></button>
+      <button type="button" class="gp" style="--len:12px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/fireworks.jpg" alt="Fireworks over a rooftop birthday" width="1050" height="1400" style="object-position:50% 30%"><span>Fireworks</span></span><span class="bk">Her night ended with the sky lit up.</span></span></button>
+      <button type="button" class="gp" style="--len:28px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/spider-room.jpg" alt="Spider-Man themed room with black, red and yellow balloons" width="1050" height="1400"><span>Spider room</span></span><span class="bk">A spider-themed room and a surprise from above.</span></span></button>
+      <button type="button" class="gp" style="--len:4px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/scrapbook.jpg" alt="A handmade scrapbook with stickers and a teddy among candles" width="1050" height="1400"><span>Scrapbook</span></span><span class="bk">We didn't buy her a gift. We made one, page by page.</span></span></button>
+    </div>
 
     <div class="card" id="heroCard">
       <img class="seal" src="img/seal.svg" alt="Decorique seal: birthday decor and gifting, made by friends, for friends" width="128" height="128">
@@ -527,8 +588,8 @@ html.js .reveal.is-live .rv-line{position:absolute;z-index:3;left:var(--m);botto
       <li class="mo" style="--g:72px"><h3>It starts with a question</h3><p>Date, place, budget, and one thing: what are they obsessed with?</p><div class="sp"></div><div class="ph"><img src="img/chart.jpg" alt="Chart board of photos, doodles and handwritten notes" width="825" height="1100" loading="lazy"></div></li>
       <li class="mo" style="--g:136px"><h3>Within 24 hours</h3><p>You get a mood image and a fixed price. Nothing is charged yet.</p><div class="sp"></div><div class="ph"><img src="img/movie.jpg" alt="TV room styled as a film premiere with film strips and balloons" width="1100" height="825" loading="lazy" style="object-position:62% 50%"></div></li>
       <li class="mo" style="--g:96px"><h3>You lock the date</h3><p>A 50% advance holds your slot. The balance is due on the day.</p><div class="sp"></div><div class="ph"><img src="img/princess.jpg" alt="Chocolate cake reading Happy 20 Princess beside a ribbon bouquet" width="825" height="1100" loading="lazy"></div></li>
-      <li class="mo" style="--g:48px"><h3>We build it</h3><p>Gifts are made 3 to 5 days ahead. Decor goes up 2 to 3 hours before the surprise.</p><div class="sp"></div><div class="ph"><img src="img/tentB.jpg" alt="Indoor tent with a gold fringe curtain, pennant banner and balloons" width="825" height="1100" loading="lazy"></div></li>
-      <li class="mo" style="--g:120px"><h3>The reveal</h3><p>You walk them in. We capture photos and a reel, with your permission.</p><div class="sp"></div><div class="ph"><video src="img/vogue.mp4" poster="img/vogue_poster.jpg" muted loop playsinline preload="none" aria-label="The Vogue wall: a magazine-cover backdrop with black and cream balloons"></video></div></li>
+      <li class="mo" style="--g:48px"><h3>We build it</h3><p>Gifts are made 3 to 5 days ahead. Decor goes up 2 to 3 hours before the surprise.</p><div class="sp"></div><div class="ph"><video src="img/v-racing.mp4" poster="img/v-racing.jpg" muted loop playsinline preload="none" aria-label="A racing-pit setup being finished: red curtains, fairy lights and a bike"></video></div></li>
+      <li class="mo" style="--g:120px"><h3>The reveal</h3><p>You walk them in. We capture photos and a reel, with your permission.</p><div class="sp"></div><div class="ph"><video src="img/v-walkin.mp4" poster="img/v-walkin.jpg" muted loop playsinline preload="none" aria-label="The door opens and the birthday girl walks into her fairy-light tent"></video></div></li>
       <li class="mo" style="--g:80px"><h3>The day after</h3><p>We check in, and a friend you refer gets &#8377;150 off, same as you.</p><div class="sp"></div><div class="ph"><img src="img/photocake.jpg" alt="Chocolate cake topped with small printed photos" width="825" height="1100" loading="lazy"></div></li>
     </ol>
   </section>
@@ -539,7 +600,7 @@ html.js .reveal.is-live .rv-line{position:absolute;z-index:3;left:var(--m);botto
         <h2 id="revH">The moment they walk in</h2>
         <p>Lights low, candles lit, everyone hiding behind the tent. Then you open the door.</p>
       </div>
-      <figure class="rv-photo"><img src="img/tentnight.jpg" alt="The candlelit tent at the moment of the reveal: a birthday girl smiling over her cake beside the photo Ferris wheel" width="1100" height="825" loading="lazy"></figure>
+      <figure class="rv-photo"><video src="img/v-reveal.mp4" poster="img/tentnight.jpg" muted loop playsinline preload="metadata" aria-label="The candlelit beach tent at the moment of the reveal, the birthday girl smiling among her gifts"></video></figure>
       <p class="rv-line">Cake, candles, a hundred photos and everyone shouting surprise.</p>
     </div>
   </section>
@@ -574,26 +635,21 @@ html.js .reveal.is-live .rv-line{position:absolute;z-index:3;left:var(--m);botto
       </div>
       <div class="col">
         <div class="grp" data-rv style="--d:.08s">
-          <h3>Gifts</h3>
+          <h3>Customised gifts</h3>
           <a class="item" href="#book" data-pick="Polaroid set (&#8377;599)">
             <span class="row">Polaroid set <b>&#8377;599</b></span>
-            <span class="d">A string of polaroids made from your photos, each with a caption you pick. Ready to hang or gift.</span>
+            <span class="d">Polaroids made from your photos, each with a caption you pick.</span>
             <span class="go">Add to my booking &rarr;</span>
           </a>
           <a class="item" href="#book" data-pick="Chart board (&#8377;799)">
             <span class="row">Chart board <b>&#8377;799</b></span>
-            <span class="d">Their name and story, told letter by letter on one board, in the style of a "Chapter 20" birthday.</span>
+            <span class="d">Their story told on one board, in the style of a "Chapter 20" birthday.</span>
             <span class="go">Add to my booking &rarr;</span>
           </a>
-          <a class="item" href="#book" data-pick="Photo Ferris wheel (quote on request)">
-            <span class="row">Photo Ferris wheel <b>On request</b></span>
-            <span class="d">Their favourite photos, riding a wheel we build by hand.</span>
-            <span class="go">Ask for a quote &rarr;</span>
-          </a>
-          <a class="item" href="#book" data-pick="Polaroid tree (quote on request)">
-            <span class="row">Polaroid tree <b>On request</b></span>
-            <span class="d">A little tree that grows polaroids, one memory per branch.</span>
-            <span class="go">Ask for a quote &rarr;</span>
+          <a class="item" href="#gifts">
+            <span class="row">Scrapbooks, hampers, bouquets, cakes <b>On request</b></span>
+            <span class="d">Every gift is made to order and starts with a 50% advance.</span>
+            <span class="go">See all the gifts &darr;</span>
           </a>
         </div>
         <div class="grp" data-rv style="--d:.16s">
@@ -603,8 +659,44 @@ html.js .reveal.is-live .rv-line{position:absolute;z-index:3;left:var(--m);botto
           <div class="item" style="cursor:default"><span class="row">Cake topper <b>&#8377;250</b></span></div>
         </div>
       </div>
-      <p class="note" data-rv>Gifts are made 3 to 5 days ahead. The first 10 Decor Basic bookings pay &#8377;1,800 and agree to share a photo, a video and a short review. Prices cover Chennai, and materials for custom themes are included.</p>
+      <p class="note" data-rv>The first 10 Decor Basic bookings pay &#8377;1,800 and agree to share a photo, a video and a short review. Prices cover Chennai, and materials for custom themes are included.</p>
     </div>
+  </section>
+
+  <section class="sec gifts" id="gifts">
+    <div class="gifts-head">
+      <div>
+        <h2 data-rv>Customised gifts</h2>
+        <p class="sub" data-rv style="--d:.08s">Made by hand for one person: their photos, their story, their in-jokes. Nothing here comes off a shelf.</p>
+      </div>
+      <figure class="gifts-clip" data-rv style="--d:.12s"><div class="ph"><video src="img/v-gifts-open.mp4" poster="img/v-gifts-open.jpg" muted loop playsinline preload="none" aria-label="A birthday girl opening her handmade gifts one by one in a fairy-light tent"></video></div><figcaption>Gift after gift, opened in the tent.</figcaption></figure>
+    </div>
+
+    <div class="advance" data-rv>
+      <div class="adv-main">
+        <h3>Custom gifts start with a 50% advance</h3>
+        <p>Each one is made from scratch for one person, so we begin once the advance is paid. The rest is due when it's handed over.</p>
+      </div>
+      <ol class="adv-steps">
+        <li><b>Tell us who it's for.</b> Send the photos, the story and the date you need it by.</li>
+        <li><b>Pay the 50% advance.</b> We confirm the price first, then start making it and share a preview.</li>
+        <li><b>Pay the rest on the day.</b> When you pick it up, or when we deliver it in Chennai.</li>
+      </ol>
+    </div>
+
+    <div class="gift-grid" data-stagger>
+      <article class="gift"><div class="ph"><img src="img/tent-gift.jpg" alt="Birthday girl holding up a printed photo gift" width="787" height="1400" loading="lazy" style="object-position:50% 38%"></div><div class="gift-t"><h3>Polaroid set</h3><b>&#8377;599</b></div><p>Polaroids from your photos, each with a caption you pick.</p><a class="btn ink" href="#book" data-pick="Polaroid set (&#8377;599)">Order this</a></article>
+      <article class="gift"><div class="ph"><img src="img/chart-long.jpg" alt="A long black chart board of photos, doodles and handwritten notes" width="1050" height="1400" loading="lazy"></div><div class="gift-t"><h3>Chart board</h3><b>&#8377;799</b></div><p>Their story on one board, letter by letter, photo by photo.</p><a class="btn ink" href="#book" data-pick="Chart board (&#8377;799)">Order this</a></article>
+      <article class="gift"><div class="ph"><img src="img/scrapbook.jpg" alt="Handmade scrapbook with stickers, photos and a teddy" width="1050" height="1400" loading="lazy"></div><div class="gift-t"><h3>Scrapbook</h3><b>On request</b></div><p>Page after page of photos and notes, with memories that pop up.</p><a class="btn ink" href="#book" data-pick="Scrapbook (quote on request)">Ask for a quote</a></article>
+      <article class="gift"><div class="ph"><img src="img/hamper.jpg" alt="Gift hamper of teddies, letters, a scrapbook, a bouquet and small gifts" width="1400" height="1050" loading="lazy" style="object-position:40% 50%"></div><div class="gift-t"><h3>Gift hamper</h3><b>On request</b></div><p>Teddies, letters and their favourite things, packed as one.</p><a class="btn ink" href="#book" data-pick="Gift hamper (quote on request)">Ask for a quote</a></article>
+      <article class="gift"><div class="ph"><img src="img/gift-box.jpg" alt="Gift box with a watch, a framed photo and a handwritten letter" width="960" height="1280" loading="lazy"></div><div class="gift-t"><h3>Gift box with a letter</h3><b>On request</b></div><p>Their present, a framed photo and a handwritten letter, boxed.</p><a class="btn ink" href="#book" data-pick="Gift box with a letter (quote on request)">Ask for a quote</a></article>
+      <article class="gift"><div class="ph"><img src="img/spider.jpg" alt="Spider-Man themed ribbon bouquet in black wrap" width="825" height="1100" loading="lazy"></div><div class="gift-t"><h3>Themed bouquet</h3><b>On request</b></div><p>Ribbon flowers wrapped around their favourite hero or colour.</p><a class="btn ink" href="#book" data-pick="Themed bouquet (quote on request)">Ask for a quote</a></article>
+      <article class="gift"><div class="ph"><img src="img/photocake.jpg" alt="Chocolate cake topped with small printed photos" width="825" height="1100" loading="lazy"></div><div class="gift-t"><h3>Photo cake</h3><b>On request</b></div><p>Small printed photos on top, one for every memory.</p><a class="btn ink" href="#book" data-pick="Custom cake (quote on request)">Ask for a quote</a></article>
+      <article class="gift"><div class="ph"><img src="img/cake.jpg" alt="Half Batman, half Spider-Man cake" width="825" height="1100" loading="lazy" style="object-position:50% 60%"></div><div class="gift-t"><h3>Custom cake</h3><b>On request</b></div><p>Their name, their heroes or an inside joke, piped on.</p><a class="btn ink" href="#book" data-pick="Custom cake (quote on request)">Ask for a quote</a></article>
+      <article class="gift"><div class="ph"><video src="img/v-scrapbook.mp4" poster="img/v-scrapbook.jpg" muted loop playsinline preload="none" aria-label="Hands opening a handmade memory box of photos and notes"></video></div><div class="gift-t"><h3>Memory box</h3><b>On request</b></div><p>A box that opens into photos, notes and little surprises.</p><a class="btn ink" href="#book" data-pick="Scrapbook (quote on request)">Ask for a quote</a></article>
+      <article class="gift"><div class="ph"><img src="img/beach-gifts.jpg" alt="Gifts laid out among candles: a scrapbook, a teddy and photo frames" width="1050" height="1400" loading="lazy"></div><div class="gift-t"><h3>Polaroid tree</h3><b>On request</b></div><p>A little tree that grows polaroids, one memory per branch.</p><a class="btn ink" href="#book" data-pick="Polaroid tree (quote on request)">Ask for a quote</a></article>
+    </div>
+    <p class="gifts-note" data-rv>Gifts are made 3 to 5 days ahead; give us a week for scrapbooks and hampers. Gifts can be picked up or delivered in Chennai, with or without a decor setup.</p>
   </section>
 
   <section class="sec wheel-sec" id="wheel">
@@ -632,22 +724,34 @@ html.js .reveal.is-live .rv-line{position:absolute;z-index:3;left:var(--m);botto
       <p class="sub" data-rv style="--d:.08s">Each one started with a single question about the person.</p>
     </div>
     <div class="tiles" data-stagger>
-      <figure class="tile"><div class="ph"><video src="img/vogue.mp4" poster="img/vogue_poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Vogue-style birthday wall with black and cream balloons"></video></div><figcaption><span class="r1"><span>The Vogue wall</span><span>21st birthday</span></span><span>A magazine-cover backdrop with hand-lettered headlines.</span><span class="r3">Decor</span></figcaption></figure>
+      <figure class="tile"><div class="ph"><video src="img/vogue.mp4" poster="img/vogue_poster.jpg" muted loop playsinline preload="none" aria-label="Vogue-style birthday wall with black and cream balloons"></video></div><figcaption><span class="r1"><span>The Vogue wall</span><span>21st birthday</span></span><span>A magazine-cover backdrop and her own cover story.</span><span class="r3">Decor</span></figcaption></figure>
+      <figure class="tile"><div class="ph"><video src="img/v-racing.mp4" poster="img/v-racing.jpg" muted loop playsinline preload="none" aria-label="Racing-pit birthday setup with red curtains, checkered flags and a bike"></video></div><figcaption><span class="r1"><span>The racing pit</span><span>21st birthday</span></span><span>Checkered flags, a speed-limit 21 sign and pole position.</span><span class="r3">Decor</span></figcaption></figure>
+      <figure class="tile"><div class="ph"><video src="img/v-rooftop.mp4" poster="img/v-rooftop.jpg" muted loop playsinline preload="none" aria-label="Friends gathered on a rooftop strung with fairy lights and balloons"></video></div><figcaption><span class="r1"><span>Rooftop terrace</span><span>20th birthday</span></span><span>A candle path, a wall of lights and a cake made for her.</span><span class="r3">Decor</span></figcaption></figure>
+      <figure class="tile"><div class="ph"><img src="img/redroom.jpg" alt="Red and black room with hanging balloons, candles and a bouquet on a gift box" width="1050" height="1400" loading="lazy"></div><figcaption><span class="r1"><span>Red, black, white</span><span>Home</span></span><span>Balloons at different heights and tea candles, no fairy lights.</span><span class="r3">Decor</span></figcaption></figure>
+      <figure class="tile"><div class="ph"><img src="img/tentnight.jpg" alt="Candlelit night tent with a photo Ferris wheel and polaroid tree" width="1100" height="825" loading="lazy" style="object-position:40% 50%"></div><figcaption><span class="r1"><span>The candlelit tent</span><span>Beach night</span></span><span>A tent made for one, a Ferris wheel and candles in the sand.</span><span class="r3">Decor</span></figcaption></figure>
+      <figure class="tile"><div class="ph"><video src="img/v-spider.mp4" poster="img/v-spider.jpg" muted loop playsinline preload="none" aria-label="Spider-themed room with black, red and yellow balloons"></video></div><figcaption><span class="r1"><span>The spider room</span><span>Surprise</span></span><span>Every web hung by hand, and a surprise from above.</span><span class="r3">Decor</span></figcaption></figure>
+      <figure class="tile"><div class="ph"><img src="img/tent-balloons.jpg" alt="Indoor tent with a Happy Birthday banner, gold fringe and balloons" width="1050" height="1400" loading="lazy"></div><figcaption><span class="r1"><span>Fairy-light tent</span><span>Indoor</span></span><span>Her favourite things inside, one gift at a time.</span><span class="r3">Decor</span></figcaption></figure>
+      <figure class="tile"><div class="ph"><video src="img/v-fireworks.mp4" poster="img/v-fireworks.jpg" muted loop playsinline preload="none" aria-label="Fireworks over a rooftop birthday"></video></div><figcaption><span class="r1"><span>Her night, then fireworks</span><span>Rooftop</span></span><span>The finale after the cake, the wish and the photos.</span><span class="r3">Decor</span></figcaption></figure>
       <figure class="tile"><div class="ph"><img src="img/curtain.jpg" alt="Red curtain setup with fairy lights and a GT 650 banner" width="825" height="1100" loading="lazy"></div><figcaption><span class="r1"><span>GT 650 corner</span><span>Surprise</span></span><span>A bike lover's velvet-curtain corner with a racing banner.</span><span class="r3">Decor</span></figcaption></figure>
-      <figure class="tile"><div class="ph"><img src="img/tentnight.jpg" alt="Candlelit night tent with a photo Ferris wheel and polaroid tree" width="1100" height="825" loading="lazy" style="object-position:40% 50%"></div><figcaption><span class="r1"><span>The candlelit tent</span><span>Night picnic</span></span><span>Ferris wheel, polaroid tree and candles in the dark.</span><span class="r3">Decor</span></figcaption></figure>
-      <figure class="tile"><div class="ph"><img src="img/roof.jpg" alt="Terrace decorated with fairy lights, balloons and rose petals" width="825" height="1100" loading="lazy"></div><figcaption><span class="r1"><span>Fairy-light terrace</span><span>Terrace</span></span><span>A rooftop turned into a sky of lights and petals.</span><span class="r3">Decor</span></figcaption></figure>
-      <figure class="tile"><div class="ph"><img src="img/bows.jpg" alt="Red and black balloon setup with bows and gifts" width="619" height="1100" loading="lazy"></div><figcaption><span class="r1"><span>Red, black and bows</span><span>Home</span></span><span>Hanging balloons, paper bows and a wrapped-gift corner.</span><span class="r3">Decor</span></figcaption></figure>
+      <figure class="tile"><div class="ph"><img src="img/movie.jpg" alt="TV room decorated as a film premiere with film strips and balloons" width="1100" height="825" loading="lazy" style="object-position:62% 50%"></div><figcaption><span class="r1"><span>Movie night premiere</span><span>Short film</span></span><span>A birthday short film with its own credits screen.</span><span class="r3">Decor</span></figcaption></figure>
+      <figure class="tile"><div class="ph"><img src="img/rooftop-cake.jpg" alt="White cake with a red gift bag on a cane stool among candles" width="1050" height="1400" loading="lazy"></div><figcaption><span class="r1"><span>A cake made for her</span><span>Rooftop</span></span><span>Cake on a cane stool, candles and petals all around.</span><span class="r3">Cake</span></figcaption></figure>
+      <figure class="tile"><div class="ph"><img src="img/redblack.jpg" alt="Red and black balloon wall with Happy Birthday banner and candlelit fireplace corner" width="619" height="1100" loading="lazy"></div><figcaption><span class="r1"><span>The candle hearth</span><span>Home</span></span><span>Red balloons, paper bows and a glowing candle fireplace.</span><span class="r3">Decor</span></figcaption></figure>
       <figure class="tile"><div class="ph"><img src="img/tentB.jpg" alt="Indoor tent with gold fringe curtain and balloons" width="825" height="1100" loading="lazy"></div><figcaption><span class="r1"><span>The golden tent</span><span>Indoor</span></span><span>Gold fringe, a pennant banner and a polaroid line.</span><span class="r3">Decor</span></figcaption></figure>
-      <figure class="tile"><div class="ph"><img src="img/cake.jpg" alt="Half Batman, half Spider-Man cake" width="825" height="1100" loading="lazy" style="object-position:50% 60%"></div><figcaption><span class="r1"><span>The split cake</span><span>Custom</span></span><span>Two favourite heroes, one cake.</span><span class="r3">Cake</span></figcaption></figure>
-      <figure class="tile"><div class="ph"><img src="img/photocake.jpg" alt="Chocolate cake topped with small printed photos" width="825" height="1100" loading="lazy"></div><figcaption><span class="r1"><span>Cake of memories</span><span>Photo toppers</span></span><span>Small printed photos, one for each memory.</span><span class="r3">Cake</span></figcaption></figure>
-      <figure class="tile"><div class="ph"><img src="img/movie.jpg" alt="TV room decorated as a film premiere with film strips and balloons" width="1100" height="825" loading="lazy" style="object-position:62% 50%"></div><figcaption><span class="r1"><span>Movie night premiere</span><span>Movie theme</span></span><span>Film strips, a custom credits screen and a balloon cluster.</span><span class="r3">Decor</span></figcaption></figure>
-      <figure class="tile"><div class="ph"><img src="img/redblack.jpg" alt="Red and black balloon wall with a Happy Birthday banner and candlelit fireplace corner" width="619" height="1100" loading="lazy"></div><figcaption><span class="r1"><span>The candle hearth</span><span>Home</span></span><span>Red balloons, paper bows and a glowing candle fireplace.</span><span class="r3">Decor</span></figcaption></figure>
-      <figure class="tile"><div class="ph"><img src="img/princess.jpg" alt="Chocolate cake reading Happy 20 Princess beside a ribbon bouquet" width="825" height="1100" loading="lazy"></div><figcaption><span class="r1"><span>Princess cake</span><span>Custom</span></span><span>Hand-piped message, bunting and a ribbon bouquet.</span><span class="r3">Cake</span></figcaption></figure>
       <figure class="tile"><div class="ph"><img src="img/beach.jpg" alt="Candlelit beach picnic table with lanterns at night" width="1100" height="825" loading="lazy" style="object-position:45% 60%"></div><figcaption><span class="r1"><span>Beach candle table</span><span>Beach night</span></span><span>Low table, lanterns and tea lights by the sea.</span><span class="r3">Decor</span></figcaption></figure>
+      <figure class="tile"><div class="ph"><img src="img/racing-group.jpg" alt="Friends posing in the racing-pit setup under fairy lights" width="1050" height="1400" loading="lazy"></div><figcaption><span class="r1"><span>Then the party started</span><span>Racing pit</span></span><span>Everyone came, and stayed for photos.</span><span class="r3">Decor</span></figcaption></figure>
+      <figure class="tile"><div class="ph"><img src="img/redroom-friends.jpg" alt="Two friends and a puppy in front of a red Happy Birthday wall" width="1050" height="1400" loading="lazy"></div><figcaption><span class="r1"><span>With her favourite humans</span><span>Home</span></span><span>The red room, after the reveal.</span><span class="r3">Decor</span></figcaption></figure>
     </div>
   </section>
 
   <section class="letter-wrap" id="story">
+    <div class="garland team" data-garland aria-label="The Decorique friends. Tap a photo to turn it over.">
+      <button type="button" class="gp" style="--len:10px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/team-1.jpg" alt="One of the Decorique friends at a cafe" width="1050" height="1400" loading="lazy"><span>Made</span></span><span class="bk">One of the Decorique friends.</span></span></button>
+      <button type="button" class="gp" style="--len:36px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/team-2.jpg" alt="One of the Decorique friends" width="1050" height="1400" loading="lazy"><span>by</span></span><span class="bk">One of the Decorique friends.</span></span></button>
+      <button type="button" class="gp" style="--len:16px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/team-hills.jpg" alt="Four of the Decorique friends looking out over the hills" width="821" height="1095" loading="lazy"><span>friends,</span></span><span class="bk">Where it started: a group of friends.</span></span></button>
+      <button type="button" class="gp" style="--len:42px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/team-3.jpg" alt="One of the Decorique friends in a green saree" width="1050" height="1400" loading="lazy"><span>for</span></span><span class="bk">One of the Decorique friends.</span></span></button>
+      <button type="button" class="gp" style="--len:12px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/team-4.jpg" alt="One of the Decorique friends by the sea" width="1050" height="1400" loading="lazy" style="object-position:50% 30%"><span>friends.</span></span><span class="bk">One of the Decorique friends.</span></span></button>
+      <button type="button" class="gp" style="--len:30px"><span class="thread"></span><span class="peg"></span><span class="in"><span class="fr"><img src="img/team-5.jpg" alt="One of the Decorique friends at a cafe with flowers" width="1050" height="1400" loading="lazy"><span>with love</span></span><span class="bk">One of the Decorique friends.</span></span></button>
+    </div>
     <article class="letter" data-rv>
       <h2>Why we do this</h2>
       <p>Decorique started with a group of friends who love making a birthday feel special.</p>
@@ -684,13 +788,22 @@ html.js .reveal.is-live .rv-line{position:absolute;z-index:3;left:var(--m);botto
           <label for="pkg">Package
             <select id="pkg">
               <option>Not sure yet</option>
-              <option>Polaroid set (&#8377;599)</option>
-              <option>Chart board (&#8377;799)</option>
-              <option>Photo Ferris wheel (quote on request)</option>
-              <option>Polaroid tree (quote on request)</option>
-              <option>Decor Basic (launch price &#8377;1,800)</option>
-              <option>Decor Signature (&#8377;2,900)</option>
-              <option>Full event (custom quote)</option>
+              <optgroup label="Decor and events">
+                <option>Decor Basic (launch price &#8377;1,800)</option>
+                <option>Decor Signature (&#8377;2,900)</option>
+                <option>Full event (custom quote)</option>
+              </optgroup>
+              <optgroup label="Customised gifts (50% advance)">
+                <option>Polaroid set (&#8377;599)</option>
+                <option>Chart board (&#8377;799)</option>
+                <option>Scrapbook (quote on request)</option>
+                <option>Gift hamper (quote on request)</option>
+                <option>Gift box with a letter (quote on request)</option>
+                <option>Themed bouquet (quote on request)</option>
+                <option>Custom cake (quote on request)</option>
+                <option>Photo Ferris wheel (quote on request)</option>
+                <option>Polaroid tree (quote on request)</option>
+              </optgroup>
             </select>
           </label>
           <fieldset class="extras"><legend>Add extras</legend>
@@ -700,6 +813,10 @@ html.js .reveal.is-live .rv-line{position:absolute;z-index:3;left:var(--m);botto
             <label class="chk" for="x4"><input type="checkbox" id="x4" data-x="Cake topper"><span>Cake topper <em>&#8377;250</em></span></label>
           </fieldset>
           <p class="total">Estimated total <b id="total">&#8377;0</b><span id="totalNote">Your final price is confirmed with the concept.</span></p>
+          <div class="advbox" id="adv" hidden role="status">
+            <p><b>Customised gifts start with a 50% advance.</b> <span id="advAmt"></span></p>
+            <p>We confirm the price on WhatsApp, you pay the advance, and we start making it. The rest is due when it's handed over.</p>
+          </div>
           <label for="obs">What are they obsessed with?
             <textarea id="obs" placeholder="Bikes, a film, one colour, an inside joke"></textarea>
           </label>
@@ -825,18 +942,16 @@ cgo.addEventListener('click', function(){
 
 /* ---------- top bar + progress ---------- */
 var bar = document.getElementById('bar'), topbar = document.getElementById('topbar'), bookImg = document.getElementById('bookImg'), bookSec = document.getElementById('book');
-var pols = Array.prototype.slice.call(document.querySelectorAll('.pol'));function onScroll(){
+function onScroll(){
   var y = scrollY, h = document.documentElement.scrollHeight - innerHeight;
   bar.style.transform = 'scaleX(' + (h>0 ? Math.min(1, y/h) : 0) + ')';
   topbar.classList.toggle('scrolled', y > 40);
   if(!RM){
-    if(y < innerHeight*1.6){ pols.forEach(function(p){ if(hero.classList.contains('go') && p.dataset.ready){ p.style.transform = 'translate3d(0,' + (y*parseFloat(p.dataset.depth)) + 'px,0) rotate(var(--rot))'; } }); }
     var r = bookSec.getBoundingClientRect();
     if(r.top < innerHeight && r.bottom > 0){ var t = 1 - Math.max(0, Math.min(1, (r.bottom) / (r.height + innerHeight))); bookImg.style.setProperty('--z', (1.18 - t*.16).toFixed(4)); }
   }
 }
 var st = 0; window.addEventListener('scroll', function(){ if(!st){ st = requestAnimationFrame(function(){ st = 0; onScroll(); }); } }, {passive:true}); onScroll();
-setTimeout(function(){ pols.forEach(function(p){ p.style.transition = 'transform .25s linear'; p.dataset.ready = 1; }); onScroll(); }, 2700);
 
 /* ---------- headings: each word rises out of its line ---------- */
 var splits = [];
@@ -950,6 +1065,11 @@ var PACKAGE_PRICE = {
   'Not sure yet': 0,
   'Polaroid set (₹599)': 599,
   'Chart board (₹799)': 799,
+  'Scrapbook (quote on request)': 0,
+  'Gift hamper (quote on request)': 0,
+  'Gift box with a letter (quote on request)': 0,
+  'Themed bouquet (quote on request)': 0,
+  'Custom cake (quote on request)': 0,
   'Photo Ferris wheel (quote on request)': 0,
   'Polaroid tree (quote on request)': 0,
   'Decor Basic (launch price ₹1,800)': 1800,
@@ -957,6 +1077,8 @@ var PACKAGE_PRICE = {
   'Full event (custom quote)': 0
 };
 var EXTRA_PRICE = {'Polaroid set': 599, 'Balloon bouquet': 400, 'Photo corner': 500, 'Cake topper': 250};
+/* Customised gifts are made to order: this share of the price is asked for before work starts. */
+var GIFT_ADVANCE = 0.5;
 /* Slots already taken by a confirmed decor setup. Format 'YYYY-MM-DD|Morning' (or Afternoon, Evening).
    Use 'YYYY-MM-DD|*' to block a whole day. Paste the list from the Order Log page. */
 var BOOKED_SLOTS = [];
@@ -978,9 +1100,15 @@ function fmtDate(v){
 function extras(){ return boxes.filter(function(b){ return b.checked; }).map(function(b){ return b.getAttribute('data-x'); }); }
 function estimate(){
   var base = PACKAGE_PRICE[el.pkg.value] || 0, ex = extras(), add = ex.reduce(function(t,k){ return t + (EXTRA_PRICE[k]||0); }, 0);
-  return {base:base, add:add, total:base + add, quote:/custom quote/.test(el.pkg.value)};
+  return {base:base, add:add, total:base + add, quote:/quote/.test(el.pkg.value)};
 }
-function isGift(){ return /^(Polaroid set|Chart board)/.test(el.pkg.value); }
+function isGift(){ return /^(Polaroid set|Chart board|Scrapbook|Gift hamper|Gift box|Themed bouquet|Custom cake|Photo Ferris wheel|Polaroid tree)/.test(el.pkg.value); }
+function advance(){ var e = estimate(); return isGift() && !e.quote ? Math.ceil(e.total * GIFT_ADVANCE) : 0; }
+function advanceLine(){
+  if(!isGift()) return '';
+  var a = advance();
+  return a ? 'Advance: ' + inr(a) + ' (' + Math.round(GIFT_ADVANCE*100) + '%) before you start making it' : 'Advance: ' + Math.round(GIFT_ADVANCE*100) + '% once you confirm the price';
+}
 function clashing(){
   if(!el.date.value || isGift()) return false;
   return BOOKED_SLOTS.indexOf(el.date.value + '|*') > -1 || BOOKED_SLOTS.indexOf(el.date.value + '|' + el.slot.value) > -1;
@@ -1003,8 +1131,9 @@ function build(){
     'Extras: ' + (ex.length ? ex.join(', ') : 'none'),
     'They are obsessed with: ' + (el.obs.value.trim() || '(tell us in a line)'),
     '',
-    e.quote ? 'Estimate: custom quote please' : (e.total ? 'Estimated total: ' + inr(e.total) + ' (final price after concept)' : 'Estimate: please suggest a package')
+    e.quote ? 'Estimate: quote please' : (e.total ? 'Estimated total: ' + inr(e.total) + ' (final price after concept)' : 'Estimate: please suggest a package')
   ];
+  if(isGift()) lines.push(advanceLine());
   return lines.join('\n');
 }
 function setLink(a, m){ a.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(m); }
@@ -1020,7 +1149,11 @@ function refresh(){
   msgEl.textContent = m;
   var tt = e.quote ? 'Quote' : inr(e.total);
   if(tt !== lastTotal){ totalEl.textContent = tt; totalEl.classList.remove('bump'); void totalEl.offsetWidth; if(lastTotal) totalEl.classList.add('bump'); lastTotal = tt; }
-  totalNote.textContent = e.quote ? 'We price full events after a short chat.' : 'Your final price is confirmed with the concept.';
+  totalNote.textContent = e.quote ? 'We send the price on WhatsApp after a short chat.' : 'Your final price is confirmed with the concept.';
+  var advEl = document.getElementById('adv'), g = isGift();
+  if(g){ var a = advance(); document.getElementById('advAmt').textContent = a ? 'For this order that is ' + inr(a) + '.' : 'We tell you the amount with the price.'; }
+  advEl.hidden = !g;
+  document.querySelector('label[for="date"]').firstChild.nodeValue = g ? 'Needed by' : 'Date';
   if(WHATSAPP_NUMBER){
     wa.hidden = false; setLink(wa, m);
     wa.setAttribute('aria-disabled', ready() ? 'false' : 'true');
@@ -1109,7 +1242,7 @@ refresh();
       area: el.area.value.trim().slice(0,80) || null,
       package: el.pkg.value.slice(0,80),
       extras: ex.join(', ').slice(0,200) || null,
-      notes: (el.obs.value || '').trim().slice(0,1000) || null,
+      notes: ((isGift() ? '[' + advanceLine() + '] ' : '') + (el.obs.value || '').trim()).slice(0,1000) || null,
       est_total: Math.min(100000, base + add),
       is_decor: /^(Decor|Full event)/.test(el.pkg.value),
       status: 'new'
@@ -1127,6 +1260,7 @@ refresh();
 <script src="scenes/stage.js"></script>
 <script src="scenes/reveal.js"></script>
 <script>if(window.Stage){ Stage.smooth(); Stage.init(); }</script>
+<script src="js/garland.js"></script>
 <script type="module" src="js/balloons.js"></script>
 <script type="module" src="js/wheel.js"></script>
 </body>

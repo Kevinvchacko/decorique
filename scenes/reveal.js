@@ -18,7 +18,7 @@
     phone: { hold: 1.5 },
     build(tl, { q, phone }) {
       const [photo] = q('.rv-photo');
-      const [img] = q('.rv-photo img');
+      const [img] = q('.rv-photo > *');
       const [copy] = q('.rv-copy');
       const [line] = q('.rv-line');
       const from = phone ? 'inset(30% 12% 24% 12%)' : 'inset(36% 30% 10% 30%)';
