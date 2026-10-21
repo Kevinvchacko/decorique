@@ -41,9 +41,9 @@ create policy "team updates" on public.bookings for update to authenticated usin
 drop policy if exists "team deletes" on public.bookings;
 create policy "team deletes" on public.bookings for delete to authenticated using (public.is_team());
 
--- the first member; add the others here, or from the Team panel in the Order Log once you are signed in
+-- the five team members; add or remove people later from the Team panel in the Order Log
 insert into public.team_members (email, added_by) values ('kevinchacko2475@gmail.com', 'setup') on conflict do nothing;
--- insert into public.team_members (email, added_by) values ('friend2@example.com', 'setup') on conflict do nothing;
--- insert into public.team_members (email, added_by) values ('friend3@example.com', 'setup') on conflict do nothing;
--- insert into public.team_members (email, added_by) values ('friend4@example.com', 'setup') on conflict do nothing;
--- insert into public.team_members (email, added_by) values ('friend5@example.com', 'setup') on conflict do nothing;
+insert into public.team_members (email, added_by) values ('sahana6405@gmail.com', 'setup') on conflict do nothing;
+insert into public.team_members (email, added_by) values ('moulika0466@gmail.com', 'setup') on conflict do nothing;
+insert into public.team_members (email, added_by) values ('shreedharanselvakumar@gmail.com', 'setup') on conflict do nothing;
+insert into public.team_members (email, added_by) values ('swasthikkaranganathan@gmail.com', 'setup') on conflict do nothing;
