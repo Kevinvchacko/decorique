@@ -45,10 +45,10 @@ details{margin-bottom:18px}summary{cursor:pointer;color:var(--gold)}
 
 <section id="login" class="panel" hidden>
   <h1>Order Log</h1>
-  <p class="sub">Decorique team. Sign in with your own email and password.</p>
+  <p class="sub">Decorique team. Sign in with your username and password.</p>
   <form id="lform">
-    <label for="em">Your email</label>
-    <input id="em" type="email" autocomplete="username" placeholder="you@example.com" required>
+    <label for="em">Username</label>
+    <input id="em" type="text" autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="sahana" required maxlength="40">
     <label for="pw">Password</label>
     <input id="pw" type="password" autocomplete="current-password" required minlength="8">
     <div style="margin-top:16px"><button class="btn" id="send" type="submit">Sign in</button></div>
@@ -82,10 +82,10 @@ details{margin-bottom:18px}summary{cursor:pointer;color:var(--gold)}
   </details>
   <details id="team"><summary>Team (who can open this Order Log)</summary>
     <div class="panel" style="margin-top:10px">
-      <p class="sub" style="margin-bottom:12px">Everyone here signs in with their own email and password. To add someone, put their email here and create their account in Supabase (Authentication, Users, Add user). Remove someone and their access stops at once. You can't remove yourself.</p>
+      <p class="sub" style="margin-bottom:12px">Everyone here signs in with their own username and password. To add someone, add their username here, then create their login in Supabase (Authentication, Users, Add user) with the email username@decorique.team. Remove someone and their access stops at once. You can't remove yourself.</p>
       <div class="list" id="tlist" style="gap:8px"></div>
       <form id="tadd" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
-        <input id="tem" type="email" required maxlength="120" placeholder="friend@example.com" style="flex:1 1 220px" aria-label="Email to add">
+        <input id="tem" type="text" required maxlength="40" autocapitalize="none" spellcheck="false" placeholder="username, like sahana" style="flex:1 1 220px" aria-label="Username to add">
         <button class="btn sm" type="submit">Add to team</button>
       </form>
       <p class="msg" id="tmsg" role="status"></p>
@@ -108,6 +108,9 @@ details{margin-bottom:18px}summary{cursor:pointer;color:var(--gold)}
 var SB_URL='https://cbkzelyrgxfazcqwunqu.supabase.co', SB_KEY='sb_publishable_x1g9tEmAtugyn85r9xyt4w_xFBeWxOJ';
 /* Who may open this page is decided by the team_members table in Supabase (see sql/team.sql), not by this file. */
 var $=function(i){return document.getElementById(i)};
+var USER_DOMAIN='@decorique.team';
+function toEmail(u){ u=(u||'').trim().toLowerCase(); if(u.indexOf('@')>-1) return u; return /^[a-z0-9][a-z0-9._-]{1,39}$/.test(u)?u+USER_DOMAIN:''; }
+function toUser(em){ em=em||''; return em.slice(-USER_DOMAIN.length)===USER_DOMAIN?em.slice(0,-USER_DOMAIN.length):em; }
 var sb=supabase.createClient(SB_URL,SB_KEY,{auth:{persistSession:true,detectSessionInUrl:true}});
 var rows=[],filter='new';
 function inr(n){return '₹'+(n||0).toLocaleString('en-IN')}
@@ -118,19 +121,20 @@ async function show(){
   var ok=false;
   if(s){ var t=await sb.rpc('is_team'); ok=!t.error&&t.data===true; }
   if(!ok){ $('app').hidden=true; $('login').hidden=false; if(s){await sb.auth.signOut();$('lmsg').textContent='That email is not on the Decorique team list. Ask a team member to add you.';} return; }
-  $('login').hidden=true;$('app').hidden=false;$('who').textContent='Signed in as '+s.user.email;me=(s.user.email||'').toLowerCase();
+  $('login').hidden=true;$('app').hidden=false;$('who').textContent='Signed in as '+toUser(s.user.email);me=(s.user.email||'').toLowerCase();
   load();loadTeam();
 }
 var me='';
 async function loadTeam(){
   var r=await sb.from('team_members').select('email,added_at,added_by').order('added_at',{ascending:true});
   if(r.error){$('tlist').innerHTML='<p class="meta">Could not load the team: '+esc(r.error.message)+'</p>';return}
-  $('tlist').innerHTML=r.data.map(function(m){return '<div class="card" style="padding:10px 14px;grid-template-columns:1fr auto;align-items:center"><div class="meta"><b>'+esc(m.email)+'</b>'+(m.email===me?' (you)':'')+'</div>'+(m.email===me?'<span></span>':'<button class="btn sm ghost" data-rm="'+esc(m.email)+'">Remove</button>')+'</div>'}).join('');
+  $('tlist').innerHTML=r.data.map(function(m){return '<div class="card" style="padding:10px 14px;grid-template-columns:1fr auto;align-items:center"><div class="meta"><b>'+esc(toUser(m.email))+'</b>'+(m.email===me?' (you)':'')+'</div>'+(m.email===me?'<span></span>':'<button class="btn sm ghost" data-rm="'+esc(m.email)+'">Remove</button>')+'</div>'}).join('');
 }
 $('tadd').addEventListener('submit',async function(e){
-  e.preventDefault();var em=$('tem').value.trim().toLowerCase();
-  var r=await sb.from('team_members').insert({email:em,added_by:me});
-  $('tmsg').textContent=r.error?(r.error.code==='23505'?'Already on the team.':'Could not add: '+r.error.message):em+' is on the team. Create their account in Supabase if they do not have one yet.';
+  e.preventDefault();var u=$('tem').value.trim().toLowerCase(),em=toEmail(u);
+  if(!em){$('tmsg').textContent='Usernames use letters, numbers, dots or dashes only.';return}
+  var r=await sb.from('team_members').insert({email:em,added_by:toUser(me)});
+  $('tmsg').textContent=r.error?(r.error.code==='23505'?'Already on the team.':'Could not add: '+r.error.message):toUser(em)+' is on the team. Now create their login in Supabase: Authentication, Users, Add user, email '+em+', tick Auto Confirm.';
   if(!r.error){$('tem').value='';loadTeam()}
 });
 var pendingRm='';
@@ -138,7 +142,7 @@ $('tlist').addEventListener('click',async function(e){
   var em=e.target.getAttribute('data-rm');if(!em)return;
   if(pendingRm!==em){pendingRm=em;e.target.textContent='Tap again to remove';setTimeout(function(){pendingRm='';e.target.textContent='Remove'},3000);return}
   var r=await sb.from('team_members').delete().eq('email',em);pendingRm='';
-  $('tmsg').textContent=r.error?'Could not remove: '+r.error.message:em+' was removed.';loadTeam();
+  $('tmsg').textContent=r.error?'Could not remove: '+r.error.message:toUser(em)+' was removed.';loadTeam();
 });
 async function load(){
   var r=await sb.from('bookings').select('*').order('event_date',{ascending:true});
@@ -180,13 +184,16 @@ $('add').addEventListener('submit',async function(e){
   var r=await sb.from('bookings').insert(o);
   $('amsg').textContent=r.error?r.error.message:'Saved.';if(!r.error){e.target.reset();load()}
 });
-/* Email and password sign-in: no emails are sent, so there is no email limit. Accounts are created in
-   Supabase (Authentication > Users > Add user), and only emails on the team list get past show(). */
+/* Username and password sign-in. Supabase accounts need an email, so each username is stored as
+   <username>@decorique.team (no mail is ever sent there). Accounts are created in Supabase
+   (Authentication > Users > Add user, Auto Confirm), and only addresses on the team list get past show(). */
 $('lform').addEventListener('submit',async function(e){
   e.preventDefault();
-  var em=$('em').value.trim().toLowerCase(),pw=$('pw').value;$('lmsg').textContent='Signing in…';
+  var em=toEmail($('em').value),pw=$('pw').value;
+  if(!em){$('lmsg').textContent='Usernames use letters, numbers, dots or dashes only.';return}
+  $('lmsg').textContent='Signing in…';
   var r=await sb.auth.signInWithPassword({email:em,password:pw});
-  if(r.error){$('lmsg').textContent=/invalid/i.test(r.error.message)?'Wrong email or password.':'Could not sign in: '+r.error.message;return}
+  if(r.error){$('lmsg').textContent=/invalid/i.test(r.error.message)?'Wrong username or password.':'Could not sign in: '+r.error.message;return}
   $('pw').value='';$('lmsg').textContent='';
 });
 $('pwform').addEventListener('submit',async function(e){
