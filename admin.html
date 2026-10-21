@@ -45,9 +45,9 @@ details{margin-bottom:18px}summary{cursor:pointer;color:var(--gold)}
 
 <section id="login" class="panel" hidden>
   <h1>Order Log</h1>
-  <p class="sub">Decorique. Sign in with your email to get a one-time link.</p>
-  <label for="em">Email</label>
-  <input id="em" type="email" autocomplete="email" value="kevinchacko2475@gmail.com">
+  <p class="sub">Decorique team. Sign in with your own email to get a one-time link.</p>
+  <label for="em">Your email</label>
+  <input id="em" type="email" autocomplete="email" placeholder="you@example.com">
   <div style="margin-top:16px"><button class="btn" id="send">Email me a sign-in link</button></div>
   <p class="msg" id="lmsg" role="status"></p>
 </section>
@@ -75,6 +75,17 @@ details{margin-bottom:18px}summary{cursor:pointer;color:var(--gold)}
       <div style="margin-top:12px"><button class="btn sm" type="submit">Save order</button> <span class="msg" id="amsg"></span></div>
     </form>
   </details>
+  <details id="team"><summary>Team (who can open this Order Log)</summary>
+    <div class="panel" style="margin-top:10px">
+      <p class="sub" style="margin-bottom:12px">Everyone here signs in with their own email. Remove someone and their access stops at once. You can't remove yourself.</p>
+      <div class="list" id="tlist" style="gap:8px"></div>
+      <form id="tadd" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+        <input id="tem" type="email" required maxlength="120" placeholder="friend@example.com" style="flex:1 1 220px" aria-label="Email to add">
+        <button class="btn sm" type="submit">Add to team</button>
+      </form>
+      <p class="msg" id="tmsg" role="status"></p>
+    </div>
+  </details>
   <div class="tabs" id="tabs"></div>
   <div class="list" id="list"></div>
 </section>
@@ -82,7 +93,7 @@ details{margin-bottom:18px}summary{cursor:pointer;color:var(--gold)}
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
 var SB_URL='https://cbkzelyrgxfazcqwunqu.supabase.co', SB_KEY='sb_publishable_x1g9tEmAtugyn85r9xyt4w_xFBeWxOJ';
-var OWNER='kevinchacko2475@gmail.com';
+/* Who may open this page is decided by the team_members table in Supabase (see sql/team.sql), not by this file. */
 var $=function(i){return document.getElementById(i)};
 var sb=supabase.createClient(SB_URL,SB_KEY,{auth:{persistSession:true,detectSessionInUrl:true}});
 var rows=[],filter='new';
@@ -91,10 +102,31 @@ function esc(s){var d=document.createElement('div');d.textContent=s==null?'':Str
 function fmt(d){if(!d)return 'no date';var x=new Date(d+'T00:00:00');return x.toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short',year:'numeric'})}
 async function show(){
   var s=(await sb.auth.getSession()).data.session;
-  if(!s||(s.user.email||'').toLowerCase()!==OWNER){ $('app').hidden=true; $('login').hidden=false; if(s){await sb.auth.signOut();$('lmsg').textContent='That account is not allowed here.';} return; }
-  $('login').hidden=true;$('app').hidden=false;$('who').textContent='Signed in as '+s.user.email;
-  load();
+  var ok=false;
+  if(s){ var t=await sb.rpc('is_team'); ok=!t.error&&t.data===true; }
+  if(!ok){ $('app').hidden=true; $('login').hidden=false; if(s){await sb.auth.signOut();$('lmsg').textContent='That email is not on the Decorique team list. Ask a team member to add you.';} return; }
+  $('login').hidden=true;$('app').hidden=false;$('who').textContent='Signed in as '+s.user.email;me=(s.user.email||'').toLowerCase();
+  load();loadTeam();
 }
+var me='';
+async function loadTeam(){
+  var r=await sb.from('team_members').select('email,added_at,added_by').order('added_at',{ascending:true});
+  if(r.error){$('tlist').innerHTML='<p class="meta">Could not load the team: '+esc(r.error.message)+'</p>';return}
+  $('tlist').innerHTML=r.data.map(function(m){return '<div class="card" style="padding:10px 14px;grid-template-columns:1fr auto;align-items:center"><div class="meta"><b>'+esc(m.email)+'</b>'+(m.email===me?' (you)':'')+'</div>'+(m.email===me?'<span></span>':'<button class="btn sm ghost" data-rm="'+esc(m.email)+'">Remove</button>')+'</div>'}).join('');
+}
+$('tadd').addEventListener('submit',async function(e){
+  e.preventDefault();var em=$('tem').value.trim().toLowerCase();
+  var r=await sb.from('team_members').insert({email:em,added_by:me});
+  $('tmsg').textContent=r.error?(r.error.code==='23505'?'Already on the team.':'Could not add: '+r.error.message):em+' can now sign in with their own email.';
+  if(!r.error){$('tem').value='';loadTeam()}
+});
+var pendingRm='';
+$('tlist').addEventListener('click',async function(e){
+  var em=e.target.getAttribute('data-rm');if(!em)return;
+  if(pendingRm!==em){pendingRm=em;e.target.textContent='Tap again to remove';setTimeout(function(){pendingRm='';e.target.textContent='Remove'},3000);return}
+  var r=await sb.from('team_members').delete().eq('email',em);pendingRm='';
+  $('tmsg').textContent=r.error?'Could not remove: '+r.error.message:em+' was removed.';loadTeam();
+});
 async function load(){
   var r=await sb.from('bookings').select('*').order('event_date',{ascending:true});
   if(r.error){$('list').innerHTML='<p class="empty">Could not load orders: '+esc(r.error.message)+'</p>';return}
@@ -136,7 +168,7 @@ $('add').addEventListener('submit',async function(e){
   $('amsg').textContent=r.error?r.error.message:'Saved.';if(!r.error){e.target.reset();load()}
 });
 $('send').addEventListener('click',async function(){
-  var em=$('em').value.trim();$('lmsg').textContent='Sending…';
+  var em=$('em').value.trim().toLowerCase();if(!em){$('lmsg').textContent='Type your email first.';return}$('lmsg').textContent='Sending…';
   var r=await sb.auth.signInWithOtp({email:em,options:{emailRedirectTo:location.origin+location.pathname,shouldCreateUser:true}});
   $('lmsg').textContent=r.error?'Could not send: '+r.error.message:'Check your inbox and open the link on this device.';
 });
